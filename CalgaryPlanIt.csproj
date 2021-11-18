@@ -7,4 +7,13 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\CalgaryPlanItNoTextLogo.png" />
+  </ItemGroup>
+
 </Project>

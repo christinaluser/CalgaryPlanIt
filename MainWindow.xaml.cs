@@ -20,9 +20,38 @@ namespace CalgaryPlanIt
     /// </summary>
     public partial class MainWindow : Window
     {
+        readonly Home _home = new Home();
+        readonly ThingsToDo _thingsToDo = new ThingsToDo();
+        readonly Trips _trips = new Trips();
+        readonly Lists _lists = new Lists();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.Children.Clear();
+            PageContent.Children.Add(_home);
+        }
+
+        private void ThingsToDoButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.Children.Clear();
+            PageContent.Children.Add(_thingsToDo);
+        }
+
+        private void TripsButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.Children.Clear();
+            PageContent.Children.Add(_trips);
+        }
+
+        private void ListsButton_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.Children.Clear();
+            PageContent.Children.Add(_lists);
         }
     }
 }

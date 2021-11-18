@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:CalgaryPlanIt"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Height="60" Orientation="Horizontal">
+            <Image Source="/Images/CalgaryPlanItNoTextLogo.png" Width="50"/>
+            <Button Name="HomeButton" Content="Home" Margin="10, 25, 10, 15" Padding="10, 0" Click="HomeButton_Click"/>
+            <Button Name="ThingsToDoButton" Content="Things To Do" Margin="10, 25, 10, 15" Padding="10, 0" Click="ThingsToDoButton_Click"/>
+            <Button Name="TripsButton" Content="Trips" Margin="10, 25, 10, 15" Padding="10, 0" Click="TripsButton_Click"/>
+            <Button Name="ListsButton" Content="Lists" Margin="10, 25, 10, 15" Padding="10, 0" Click="ListsButton_Click"/>
+        </StackPanel>
+        <StackPanel Name="PageContent" Height="370"/>
+    </StackPanel>
 </Window>
