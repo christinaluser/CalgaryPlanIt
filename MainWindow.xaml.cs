@@ -30,51 +30,14 @@ namespace CalgaryPlanIt
         public MainWindow()
         {
             InitializeComponent();
-            Main.Content = _home;
+            Navigation.window = this;
+            Navigation.NavigateTo(new Home());
             
         }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
+        public void SwitchPage(Page newPage)
         {
-            Main.Content = _home;
-            HighlightNavBarButton(((Button)sender).Content.ToString());
-        }
-
-        private void ThingsToDoButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = _thingsToDo;
-            HighlightNavBarButton(((Button)sender).Content.ToString());
-        }
-
-        private void TripsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = _trips;
-            HighlightNavBarButton(((Button)sender).Content.ToString());
-        }
-
-        private void ListsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Main.Content = _lists;
-            HighlightNavBarButton(((Button)sender).Content.ToString());
-        }
-
-        private void HighlightNavBarButton(string buttonName)
-        {
-            foreach(var button in NavBar.Children)
-            {
-                if(button.GetType() == typeof(Button))
-                {
-                    if (((Button)button).Content == buttonName)
-                    {
-                        ((Button)button).Background = Brushes.Beige;
-                    }
-                    else
-                    {
-                        ((Button)button).Background = Brushes.Transparent;
-                    }
-                }
-            }
-
+            Main.Content = newPage;
         }
     }
 }
