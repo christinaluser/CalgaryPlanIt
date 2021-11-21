@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CalgaryPlanIt.Views;
+using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,38 +22,59 @@ namespace CalgaryPlanIt
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly Home _home = new Home();
-        readonly ThingsToDo _thingsToDo = new ThingsToDo();
-        readonly Trips _trips = new Trips();
-        readonly Lists _lists = new Lists();
+        Home _home = new Home();
+        ThingsToDo _thingsToDo = new ThingsToDo();
+        Trips _trips = new Trips();
+        Lists _lists = new Lists();
 
         public MainWindow()
         {
             InitializeComponent();
+            Main.Content = _home;
+            
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.Children.Clear();
-            PageContent.Children.Add(_home);
+            Main.Content = _home;
+            HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void ThingsToDoButton_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.Children.Clear();
-            PageContent.Children.Add(_thingsToDo);
+            Main.Content = _thingsToDo;
+            HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void TripsButton_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.Children.Clear();
-            PageContent.Children.Add(_trips);
+            Main.Content = _trips;
+            HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void ListsButton_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.Children.Clear();
-            PageContent.Children.Add(_lists);
+            Main.Content = _lists;
+            HighlightNavBarButton(((Button)sender).Content.ToString());
+        }
+
+        private void HighlightNavBarButton(string buttonName)
+        {
+            foreach(var button in NavBar.Children)
+            {
+                if(button.GetType() == typeof(Button))
+                {
+                    if (((Button)button).Content == buttonName)
+                    {
+                        ((Button)button).Background = Brushes.Beige;
+                    }
+                    else
+                    {
+                        ((Button)button).Background = Brushes.Transparent;
+                    }
+                }
+            }
+
         }
     }
 }

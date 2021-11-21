@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:CalgaryPlanIt"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#87BBA2"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Padding" Value="10, 0"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
     </Application.Resources>
 </Application>

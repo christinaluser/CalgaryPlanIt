@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CalgaryPlanIt
+namespace CalgaryPlanIt.Views
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for Plan.xaml
     /// </summary>
-    public partial class Home : UserControl
+    public partial class Plan : Page
     {
-        public Home()
+        public Plan()
         {
             InitializeComponent();
         }
