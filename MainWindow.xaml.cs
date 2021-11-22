@@ -22,10 +22,6 @@ namespace CalgaryPlanIt
     /// </summary>
     public partial class MainWindow : Window
     {
-        Home _home = new Home();
-        ThingsToDo _thingsToDo = new ThingsToDo();
-        Trips _trips = new Trips();
-        Lists _lists = new Lists();
 
         public MainWindow()
         {
