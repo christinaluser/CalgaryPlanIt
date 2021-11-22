@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <None Remove="CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\CalendarIcon.png" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\RightArrow.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\CalendarIcon.png" />
     <Resource Include="Images\CalgaryPlanItNoTextLogo.png" />
+    <Resource Include="Images\RightArrow.png" />
   </ItemGroup>
 
 </Project>
