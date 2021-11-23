@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:CalgaryPlanIt"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <FontFamily x:Key="MontserratRegular">./Fonts/Montserrat-Regular.ttf#Montserrat</FontFamily>
+        <FontFamily x:Key="MontserratItalic">./Fonts/Montserrat-Italic.ttf#Montserrat</FontFamily>
+        <FontFamily x:Key="MontserratBold">./Fonts/Montserrat-Bold.ttf#Montserrat</FontFamily>
+        <FontFamily x:Key="Righteous">./Fonts/Righteous-Regular.ttf#Righteous</FontFamily>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#87BBA2"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
@@ -15,5 +19,26 @@
                 </Style>
             </Style.Resources>
         </Style>
+        <Style x:Key="Title" TargetType="Label">
+            <Setter Property="FontSize" Value="36"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
+        </Style>
+        <Style x:Key="Heading 1" TargetType="Label">
+            <Setter Property="FontSize" Value="34"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
+        </Style>
+        <Style x:Key="Heading 2" TargetType="Label">
+            <Setter Property="FontSize" Value="28"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+        <Style x:Key="Heading 3" TargetType="Label">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+        <Style x:Key="Heading 4" TargetType="Label">
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>
