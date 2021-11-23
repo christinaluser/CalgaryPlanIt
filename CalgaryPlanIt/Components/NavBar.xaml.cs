@@ -19,7 +19,7 @@ namespace CalgaryPlanIt.Components
     /// <summary>
     /// Interaction logic for NavBar.xaml
     /// </summary>
-    public partial class NavBar : UserControl
+     public partial class NavBar : UserControl
     {
         public NavBar()
         {
@@ -50,7 +50,7 @@ namespace CalgaryPlanIt.Components
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
-        private void HighlightNavBarButton(string buttonName)
+        public void HighlightNavBarButton(string buttonName)
         {
             foreach (var button in NavBarButtonGroup.Children)
             {

@@ -82,11 +82,10 @@ namespace CalgaryPlanIt.Views
             }
         }
 
-
-        private void StartPlanning_Click(object sender, RoutedEventArgs e)
+        public void StartPlanning_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NavigateTo(new ThingsToDo());
-            Components.NavBar.HighlightNavBarButton("Things To Do");
+            //Components.NavBar.HighlightNavBarButton("Things To Do");
         }
     }
 }
