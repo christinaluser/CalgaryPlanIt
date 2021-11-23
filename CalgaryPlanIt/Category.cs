@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    internal class Category
+    public enum Category
     {
+        None,
+        Tours,
+        Promotions,
+        Nearby,
+        Events,
+        Museums,
+        ShoppingMalls,
+        FoodAndDrink,
+        NatureAndWildlife,
+        Nightlife,
+        Sports,
+        Parks,
+        Attractions
     }
 }

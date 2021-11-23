@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    public class ItineraryItem
+    public class ItineraryItem : Attraction
     {
+        public DateTime PlannedStartDate { get; set; }
+        public DateTime PlannedEndDate { get; set;}
     }
 }

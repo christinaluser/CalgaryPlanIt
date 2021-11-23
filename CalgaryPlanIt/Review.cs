@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    internal class Review
+    public class Review
     {
+        public int Rating { get; set; }
+        public string Description { get; set; } = "";
+        //photos?
+
     }
 }
