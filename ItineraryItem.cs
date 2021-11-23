@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    internal class ItineraryItem
+    public class ItineraryItem
     {
     }
 }
