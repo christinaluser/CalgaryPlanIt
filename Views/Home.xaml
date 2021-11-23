@@ -31,27 +31,27 @@
         <TextBlock Text="WHO WILL BE THERE?" Margin="15" HorizontalAlignment="Center" />
 
         <UniformGrid Rows="1" Columns="12" Height="40" Margin="10">
-            <Button Height="36" Width="35" Content="-" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-            <Button Height="36" Width="35" Content="+" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="Adult" Margin="10,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="AdultDecreaseButton" Height="36" Width="35" Content="-" FontSize="20" Click="AdultDecrease_Click"/>
+            <Label x:Name="AdultCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Button x:Name="AdultIncreaseButton" Height="36" Width="35" Content="+" FontSize="20" Click="AdultIncrease_Click"/>
+            <TextBlock TextWrapping="Wrap" Text="Adult" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Width="65"/>
 
-            <Button Height="36" Width="35" Content="-" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-            <Button Height="36" Width="35" Content="+" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="Teen" Margin="10,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="TeenDecreaseButton" Height="36" Width="35" Content="-" FontSize="20" Click="TeenDecrease_Click"/>
+            <Label x:Name="TeenCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Button x:Name="TeenIncreaseButton" Height="36" Width="35" Content="+" FontSize="20" Click="TeenIncrease_Click"/>
+            <TextBlock TextWrapping="Wrap" Text="Teen" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Width="66"/>
 
-            <Button Height="36" Width="35" Content="-" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-            <Button Height="36" Width="35" Content="+" FontSize="20"/>
-            <TextBlock TextWrapping="Wrap" Text="Children" Margin="10,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button x:Name="ChildrenDecreaseButton" Height="36" Width="35" Content="-" FontSize="20" Click="ChildrenDecrease_Click"/>
+            <Label x:Name="ChildrenCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <Button x:Name="ChildrenIncreaseButton" Height="36" Width="35" Content="+" FontSize="20" Click="ChildrenIncrease_Click"/>
+            <TextBlock TextWrapping="Wrap" Text="Children" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="69"/>
         </UniformGrid>
 
         <TextBlock Text="NAME YOUR TRIP" Margin="15" HorizontalAlignment="Center" />
-        <TextBox TextDecorations="Underline" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252"/>
-        <Button Content="START PLANNING" Height="23" Width="135" RenderTransformOrigin="0.487,3.554" Margin="20"/>
+        <TextBox BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252"/>
+        <Button x:Name="StartPlanningButton" Content="START PLANNING" Height="23" Width="135" RenderTransformOrigin="0.487,3.554" Margin="20" Click="StartPlanning_Click"/>
 
     </StackPanel>
-    
-    
+
+
 </Page>

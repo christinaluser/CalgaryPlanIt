@@ -24,5 +24,69 @@ namespace CalgaryPlanIt.Views
         {
             InitializeComponent();
         }
+
+        private void AdultIncrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(AdultCounter.Content);
+            value++;
+            string counterValue = value.ToString();
+            AdultCounter.Content = counterValue;
+        }
+
+        private void AdultDecrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(AdultCounter.Content);
+            if (value > 0)
+            {
+                value--;
+                string counterValue = value.ToString();
+                AdultCounter.Content = counterValue;
+            }
+        }
+
+        private void TeenIncrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(TeenCounter.Content);
+            value++;
+            string counterValue = value.ToString();
+            TeenCounter.Content = counterValue;
+        }
+
+        private void TeenDecrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(TeenCounter.Content);
+            if (value > 0)
+            {
+                value--;
+                string counterValue = value.ToString();
+                TeenCounter.Content = counterValue;
+            }
+        }
+
+        private void ChildrenIncrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(ChildrenCounter.Content);
+            value++;
+            string counterValue = value.ToString();
+            ChildrenCounter.Content = counterValue;
+        }
+
+        private void ChildrenDecrease_Click(object sender, RoutedEventArgs e)
+        {
+            int value = Convert.ToInt32(ChildrenCounter.Content);
+            if (value > 0)
+            {
+                value--;
+                string counterValue = value.ToString();
+                ChildrenCounter.Content = counterValue;
+            }
+        }
+
+
+        private void StartPlanning_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NavigateTo(new ThingsToDo());
+            Components.NavBar.HighlightNavBarButton("Things To Do");
+        }
     }
 }
