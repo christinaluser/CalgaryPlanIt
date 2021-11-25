@@ -19,25 +19,33 @@
                 </Style>
             </Style.Resources>
         </Style>
-        <Style x:Key="Title" TargetType="Label">
+        <Style x:Key="Title" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="36"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
         </Style>
-        <Style x:Key="Heading 1" TargetType="Label">
+        <Style x:Key="Heading 1" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="34"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
         </Style>
-        <Style x:Key="Heading 2" TargetType="Label">
+        <Style x:Key="Heading 2" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="28"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
         </Style>
-        <Style x:Key="Heading 3" TargetType="Label">
+        <Style x:Key="Heading 3" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="20"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
         </Style>
-        <Style x:Key="Heading 4" TargetType="Label">
+        <Style x:Key="Heading 4" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
+        </Style>
+        <Style x:Key="Heading 5" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
         </Style>
         
     </Application.Resources>

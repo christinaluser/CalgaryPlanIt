@@ -20,9 +20,18 @@ namespace CalgaryPlanIt.Views
     /// </summary>
     public partial class Plan : Page
     {
+        Trip Trip;
         public Plan()
         {
             InitializeComponent();
+            Trip = new Trip();
         }
+
+        public Plan(Trip trip)
+        {
+            Trip = trip;
+        }
+
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    internal class Attraction
+    public class Attraction
     {
         public string Name { get; set; } = "";
         public string Address { get; set; } = "";
@@ -14,9 +14,12 @@ namespace CalgaryPlanIt
         public DateTime? EndDate { get; set; }
         public string Description { get; set; } = "";
         public int Rating { get; set; }
+        public List<Review>? Reviews { get; set; }   
+        public Category Category { get; set; }
+        public Tag Tags { get; set; }
 
-
-        //photos ???
+        //location?
+        //photos?
 
     }
 }
