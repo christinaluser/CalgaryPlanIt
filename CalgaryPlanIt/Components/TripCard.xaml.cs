@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalgaryPlanIt.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace CalgaryPlanIt.Components
     public partial class TripCard : UserControl
     {
         public Trip Trip;
+        public event EventHandler ArchiveButtonClicked;
         public TripCard()
         {
             InitializeComponent();
@@ -31,16 +33,26 @@ namespace CalgaryPlanIt.Components
         {
             InitializeComponent();
             Trip = trip;
-            TripName.Content = Trip.Name;
-            Date.Content = Trip.TripDatesToString();
+            TripName.Text = Trip.Name;
+            Date.Text = Trip.TripDatesToString();
             NumTravellers.Children.Clear();
             if (Trip.NumAdults > 0)
-                NumTravellers.Children.Add(new Label() { Content = Trip.NumAdults + (Trip.NumAdults == 1 ? "Adult" : " Adults") });
+                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumAdults + (Trip.NumAdults == 1 ? " Adult" : " Adults") });
             if (Trip.NumTeens > 0)
-                NumTravellers.Children.Add(new Label() { Content = Trip.NumTeens + (Trip.NumTeens == 1 ? "Teen" : "Teens") });
+                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumTeens + (Trip.NumTeens == 1 ? " Teen" : " Teens") });
             if (Trip.NumChildren > 0)
-                NumTravellers.Children.Add(new Label() { Content = Trip.NumChildren + (Trip.NumChildren == 1 ? "Child" : "Children") });
+                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumChildren + (Trip.NumChildren == 1 ? " Child" : " Children") });
+        }
 
+        private void HandleArchive_Click(object sender, RoutedEventArgs e)
+        {
+            ArchiveButtonClicked.Invoke(this, e);
+        }
+
+            private void HandlePlan_Click(object sender, RoutedEventArgs e)
+        {
+            Page PlanPage = new Plan(Trip);
+            Navigation.NavigateTo(PlanPage);
         }
     }
 }

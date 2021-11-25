@@ -22,21 +22,39 @@ namespace CalgaryPlanIt.Views
     public partial class Trips : Page
     {
         List<Trip> TripsList;
+
         public Trips()
         {
             InitializeComponent();
             CreateTrips();
-            FillTripsGrid();
-
+            RefreshTripsGrid();
+            SubcribeToAllArchiveTripCardEvent();
         }
 
-        private void FillTripsGrid()
+        public void RefreshTripsGrid()
         {
             TripsGrid.Children.Clear();
             foreach (Trip trip in TripsList)
             {
-                TripsGrid.Children.Add(new TripCard(trip));
+                if (!trip.IsArchived)
+                    TripsGrid.Children.Add(new TripCard(trip));
             }
+        }
+
+        private void SubcribeToAllArchiveTripCardEvent()
+        {
+            foreach (TripCard tripCard in this.TripsGrid.Children)
+            {
+                tripCard.ArchiveButtonClicked += Trip_ArchiveButtonClicked;
+            }
+        }
+
+        private void Trip_ArchiveButtonClicked(object sender, EventArgs e)
+        {
+            var index = TripsList.FindIndex(trip => ((TripCard)sender).Trip == trip);
+            TripsList[index].IsArchived = true;
+            RefreshTripsGrid();
+            SubcribeToAllArchiveTripCardEvent();
         }
 
         private void CreateTrips()
@@ -74,6 +92,15 @@ namespace CalgaryPlanIt.Views
                 StartDate = DateTime.Now.AddDays(50),
                 EndDate = DateTime.Now.AddDays(57),
                 Name = "trip 4",
+                NumAdults = 3,
+                NumChildren = 1,
+                NumTeens = 2
+            });
+            TripsList.Add(new Trip()
+            {
+                StartDate = DateTime.Now.AddDays(35),
+                EndDate = DateTime.Now.AddDays(57),
+                Name = "trip 5",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2
