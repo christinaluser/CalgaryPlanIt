@@ -29,9 +29,23 @@ namespace CalgaryPlanIt.Views
 
         public Plan(Trip trip)
         {
+            InitializeComponent();
             Trip = trip;
+            SetPageContent();
+
         }
 
-        
+        private void SetPageContent()
+        {
+            TripName.Text = Trip.Name;
+            TripSummaryCalendar.SelectedDates.AddRange(Trip.StartDate, Trip.EndDate);
+            //TripSummaryCalendar.CalendarDayButtonStyle.Setters.Add(new Setter(UIElement.IsHitTestVisibleProperty, false));
+            NumTravellers.Text = Trip.GetNumTravellersString();
+        }
+
+        private void HandleEditDates_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

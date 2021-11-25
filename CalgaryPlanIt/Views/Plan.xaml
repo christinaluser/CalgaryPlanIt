@@ -8,7 +8,63 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Plan">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="TripName" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Heading 1}"/>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Calendar view:"></TextBlock>
+                <RadioButton GroupName="CalendarView" Content="Week"></RadioButton>
+                <RadioButton GroupName="CalendarView" Content="Day" IsChecked="True"></RadioButton>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <!--TODO: SelectionMode="SingleRange" requires click and drag which isn't ideal-->
+            <Calendar x:Name="TripSummaryCalendar" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="SingleRange" >
+                <Calendar.CalendarDayButtonStyle>
+                    <Style TargetType="CalendarDayButton">
+                        <Setter Property="IsHitTestVisible" Value="false"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=EditDatesButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsHitTestVisible" Value="true"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Calendar.CalendarDayButtonStyle>
+            </Calendar>
+            <Grid DockPanel.Dock="Bottom">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" x:Name="NumTravellers"></TextBlock>
+                <CheckBox x:Name="EditDatesButton" Grid.Column="1" Content="Edit Dates"></CheckBox>
+            </Grid>
+            <Separator Height="10"/>
+            <TextBlock Text="Notes"></TextBlock>
+            <!--TODO-->
+            <Separator Height="10"/>
+            <TextBlock Text="Share"></TextBlock>
+            <!--TODO-->
+        </StackPanel>
+
+        <Button Grid.Row="0" Grid.Column="2" Content="Map View"></Button>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <TextBlock Text="Lists"></TextBlock>
+            <StackPanel x:Name="ListsStackPanel"></StackPanel>
+        </StackPanel>
+
     </Grid>
 </Page>

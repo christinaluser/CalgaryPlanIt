@@ -47,6 +47,16 @@
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
         </Style>
-        
+        <!--Calendar style-->
+        <Style TargetType="{x:Type Calendar}">
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Background" Value="White"></Setter>
+            
+        </Style>
+        <Style TargetType="{x:Type CalendarDayButton}">
+            <Setter Property="Height" Value="50"></Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

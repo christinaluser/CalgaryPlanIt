@@ -42,5 +42,34 @@ namespace CalgaryPlanIt
             // return start date - end date
             return StartDate.ToString(startDateFormat) + " - " + EndDate.ToString(endDateFormat);
         }
+
+        public string NumAdultsToString()
+        {
+            string ret = "";
+            if (NumAdults > 0)
+                ret = NumAdults + (NumAdults == 1 ? " Adult" : " Adults");
+            return ret;
+        }
+
+        public string NumTeensToString()
+        {
+            string ret = "";
+            if (NumTeens > 0)
+                ret = NumTeens + (NumTeens == 1 ? " Teen" : " Teens");
+            return ret;
+        }
+
+        public string NumChildrenToString()
+        {
+            string ret = "";
+            if (NumChildren > 0)
+                ret = NumChildren + (NumChildren == 1 ? " Child" : " Children");
+            return ret;
+        }
+
+        public string GetNumTravellersString()
+        {
+            return NumAdultsToString() + (NumAdults == 0? "":"\n") + NumTeensToString() + (NumTeens == 0 ? "":"\n") + NumChildrenToString();
+        }
     }
 }
