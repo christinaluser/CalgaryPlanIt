@@ -103,7 +103,14 @@ namespace CalgaryPlanIt.Views
                 Name = "trip 5",
                 NumAdults = 3,
                 NumChildren = 1,
-                NumTeens = 2
+                NumTeens = 2,
+                ItineraryItems = new List<ItineraryItem>() { 
+                    new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = DateTime.Now.AddDays(37)},
+                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = DateTime.Now.AddDays(38)},
+                }
             });
         }
     }

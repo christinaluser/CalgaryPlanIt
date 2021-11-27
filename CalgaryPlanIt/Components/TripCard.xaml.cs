@@ -54,5 +54,10 @@ namespace CalgaryPlanIt.Components
             Page PlanPage = new Plan(Trip);
             Navigation.NavigateTo(PlanPage);
         }
+
+        private void HandleViewTrip_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.NavigateTo(new ViewTrip(Trip));
+        }
     }
 }

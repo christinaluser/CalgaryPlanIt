@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <None Remove="CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Components\GreyStar.png" />
+    <None Remove="Components\YellowStar.png" />
     <None Remove="Fonts\Montserrat-Bold.ttf" />
     <None Remove="Fonts\Montserrat-Italic.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Righteous-Regular.ttf" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\GreyStar.png" />
+    <None Remove="Images\YellowStar.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +39,8 @@
     <Resource Include="Images\CalgaryPlanItNoTextLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\GreyStar.png" />
+    <Resource Include="Images\YellowStar.png" />
   </ItemGroup>
 
   <ItemGroup>
