@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="700">
+             d:DesignHeight="300" d:DesignWidth="500">
     <UserControl.Resources>
         <Image x:Key="GreyStar1" Source="/Images/GreyStar.png" Height="30" Width="30" />
         <Image x:Key="YellowStar1" Source="/Images/YellowStar.png" Height="30" Width="30"/>
@@ -57,7 +57,7 @@
         </Grid>
         <TextBlock Text="Review" Style="{StaticResource Heading 2}"></TextBlock>
         <Grid>
-            <TextBox  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ReviewTextBox" Margin="5"/>
+            <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ReviewTextBox" Margin="5"/>
             <TextBlock IsHitTestVisible="False" Text="Type your review here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
                 <TextBlock.Style>
                     <Style TargetType="{x:Type TextBlock}">

@@ -75,6 +75,7 @@ namespace CalgaryPlanIt.Views
         {
             ReviewModal modal = new ReviewModal((Attraction)((Button)sender).Tag);
             modal.CloseButtonClicked += ViewTrip_CloseReviewButtonClicked;
+            modal.HorizontalAlignment = HorizontalAlignment.Center;
             Overlay.Children.Add(modal);
             Overlay.Visibility = Visibility.Visible;
         }
