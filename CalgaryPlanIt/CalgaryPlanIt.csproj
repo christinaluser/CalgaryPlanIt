@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Components\Close.png" />
     <None Remove="Components\GreyStar.png" />
     <None Remove="Components\YellowStar.png" />
     <None Remove="Fonts\Montserrat-Bold.ttf" />
@@ -36,6 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Close.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\CalgaryPlanItNoTextLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

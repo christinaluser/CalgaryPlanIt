@@ -74,8 +74,15 @@ namespace CalgaryPlanIt.Views
         private void ViewTrip_ReviewButtonClicked(object sender, EventArgs e)
         {
             ReviewModal modal = new ReviewModal((Attraction)((Button)sender).Tag);
+            modal.CloseButtonClicked += ViewTrip_CloseReviewButtonClicked;
             Overlay.Children.Add(modal);
             Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void ViewTrip_CloseReviewButtonClicked(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            Overlay.Visibility = Visibility.Collapsed;
         }
     }
 }

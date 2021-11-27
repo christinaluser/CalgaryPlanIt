@@ -22,7 +22,9 @@ namespace CalgaryPlanIt.Components
     public partial class ReviewModal : UserControl
     {
         public Attraction Attraction;
-        public bool IsOpen = false;
+        public event EventHandler CloseButtonClicked;
+        public Review Review;
+
         public ReviewModal()
         {
             InitializeComponent();
@@ -32,7 +34,8 @@ namespace CalgaryPlanIt.Components
         public ReviewModal(Attraction attraction)
         {
             InitializeComponent();
-            this.Attraction = attraction;
+            Attraction = attraction;
+            Review = new Review();
             SetContent();
         }
 
@@ -47,7 +50,7 @@ namespace CalgaryPlanIt.Components
             int rating = Int32.Parse(((Button)sender).Tag.ToString());
             if (rating > 0 && rating <= 5)
             {
-                Attraction.Rating = rating;
+                Review.Rating = rating;
                 for (int i = 0; i < 5; i++)
                 {
                     if (i < rating)
@@ -60,6 +63,28 @@ namespace CalgaryPlanIt.Components
                 }
             }
             
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            CloseButtonClicked.Invoke(this, e);
+        }
+
+        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = openFileDlg.ShowDialog();
+            if (result == true)
+            {
+                //TODO
+            }
+        }
+
+        private void PostButton_Click(object sender, RoutedEventArgs e)
+        {
+            Review.Description = ReviewTextBox.Text;
+            //TODO: should probably have separate handler for post (to demo reviews working)
+            CloseButton_Click(sender, e);
         }
     }
 }
