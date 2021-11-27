@@ -33,15 +33,14 @@ namespace CalgaryPlanIt.Components
         {
             InitializeComponent();
             Trip = trip;
+            SetContent();
+        }
+
+        private void SetContent()
+        {
             TripName.Text = Trip.Name;
             Date.Text = Trip.TripDatesToString();
-            NumTravellers.Children.Clear();
-            if (Trip.NumAdults > 0)
-                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumAdults + (Trip.NumAdults == 1 ? " Adult" : " Adults") });
-            if (Trip.NumTeens > 0)
-                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumTeens + (Trip.NumTeens == 1 ? " Teen" : " Teens") });
-            if (Trip.NumChildren > 0)
-                NumTravellers.Children.Add(new TextBlock() { Text = Trip.NumChildren + (Trip.NumChildren == 1 ? " Child" : " Children") });
+            NumTravellers.Text = Trip.GetNumTravellersString();
         }
 
         private void HandleArchive_Click(object sender, RoutedEventArgs e)

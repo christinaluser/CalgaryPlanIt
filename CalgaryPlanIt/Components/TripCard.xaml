@@ -17,7 +17,7 @@
         <Button Grid.Row="0" Background="Transparent" Content=">" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"></Button>
         <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 4}" TextWrapping="WrapWithOverflow"/>
-        <StackPanel x:Name="NumTravellers" Grid.Row="2"></StackPanel>
+        <TextBlock x:Name="NumTravellers" Grid.Row="2"></TextBlock>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
