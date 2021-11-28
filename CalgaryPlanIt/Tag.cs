@@ -24,6 +24,7 @@ namespace CalgaryPlanIt
         Nightlife = 2048,
         Museums = 4096,
         ClassesAndWorkshops = 8192,
-        AmusementParks = 16384
+        AmusementParks = 16384,
+        WheelchairAccessible = 32768
     }
 }
