@@ -1,0 +1,157 @@
+﻿<Page x:Class="CalgaryPlanIt.Views.ThingsToDoSubsection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CalgaryPlanIt.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ThingsToDoSubsection">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="back" Click="BackButton_Click" HorizontalAlignment="Left"></Button>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="CategoryName" Style="{StaticResource Heading 1}"></TextBlock>
+                
+            <Grid Grid.Column="3" HorizontalAlignment="Right">
+                <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5"/>
+                <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Separator Grid.Row="0" Grid.ColumnSpan="4" Height=".5" Margin="0,0,0,-5" Background="Black" VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="FilterColumn">
+                <Button Content="Auto Apply Filters For Trip"></Button>
+                <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="from"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="to"></TextBlock>
+                    <Button Grid.Row="0" Grid.Column="1" Content="Select Start Date"></Button>
+                    <Button Grid.Row="1" Grid.Column="1" Content="Select End Date"></Button>
+                </Grid>
+                <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
+                <RadioButton GroupName="Sort" Content="Price: Low to High"></RadioButton>
+                <RadioButton GroupName="Sort" Content="Price: High to Low"></RadioButton>
+                <RadioButton GroupName="Sort" Content="Most Popular"></RadioButton>
+                <RadioButton GroupName="Sort" Content="Near You"></RadioButton>
+                <RadioButton GroupName="Sort" Content="Date"></RadioButton>
+                <TextBlock Text="Tags" Style="{StaticResource Heading 3}"></TextBlock>
+                <StackPanel x:Name="FilterTagsPanel"></StackPanel>
+                <TextBlock Text="Rating" Style="{StaticResource Heading 3}"></TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="4" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="5" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="4" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="3" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                </Grid>
+                
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Button Content="Map View" HorizontalAlignment="Right"></Button>
+                <StackPanel x:Name="AttractionsList"></StackPanel>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+        
+</Page>

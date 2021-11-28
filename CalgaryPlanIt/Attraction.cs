@@ -12,11 +12,15 @@ namespace CalgaryPlanIt
         public string Address { get; set; } = "";
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public string? Price { get; set; }
         public string Description { get; set; } = "";
         public int Rating { get; set; }
-        public List<Review>? Reviews { get; set; }   
+        public List<Review>? Reviews { get; set; }
         public Category Category { get; set; }
         public Tag Tags { get; set; }
+        public string? ExternalLink { get; set; }
+        public string? Duration { get; set; }
+        public string? Host { get; set; }
 
         //location?
         //photos?

@@ -13,6 +13,7 @@
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="Padding" Value="10, 0"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Style.Resources>
                 <Style TargetType="Border">
@@ -52,18 +53,62 @@
             <Setter Property="FontSize" Value="12"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
         </Style>
+        <Style x:Key="IconButtonWithBackground" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="#87BBA2"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Width" Value="40"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="IconButtonSmallWithBackground" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="#87BBA2"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
         <Style x:Key="IconButtonSmall" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="Height" Value="30"></Setter>
             <Setter Property="Width" Value="30"></Setter>
         </Style>
         <Style x:Key="IconButtonLarge" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Background" Value="Transparent"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
             <Setter Property="Height" Value="40"></Setter>
             <Setter Property="Width" Value="40"></Setter>
         </Style>
-        
+        <Style x:Key="CompletelyTransparentButton" TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

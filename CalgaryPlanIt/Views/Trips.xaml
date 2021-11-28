@@ -30,7 +30,7 @@
             <WrapPanel.Resources>
                 <Style TargetType="{x:Type Components:TripCard}">
                     <Setter Property="Margin" Value="10,0" />
-                    <Setter Property="Padding" Value="10,10" />
+                    <Setter Property="Padding" Value="10,10"/>
                 </Style>
             </WrapPanel.Resources>
         </WrapPanel>

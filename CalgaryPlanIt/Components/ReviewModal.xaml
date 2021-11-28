@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" x:Name="Title" Text="How was " Style="{StaticResource Heading 1}" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"></TextBlock>
             <Button Style="{StaticResource IconButtonLarge}" Click="CloseButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <Image Grid.Column="1" Source="/Images/Close.png" Width="30" Height="30"></Image>
+                <Image Source="/Images/Close.png" Width="30" Height="30"></Image>
             </Button>
         </Grid>
         

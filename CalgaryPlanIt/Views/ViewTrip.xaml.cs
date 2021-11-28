@@ -65,10 +65,14 @@ namespace CalgaryPlanIt.Views
 
         private void SubscribeToAllReviewButtonEvent()
         {
-            foreach (ItineraryDayList itineraryDayList in Itinerary.Children)
+            if (Trip.ItineraryItems != null && Trip.ItineraryItems.Count > 0)
             {
-                itineraryDayList.ReviewButtonClicked += ViewTrip_ReviewButtonClicked;
+                foreach (ItineraryDayList itineraryDayList in Itinerary.Children)
+                {
+                    itineraryDayList.ReviewButtonClicked += ViewTrip_ReviewButtonClicked;
+                }
             }
+            
         }
 
         private void ViewTrip_ReviewButtonClicked(object sender, EventArgs e)

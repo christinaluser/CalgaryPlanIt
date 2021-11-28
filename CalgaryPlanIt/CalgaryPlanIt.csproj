@@ -9,15 +9,32 @@
 
   <ItemGroup>
     <None Remove="CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Components\AddToCalendar.png" />
     <None Remove="Components\Close.png" />
     <None Remove="Components\GreyStar.png" />
+    <None Remove="Components\Heart.png" />
     <None Remove="Components\YellowStar.png" />
     <None Remove="Fonts\Montserrat-Bold.ttf" />
     <None Remove="Fonts\Montserrat-Italic.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Righteous-Regular.ttf" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\Categories\Attractions.jpg" />
+    <None Remove="Images\Categories\Events.jpg" />
+    <None Remove="Images\Categories\FoodAndDrink.jpg" />
+    <None Remove="Images\Categories\MuseumsAndGalleries.jpg" />
+    <None Remove="Images\Categories\NatureAndWildLife.jpg" />
+    <None Remove="Images\Categories\Nearby.jpg" />
+    <None Remove="Images\Categories\Nightlife.jpg" />
+    <None Remove="Images\Categories\Parks.jpg" />
+    <None Remove="Images\Categories\Popular.jpg" />
+    <None Remove="Images\Categories\Promotions.jpg" />
+    <None Remove="Images\Categories\Seasonal.jpg" />
+    <None Remove="Images\Categories\ShoppingMalls.jpg" />
+    <None Remove="Images\Categories\Sports.jpg" />
+    <None Remove="Images\Categories\Tours.jpg" />
     <None Remove="Images\GreyStar.png" />
+    <None Remove="Images\Heart.png" />
     <None Remove="Images\YellowStar.png" />
   </ItemGroup>
 
@@ -37,6 +54,49 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\AddToCalendar.png" />
+    <Resource Include="Images\Categories\Attractions.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Events.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\FoodAndDrink.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\MuseumsAndGalleries.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\NatureAndWildLife.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Nearby.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Nightlife.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Parks.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Popular.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Promotions.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Seasonal.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\ShoppingMalls.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Sports.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Categories\Tours.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Close.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -44,6 +104,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\GreyStar.png" />
+    <Resource Include="Images\Heart.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\YellowStar.png" />
   </ItemGroup>
 
@@ -51,6 +114,10 @@
     <None Update="Images\CalgaryPlanItLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\Attractions\" />
   </ItemGroup>
 
 </Project>
