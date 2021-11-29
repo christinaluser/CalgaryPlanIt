@@ -99,6 +99,7 @@ namespace CalgaryPlanIt
             });
         }
 
+        
         /// <summary>
         /// TODO: create a big (like 10 of them?) list of attractions
         /// </summary>
@@ -168,7 +169,7 @@ namespace CalgaryPlanIt
             AttractionsList.Add(new Attraction()
             {
                 Name = "Glenbow Museum",
-                Category = Category.MuseumsAndGalleries,
+                Category = Category.Museums,
                 Price = "from $10.00 CAD",
                 ExternalLink = "https://www.glenbow.org/",
                 Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.WheelchairAccessible,
