@@ -47,6 +47,14 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="FilterColumn">
+                <StackPanel.Resources>
+                    <Style TargetType="Image">
+                        <!--Height="15" VerticalAlignment="Center" HorizontalAlignment="Left"-->
+                        <Setter Property="Height" Value="15"></Setter>
+                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                    </Style>
+                </StackPanel.Resources>
                 <Button Content="Auto Apply Filters For Trip"></Button>
                 <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
                 <Grid>
@@ -83,11 +91,11 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
-                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="4" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="5" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png"></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="5" Source="/Images/YellowStar.png" ></Image>
                     <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
                 </Grid>
                 <Grid>
@@ -101,11 +109,11 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
-                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="4" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
                     <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
                 </Grid>
                 <Grid>
@@ -119,11 +127,11 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
-                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
                     <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
                 </Grid>
                 <Grid>
@@ -137,19 +145,69 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
-                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="3" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
+                    <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                    <Image Grid.Column="3" Source="/Images/GreyStar.png" ></Image>
+                    <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                    <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
                     <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
                 </Grid>
+            </StackPanel>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ToggleButton x:Name="SwitchViewButton" HorizontalAlignment="Right" IsChecked="True">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Background" Value="#87BBA2"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Padding" Value="10, 0"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"></Setter>
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Content" Value="List View" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Content" Value="Map View" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+                <Grid Grid.Row="1"  x:Name="PageMainContent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Style>
+                                <Style TargetType="ColumnDefinition">
+                                    <Setter Property="Width" Value="*" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=SwitchViewButton, Path=IsChecked}" Value="False">
+                                            <Setter Property="Width" Value="0" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ColumnDefinition.Style>
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" x:Name="AttractionsList"></StackPanel>
+                    <Border Grid.Column="1" Name="border" ClipToBounds="True">
+                        <Canvas x:Name="MapCanvas">
+                            <Image Source="/Images/MapScreenshot.png"></Image>
+                        </Canvas>
+                    </Border>
+                </Grid>
                 
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Button Content="Map View" HorizontalAlignment="Right"></Button>
-                <StackPanel x:Name="AttractionsList"></StackPanel>
-            </StackPanel>
+            </Grid>
         </Grid>
         
     </Grid>

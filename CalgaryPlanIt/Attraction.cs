@@ -21,8 +21,10 @@ namespace CalgaryPlanIt
         public string? ExternalLink { get; set; }
         public string? Duration { get; set; }
         public string? Host { get; set; }
+        //for map:
+        public double CanvasTopValue { get; set; } = 0;
+        public double CanvasLeftValue { get; set; } = 0;
 
-        //location?
         //photos?
 
     }
