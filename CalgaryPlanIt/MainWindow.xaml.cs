@@ -168,8 +168,83 @@ namespace CalgaryPlanIt
             });
             AttractionsList.Add(new Attraction()
             {
+                Name = "Calgary City Sightseeing Tour",
+                Category = Category.Tours,
+                Price = "from 214.36 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours,
+                Description = "Your vintage sidecar motorcycle tour takes you through and around the heart of the city. This is a fully narrated tour with one stop along the way for photos. This is a great way to see Calgary from a unique and invigorating perspective. This is a bucket list must do. If you enjoy an open air sensory experience, look no further. We can offer this trip in French, Portuguese, Swiss German, Mandarin and English.",
+                Rating = 5,
+                Duration = "60-70 minutes",
+                Address = "Traveller pickup is offered.",
+                Host = "Rocky Mountain Sidecar Adventures"
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Creepy Calgary Ghost Tour",
+                Category = Category.Tours,
+                Price = "from 382.83 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.Indoor,
+                Description = "Join us on this 3 hour spooky sidecar adventure exploring the ghosts, spirits and dark stories of Calgary's past. Stop at local taverns for a beverage and a ghost story.  Travel through the most historic parts of Calgary and experience the talents of a professional storyteller. Adults only 18+.",
+                Rating = 5,
+                Duration = "3 hours",
+                Address = "Calgary Tower, 101 9 Ave SW, Calgary, AB T2P 1J9, Canada",
+                Host = "Rocky Mountain Sidecar Adventures"
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Drumheller (Dinosaur Valley) & Horseshoe Canyon 1-Day Tour",
+                Category = Category.Tours,
+                Price = "from 146.74 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.Indoor | CalgaryPlanIt.Tag.KidFriendly,
+                Description = "Uncover your inner archaeologist as you look for fossils and learn about the prehistoric creatures that roamed the hills and grasslands outside of Alberta's capital. Visit Drumheller on this full-day excursion, explore rugged canyonlands, and get-up close looks at monolothic hoodoo rock formations.",
+                Rating = 5,
+                Duration = "10 hours",
+                Address = "Ramada Plaza by Wyndham Calgary Downtown",
+                Host = "Calgary Tours"
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Calgary Clue Solving Adventure - Riotous Roundup",
+                Category = Category.Tours,
+                Price = "from 61.95 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.Indoor | CalgaryPlanIt.Tag.KidFriendly,
+                Description = "Riotous Roundup is an immersive clue solving adventure for teams of 2 - 4 people, priced per team. Discover the popular sights, hidden gems and spots even the locals don’t know about o the +15 system in Calgary on a 2-3 hour adventure. You and your team work together to solve a series of clues & puzzles delivered to an App on your phone.Help search for all the missing animals, by solving puzzles, with some interactions in local businesses and visiting favourite spots around town. You can start any time between 10am – 4pm any day, and finish before 6 p.m.The puzzle of an escape room, the fun of a scavenger hunt, and the thrill of the amazing race.So! Much! Fun!",
+                Rating = 5,
+                Duration = "1 hours 30 minutes",
+                Address = "304 8 Ave SW, Calgary, AB T2P 1C1, Canada",
+                Host = "Mystery Towns"
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "The Best of Calgary Walking Tour",
+                Category = Category.Tours,
+                Price = "from 606.06 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.KidFriendly,
+                Description = "Together with the professional guide, you will visit the most charming places in the city. You will have a chance to explore the city, while hearing fascinating facts and legends. Do you consider yourself an animal lover? How about festivals? The 10-day Calgary Stampede can trace its roots back to the 1880s and is the highlight of Calgary's summer, cementing this Alberta city's reputation as Canada's 'Stampede City'. You will be surprised how many stories are hidden in the streets, buildings and corners of Calgary.Your charming guide will tell you what is special and unique about living in this city.Perfect for those who are visiting the city for the first time and want to get the most of it!",
+                Rating = 5,
+                Duration = "2 hours",
+                Address = "1900 Heritage Dr, Calgary, AB T2V 2X3, Canada, By the entrance of Heritage Park Historical Village",
+                Host = "Fun Top Fun Canada"
+            });
+            AttractionsList.Add(new Attraction()
+            {
                 Name = "Glenbow Museum",
-                Category = Category.Museums,
+                Category = Category.MuseumsAndGalleries,
                 Price = "from $10.00 CAD",
                 ExternalLink = "https://www.glenbow.org/",
                 Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.WheelchairAccessible,

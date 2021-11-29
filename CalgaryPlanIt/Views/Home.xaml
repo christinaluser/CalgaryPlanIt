@@ -8,29 +8,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Home">
 
-    <StackPanel HorizontalAlignment="Center" Margin="0,10,0,10" Width="800">
+    <UniformGrid Columns="1" Margin="0,10,0,10">
 
-        <TextBlock Text="WHEN IS YOUR TRIP?" HorizontalAlignment="Center" Height="26" Margin="10"/>
+        <TextBlock Text="WHEN IS YOUR TRIP?" HorizontalAlignment="Center" Margin="10"/>
 
-        <StackPanel Orientation="Horizontal" Height="40">
+        <Grid Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" TextDecorations="Underline" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
+            <Button Grid.Row="0" Grid.Column="1" Background="Transparent">
+                <Image Source="/Images/CalendarIcon.png"/>
+            </Button>
+            <Image Grid.Row="0" Grid.Column="2" Source="/Images/RightArrow.png" />
+            <TextBox Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
+            <Button Grid.Row="0" Grid.Column="4" Background="Transparent" >
+                <Image Source="/Images/CalendarIcon.png"/>
+            </Button>
 
-            <Grid Width="800">
-                <TextBox Margin="30,10,541,10" TextDecorations="Underline" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                <Button Margin="259,5,495,5" Background="Transparent">
-                    <Image Source="/Images/CalendarIcon.png"/>
-                </Button>
-                <Image Source="/Images/RightArrow.png" Margin="324,-2,341,-3" />
-                <TextBox Margin="493,10,78,10" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-                <Button Margin="722,5,32,5" Background="Transparent">
-                    <Image Source="/Images/CalendarIcon.png"/>
-                </Button>
-            </Grid>
-
-        </StackPanel>
+        </Grid>
 
         <TextBlock Text="WHO WILL BE THERE?" Margin="15" HorizontalAlignment="Center" />
 
-        <UniformGrid Rows="1" Columns="12" Height="40" Margin="10">
+        <UniformGrid Rows="1" Columns="12" Height="48" Margin="10,11,10,0" Width="Auto" VerticalAlignment="Top">
             <Button x:Name="AdultDecreaseButton" Height="36" Width="35" Content="-" FontSize="20" Click="AdultDecrease_Click"/>
             <Label x:Name="AdultCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <Button x:Name="AdultIncreaseButton" Height="36" Width="35" Content="+" FontSize="20" Click="AdultIncrease_Click"/>
@@ -44,14 +48,14 @@
             <Button x:Name="ChildrenDecreaseButton" Height="36" Width="35" Content="-" FontSize="20" Click="ChildrenDecrease_Click"/>
             <Label x:Name="ChildrenCounter" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <Button x:Name="ChildrenIncreaseButton" Height="36" Width="35" Content="+" FontSize="20" Click="ChildrenIncrease_Click"/>
-            <TextBlock TextWrapping="Wrap" Text="Children" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Width="69"/>
+            <TextBlock TextWrapping="Wrap" Text="Children" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </UniformGrid>
 
         <TextBlock Text="NAME YOUR TRIP" Margin="15" HorizontalAlignment="Center" />
         <TextBox BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252"/>
         <Button x:Name="StartPlanningButton" Content="START PLANNING" Height="23" Width="135" RenderTransformOrigin="0.487,3.554" Margin="20" Click="StartPlanning_Click"/>
 
-    </StackPanel>
+    </UniformGrid>
 
 
 </Page>
