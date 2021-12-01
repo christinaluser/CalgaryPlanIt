@@ -95,7 +95,7 @@ namespace CalgaryPlanIt.Views
                 NumTeens = Convert.ToInt32(TeenCounter.Content),
             }
             ));
-            //Components.NavBar.HighlightNavBarButton("Things To Do");
+            Navigation.HightLightFromStartPlanning();
         }
     }
 }
