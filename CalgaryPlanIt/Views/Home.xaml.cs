@@ -85,6 +85,16 @@ namespace CalgaryPlanIt.Views
         public void StartPlanning_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NavigateTo(new ThingsToDo());
+            MainWindow.TripsList.Insert(0, (new Trip()
+            {
+                StartDate = DateTime.Parse(startDateTextBox.Text),
+                EndDate = Convert.ToDateTime(endDateTextBox.Text),
+                Name = TripNameTextBox.Text,
+                NumAdults = Convert.ToInt32(AdultCounter.Content),
+                NumChildren = Convert.ToInt32(ChildrenCounter.Content),
+                NumTeens = Convert.ToInt32(TeenCounter.Content),
+            }
+            ));
             //Components.NavBar.HighlightNavBarButton("Things To Do");
         }
     }

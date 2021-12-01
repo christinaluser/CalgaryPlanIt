@@ -12,7 +12,7 @@
 
         <TextBlock Text="WHEN IS YOUR TRIP?" HorizontalAlignment="Center" Margin="10"/>
 
-        <Grid Height="40">
+        <Grid Height="40" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -20,16 +20,21 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" TextDecorations="Underline" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-            <Button Grid.Row="0" Grid.Column="1" Background="Transparent">
+            <TextBox x:Name="startDateTextBox" Text="{Binding SelectedDate, ElementName=CalendarControl}" Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" VerticalAlignment="Bottom" />
+            <ToggleButton x:Name="Calendarbtn1" BorderThickness="0" Grid.Row="0" Grid.Column="1" Background="Transparent">
                 <Image Source="/Images/CalendarIcon.png"/>
-            </Button>
+            </ToggleButton>
+            <Popup IsOpen="{Binding ElementName=Calendarbtn1, Path=IsChecked}" StaysOpen="False" Placement="Center">
+                <Calendar x:Name="CalendarControl" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Popup>
             <Image Grid.Row="0" Grid.Column="2" Source="/Images/RightArrow.png" />
-            <TextBox Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent"/>
-            <Button Grid.Row="0" Grid.Column="4" Background="Transparent" >
+            <TextBox x:Name="endDateTextBox" Text="{Binding SelectedDate, ElementName=CalendarControl2}" Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" VerticalAlignment="Bottom"/>
+            <ToggleButton x:Name="Calendarbtn2" BorderThickness="0" Grid.Row="0" Grid.Column="4" Background="Transparent" >
                 <Image Source="/Images/CalendarIcon.png"/>
-            </Button>
-
+            </ToggleButton>
+            <Popup IsOpen="{Binding ElementName=Calendarbtn2, Path=IsChecked}" StaysOpen="False" HorizontalAlignment="Center" VerticalAlignment="Center" Placement="Center">
+                <Calendar x:Name="CalendarControl2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Popup>
         </Grid>
 
         <TextBlock Text="WHO WILL BE THERE?" Margin="15" HorizontalAlignment="Center" />
@@ -52,7 +57,7 @@
         </UniformGrid>
 
         <TextBlock Text="NAME YOUR TRIP" Margin="15" HorizontalAlignment="Center" />
-        <TextBox BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252"/>
+        <TextBox x:Name="TripNameTextBox" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
         <Button x:Name="StartPlanningButton" Content="START PLANNING" Height="23" Width="135" RenderTransformOrigin="0.487,3.554" Margin="20" Click="StartPlanning_Click"/>
 
     </UniformGrid>
