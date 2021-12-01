@@ -170,7 +170,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary City Sightseeing Tour",
                 Category = Category.Tours,
-                Price = "from 214.36 CAD",
+                Price = "from $214.36 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -185,7 +185,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Creepy Calgary Ghost Tour",
                 Category = Category.Tours,
-                Price = "from 382.83 CAD",
+                Price = "from $382.83 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -200,7 +200,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Drumheller (Dinosaur Valley) & Horseshoe Canyon 1-Day Tour",
                 Category = Category.Tours,
-                Price = "from 146.74 CAD",
+                Price = "from $146.74 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -215,7 +215,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary Clue Solving Adventure - Riotous Roundup",
                 Category = Category.Tours,
-                Price = "from 61.95 CAD",
+                Price = "from $61.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -230,7 +230,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Best of Calgary Walking Tour",
                 Category = Category.Tours,
-                Price = "from 606.06 CAD",
+                Price = "from $606.06 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -245,7 +245,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Popular,
-                Price = "from 9.95 CAD",
+                Price = "from $9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -260,7 +260,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Parks,
-                Price = "from 9.95 CAD",
+                Price = "from $9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -275,7 +275,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Promotions,
-                Price = "from 9.95 CAD",
+                Price = "from $9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -290,7 +290,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.Parks,
-                Price = "from 19.95 CAD",
+                Price = "from $19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -305,7 +305,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.Parks,
-                Price = "from 19.95 CAD",
+                Price = "from $19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -320,7 +320,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.NatureAndWildlife,
-                Price = "from 19.95 CAD",
+                Price = "from $19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -335,7 +335,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Modern Steak",
                 Category = Category.FoodAndDrink,
-                Price = "24 - 49 CAD",
+                Price = "$24 - $49 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -350,7 +350,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Gaga Pizza",
                 Category = Category.FoodAndDrink,
-                Price = "4 CAD - 23 CAD",
+                Price = "$4 CAD - $23 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -365,7 +365,7 @@ namespace CalgaryPlanIt
             {
                 Name = "SS106 Aperitivo Bar",
                 Category = Category.FoodAndDrink,
-                Price = "4 CAD - 23 CAD",
+                Price = "$4 CAD - $23 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -380,7 +380,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Vero Bistro Moderne",
                 Category = Category.FoodAndDrink,
-                Price = "10 CAD - 45 CAD",
+                Price = "$10 CAD - $45 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -395,7 +395,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Santorini Greek Taverna",
                 Category = Category.FoodAndDrink,
-                Price = "19 CAD - 38 CAD",
+                Price = "$19 CAD - $38 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -410,7 +410,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Rouge",
                 Category = Category.FoodAndDrink,
-                Price = "40 CAD - 64 CAD",
+                Price = "$40 CAD - $64 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -425,7 +425,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Himalayan",
                 Category = Category.FoodAndDrink,
-                Price = "40 CAD - 64 CAD",
+                Price = "$40 CAD - $64 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -440,7 +440,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Ten Foot Henry",
                 Category = Category.FoodAndDrink,
-                Price = "12 CAD - 34 CAD",
+                Price = "$12 CAD - $34 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -455,7 +455,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary Tower",
                 Category = Category.Popular,
-                Price = "9 CAD - 18 CAD",
+                Price = "$9 CAD - $18 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -470,7 +470,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary Tower",
                 Category = Category.Promotions,
-                Price = "9 CAD - 18 CAD",
+                Price = "$9 CAD - $18 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -479,6 +479,142 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hour",
                 Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Calgary Tower",
+                Category = Category.Nearby,
+                Price = "$9 CAD - $18 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible | CalgaryPlanIt.Tag.Indoor | CalgaryPlanIt.Tag.FoodAndDrink,
+                Description = "This place is temporarily closed. Located 191 metres above the downtown core, the Calgary Tower offers the best view in the city and is a must-see on any visitor's itinerary. On the Observation Deck you'll experience a spectacular 360° view of the bustling city, the majestic Rocky Mountains, the foothills, and the prairies.",
+                Rating = 4,
+                Duration = "1 < Hour",
+                Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Studio Bell, home of the National Music Centre",
+                Category = Category.Promotions,
+                Price = "Free, courtesy of ATB, until end of 2021",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible,
+                Description = "Explore five floors of exhibitions that tell the story of music in Canada, celebrate music icons at the Canadian Halls of Fame, rock out with our interactive instrument installations and sing along in our vocal booths! Everyone is welcome to Studio Bell, home of the National Music Centre.",
+                Rating = 4,
+                Duration = "1-2 Hours",
+                Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Studio Bell, home of the National Music Centre",
+                Category = Category.Nearby,
+                Price = "Free, courtesy of ATB, until end of 2021",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible,
+                Description = "Explore five floors of exhibitions that tell the story of music in Canada, celebrate music icons at the Canadian Halls of Fame, rock out with our interactive instrument installations and sing along in our vocal booths! Everyone is welcome to Studio Bell, home of the National Music Centre.",
+                Rating = 4,
+                Duration = "1-2 Hours",
+                Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "The New Central Library",
+                Category = Category.Nearby,
+                Price = "Free, courtesy of ATB, until end of 2021",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible,
+                Description = "An architectural gem!",
+                Rating = 5,
+                Duration = "1 < Hours",
+                Address = "800 3 St SE In the East Village, Calgary, Alberta T2G 2E7 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Prince's Island Park",
+                Category = Category.Nearby,
+                Price = "Free",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.PetFriendly,
+                Description = "This recreational island is located in the Bow River, providing stressed-out urbanites opportunities bike, hike and fish.",
+                Rating = 5,
+                Duration = "1 < Hours",
+                Address = "200 Barclay Parade SW, Calgary, Alberta T2P 4R5 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "River Cafe",
+                Category = Category.Nearby,
+                Price = "$12 CAD - $54 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.PetFriendly,
+                Description = "An extraordinary dining experience is to embark upon a journey. We have created a beautiful place in a spectacular setting and have tended to the details that make you feel at home: staff who care, chefs who are passionate about quality and the regional seasonal ingredients that bring to your palate a taste of place.",
+                Rating = 4,
+                Duration = "1 < Hours",
+                Address = "25 Prince's Island Pk SW, Calgary, Alberta T2P 0R1 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Chinese Cultural Centre Museum",
+                Category = Category.Nearby,
+                Price = "$12 CAD - $54 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.PetFriendly,
+                Description = "The Calgary Chinese Cultural Centre is a community centre dedicated to serve the Chinese community of Calgary and the surrounding area.  In carrying out its mandate, it also dedicates itself to undertake educational and cultural programs to enrich the lives of all Calgarians." +
+                "As a non - profit organization, we rely on dedicated volunteers and talented and knowledgeable community members to organize various meaningful programs and events to celebrate our heritages and diversity.Together, we work toward fostering goodwill and friendship among all members of the general community to cultivate a harmonious society that defines who we are, as Canadians, to the world.Since its grand opening on September 27,1992, the Chinese Cultural Centre has remained the focal point for community activities and has become a premier venue which offers a stimulating environment for cultural activities, arts, and recreational programs to the public.",
+                Rating = 4,
+                Duration = "1 < Hours",
+                Address = "Calgary Chinese Cultural Cntre 197 1 St SW, Calgary, Alberta T2P 4M4 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Minas Brazilian Steakhouse",
+                Category = Category.Nearby,
+                Price = "$15 CAD - $42 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible | CalgaryPlanIt.Tag.FoodAndDrink,
+                Description = "Minas Brazilian Steakhouse brings you traditional cuisine from the heart of Southeast Brazil, under the guidance of master head chef Jose Montes. It’s Brazilian open barbecue cuisine, known as rodizio. Served tableside on skewers, our delicious selection of meats is complemented by a wide variety of delicious dishes, ensuring a unique dining experience for every eater in your family, friend, group, or corporate outing.",
+                Rating = 4,
+                Duration = "2 < Hours",
+                Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
+                Host = ""
+            });
+            AttractionsList.Add(new Attraction()
+            {
+                Name = "Eau Claire Smokestack",
+                Category = Category.Nearby,
+                Price = "$15 CAD - $42 CAD",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ExternalLink = "",
+                Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.WheelchairAccessible,
+                Description = "A Historic Smokestack.",
+                Rating = 3,
+                Duration = "",
+                Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
                 Host = ""
             });
             AttractionsList.Add(new Attraction()
