@@ -59,7 +59,30 @@ namespace CalgaryPlanIt.Components
             }
             //TODO change to actual attraction image
             AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Heart.png"));
-            //AttractionCard.Tag = Attraction;
+
+
+            var tags = Enum.GetValues(typeof(Tag));
+            foreach (Tag tag in tags)
+            {
+                if (Attraction.Tags.HasFlag(tag) && tag != CalgaryPlanIt.Tag.None)
+                {
+                    var tagBlock = new TextBlock()
+                    {
+                        Text = tag.ToFriendlyString(),
+                        Padding = new Thickness(15, 0, 15, 0),
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    var border = new Border()
+                    {
+                        Child = tagBlock,
+                        CornerRadius = new CornerRadius(20),
+                        Background = Brushes.AliceBlue,
+                        BorderBrush = Brushes.AliceBlue,
+                        Margin = new Thickness(5)
+                    };
+                    TagsContainer.Children.Add(border);
+                }
+            }
         }
 
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

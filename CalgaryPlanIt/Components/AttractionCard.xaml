@@ -86,7 +86,7 @@
                     <DynamicResource ResourceKey="GreyStar5"/>
                 </Button>
             </Grid>
-            <StackPanel Grid.Column="2" x:Name="TagsContainer" Orientation="Horizontal" Margin="10, 0"></StackPanel>
+            <StackPanel Grid.Row="2" x:Name="TagsContainer" Orientation="Horizontal"></StackPanel>
         </Grid>
     </Grid>
 </UserControl>
