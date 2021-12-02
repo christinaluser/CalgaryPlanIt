@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:CalgaryPlanIt"
         xmlns:Components="clr-namespace:CalgaryPlanIt.Components" x:Class="CalgaryPlanIt.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <StackPanel Orientation="Vertical">
-        <Components:NavBar/>
-        <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
-    </StackPanel>
+        Title="MainWindow" Height="900" Width="1500">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <StackPanel Orientation="Vertical">
+            <Components:NavBar x:Name="navbar"/>
+            <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

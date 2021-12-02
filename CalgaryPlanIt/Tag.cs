@@ -24,6 +24,39 @@ namespace CalgaryPlanIt
         Nightlife = 2048,
         Museums = 4096,
         ClassesAndWorkshops = 8192,
-        AmusementParks = 16384
+        AmusementParks = 16384,
+        WheelchairAccessible = 32768
+    }
+
+    public static class TagExtensions
+    {
+        public static string ToFriendlyString(this Tag tag)
+        {
+            switch (tag)
+            {
+                case Tag.KidFriendly:
+                    return "Kid Friendly";
+                case Tag.TeenFriendly:
+                    return "TeenFriendly";
+                case Tag.AdultOnly:
+                    return "Adult Only";
+                case Tag.PetFriendly:
+                    return "Pet Friendly";
+                case Tag.OpenToPublic:
+                    return "Open To Public";
+                case Tag.FoodAndDrink:
+                    return "Food & Drink";
+                case Tag.ConcertsAndShows:
+                    return "Concerts & Shows";
+                case Tag.ClassesAndWorkshops:
+                    return "Classes & Workshops";
+                case Tag.AmusementParks:
+                    return "Amusement Parks";
+                case Tag.WheelchairAccessible:
+                    return "Wheelchair Accessible";
+                default:
+                    return tag.ToString();
+            }
+        }
     }
 }

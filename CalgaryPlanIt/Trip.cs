@@ -69,7 +69,7 @@ namespace CalgaryPlanIt
 
         public string GetNumTravellersString()
         {
-            return NumAdultsToString() + (NumAdults == 0? "":"\n") + NumTeensToString() + (NumTeens == 0 ? "":"\n") + NumChildrenToString();
+            return NumAdultsToString() + (NumAdults == 0 ? "" : "\n") + NumTeensToString() + (NumTeens == 0 ? "" : "\n") + NumChildrenToString();
         }
     }
 }
