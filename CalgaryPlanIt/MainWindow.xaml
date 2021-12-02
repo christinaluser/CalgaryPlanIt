@@ -9,7 +9,7 @@
         Title="MainWindow" Height="900" Width="1500">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <StackPanel Orientation="Vertical">
-            <Components:NavBar/>
+            <Components:NavBar x:Name="navbar"/>
             <Frame x:Name="Main" NavigationUIVisibility="Hidden"/>
         </StackPanel>
     </ScrollViewer>

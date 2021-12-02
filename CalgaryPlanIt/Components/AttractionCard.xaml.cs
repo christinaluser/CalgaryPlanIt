@@ -20,7 +20,8 @@ namespace CalgaryPlanIt.Components
     /// </summary>
     public partial class AttractionCard : UserControl
     {
-        Attraction Attraction;
+        public Attraction Attraction;
+        public event EventHandler AttractionCardClicked;
         public AttractionCard()
         {
             InitializeComponent();
@@ -58,6 +59,12 @@ namespace CalgaryPlanIt.Components
             }
             //TODO change to actual attraction image
             AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Heart.png"));
+            //AttractionCard.Tag = Attraction;
+        }
+
+        private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            AttractionCardClicked.Invoke(this, e);
         }
     }
 }

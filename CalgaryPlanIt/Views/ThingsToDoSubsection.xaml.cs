@@ -24,6 +24,8 @@ namespace CalgaryPlanIt.Views
         Category Category;
         Tag SelectedTags = CalgaryPlanIt.Tag.None;
         List<Attraction> Attractions = new List<Attraction>();
+        AttractionDetails? CurrentDetails;
+        bool SwitchViewOnDetailsClose = false;
 
         private Point origin;
         private Point start;
@@ -131,7 +133,9 @@ namespace CalgaryPlanIt.Views
             AttractionsList.Children.Clear();
             foreach (Attraction attraction in Attractions)
             {
-                AttractionsList.Children.Add(new AttractionCard(attraction));
+                var card = new AttractionCard(attraction);
+                card.AttractionCardClicked += AttractionCard_Clicked;
+                AttractionsList.Children.Add(card);
             }
         }
 
@@ -139,6 +143,8 @@ namespace CalgaryPlanIt.Views
         {
             Tag t = (Tag)((CheckBox)sender).Tag;
             SelectedTags |= t;
+
+            var temp = Attractions[1].Tags.HasFlag(SelectedTags);
         }
 
         public void RemoveFilterTag(object sender, RoutedEventArgs e)
@@ -158,6 +164,39 @@ namespace CalgaryPlanIt.Views
             
         }
 
+        private void AttractionCard_Clicked(object sender, EventArgs e)
+        {
+            //map is not visible
+            if (SwitchViewButton.IsChecked == false)
+            {
+                SwitchViewOnDetailsClose = true;
+                SwitchViewButton.IsChecked = true;
+            }
+            
+            if (CurrentDetails != null)
+            {
+                PageMainContent.Children.Remove(CurrentDetails);
+            }
+            var attraction = ((AttractionCard)sender).Attraction;
+            var attractionDetails = new AttractionDetails(attraction);
 
+            Grid.SetColumn(attractionDetails, 1);
+            attractionDetails.AttractionDetailsCloseClicked += AttractionDetails_CloseClicked;
+            CurrentDetails = attractionDetails;
+            PageMainContent.Children.Add(attractionDetails);
+            SwitchViewButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void AttractionDetails_CloseClicked(object sender, EventArgs e)
+        {
+            if (SwitchViewOnDetailsClose)
+            {
+                SwitchViewButton.IsChecked = !SwitchViewButton.IsChecked;
+            }
+            PageMainContent.Children.Remove((AttractionDetails)sender);
+            CurrentDetails = null;
+            SwitchViewOnDetailsClose = false;
+            SwitchViewButton.Visibility=Visibility.Visible;
+        }
     }
 }
