@@ -8,6 +8,22 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Plan">
 
+    <Page.Resources>
+        <Style x:Key="ListButton" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="Beige"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Padding" Value="15"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -96,14 +112,16 @@
                 <!--TODO arrows-->
                 <TextBlock Grid.Column="1" x:Name="PlannerDate" Text="Planner Date" Style="{StaticResource Heading 2}" HorizontalAlignment="Center"></TextBlock>
             </Grid>
-
-            <StackPanel Grid.Row="1" x:Name="SchedulePanel"></StackPanel>
-
+            <Grid Grid.Row="1">
+                <StackPanel x:Name="SchedulePanelCalendar" ></StackPanel>
+                <StackPanel x:Name="SchedulePanelItineraryItems" AllowDrop="True" Background="Transparent" Drop="PanelDrop" ></StackPanel>
+            </Grid>
         </Grid>
         
         <Button Grid.Row="0" Grid.Column="2" Content="Map View"></Button>
         <StackPanel Grid.Row="1" Grid.Column="2">
-            <TextBlock Text="Lists"></TextBlock>
+            <Button x:Name="ListBackButton" Content="Back to lists" Click="ListBackButton_Click"></Button>
+            <TextBlock x:Name="ListName" Text="Lists"></TextBlock>
             <StackPanel x:Name="ListsStackPanel"></StackPanel>
         </StackPanel>
 

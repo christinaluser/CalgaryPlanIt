@@ -31,10 +31,10 @@ namespace CalgaryPlanIt.Components
         {
             InitializeComponent();
             this.lis = lis;
-            ListName.Content = this.lis.Name;
+            ListName.Text = this.lis.Name;
             if(lis.NumItems > 0)
             {
-                NumItems.Content = lis.NumItems.ToString()+" items";
+                NumItems.Text = (lis.Attractions != null ? lis.Attractions.Count.ToString() : 0) + " items";
             }
         }
     }

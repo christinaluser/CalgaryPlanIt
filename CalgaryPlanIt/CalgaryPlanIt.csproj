@@ -59,6 +59,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Drag.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\AddToCalendar.png" />
     <Resource Include="Images\CalendarIcon.png" />
     <Resource Include="Images\Categories\Attractions.jpg">

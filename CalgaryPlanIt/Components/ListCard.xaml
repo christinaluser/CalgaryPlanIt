@@ -13,9 +13,9 @@
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label x:Name="ListName" Grid.Row="0" Style="{StaticResource Heading 3}"></Label>
+        <TextBlock x:Name="ListName" Grid.Row="0" Style="{StaticResource Heading 3}"></TextBlock>
         <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
-        <Label x:Name="NumItems" Grid.Row="1" Style="{StaticResource Heading 4}"/>
+        <TextBlock x:Name="NumItems" Grid.Row="1" Style="{StaticResource Heading 4}"/>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>

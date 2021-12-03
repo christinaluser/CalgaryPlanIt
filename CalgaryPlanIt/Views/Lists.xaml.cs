@@ -21,42 +21,21 @@ namespace CalgaryPlanIt.Views
     /// </summary>
     public partial class Lists : Page
     {
-        List<Lis> ListofLists;
+        
         public Lists()
         {
             InitializeComponent();
-            CreateList();
             AddListCard();
         }
 
         private void AddListCard()
         {
             ListGrid.Children.Clear();
-            foreach(Lis lis in ListofLists)
+            foreach(Lis lis in MainWindow.ListofLists)
             {
                 ListGrid.Children.Add(new ListCard(lis));
             }
 
-        }
-
-        private void CreateList()
-        {
-            ListofLists = new List<Lis>();
-            ListofLists.Add(new Lis()
-            {
-                Name = "Resteraunts",
-                NumItems = 12
-            });
-            ListofLists.Add(new Lis()
-            {
-                Name = "Kids",
-                NumItems = 5
-            });
-            ListofLists.Add(new Lis()
-            {
-                Name = "Late Night",
-                NumItems = 4
-            });
         }
     }
 }

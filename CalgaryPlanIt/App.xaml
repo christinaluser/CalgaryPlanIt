@@ -72,6 +72,7 @@
                 </Style>
             </Style.Resources>
         </Style>
+        
         <Style x:Key="IconButtonSmallWithBackground" TargetType="Button">
             <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Background" Value="#87BBA2"></Setter>
