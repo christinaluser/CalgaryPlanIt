@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CalgaryPlanIt
 {
-    public class Attraction
+    public class Attraction : IComparable<Attraction>
     {
         public string Name { get; set; } = "";
         public string Address { get; set; } = "";
@@ -21,6 +21,16 @@ namespace CalgaryPlanIt
         public string? ExternalLink { get; set; }
         public string? Duration { get; set; }
         public string? Host { get; set; }
+
+        public int CompareTo(Attraction attr)
+        {
+            // A null value means that this object is greater.
+            if (attr == null)
+                return 1;
+
+            else
+                return this.Price.CompareTo(attr.Price);
+        }
 
         //location?
         //photos?

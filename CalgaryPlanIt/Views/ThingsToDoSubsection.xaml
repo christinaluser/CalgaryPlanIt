@@ -48,6 +48,11 @@
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="FilterColumn">
                 <Button Content="Auto Apply Filters For Trip"></Button>
+                <UniformGrid Columns="2">
+                    <Button Content="Apply filters" Click="Button_Click"></Button>
+                    <Button Content="Clear filters" Click="Button_Click_1"></Button>
+                </UniformGrid>
+                
                 <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -64,11 +69,11 @@
                     <Button Grid.Row="1" Grid.Column="1" Content="Select End Date"></Button>
                 </Grid>
                 <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
-                <RadioButton GroupName="Sort" Content="Price: Low to High"></RadioButton>
-                <RadioButton GroupName="Sort" Content="Price: High to Low"></RadioButton>
-                <RadioButton GroupName="Sort" Content="Most Popular"></RadioButton>
-                <RadioButton GroupName="Sort" Content="Near You"></RadioButton>
-                <RadioButton GroupName="Sort" Content="Date"></RadioButton>
+                <RadioButton Name="LTH" GroupName="Sort" Content="Price: Low to High"  Checked="LTH_Checked"></RadioButton>
+                <RadioButton Name="HTL" GroupName="Sort" Content="Price: High to Low" Checked="HTL_Checked"></RadioButton>
+                <RadioButton Name="MP" GroupName="Sort" Content="Most Popular" Checked="MP_Checked"></RadioButton>
+                <RadioButton Name="NY" GroupName="Sort" Content="Near You" Checked="NY_Checked"></RadioButton>
+                <RadioButton Name="DT" GroupName="Sort" Content="Date" Checked="DT_Checked"></RadioButton>
                 <TextBlock Text="Tags" Style="{StaticResource Heading 3}"></TextBlock>
                 <StackPanel x:Name="FilterTagsPanel"></StackPanel>
                 <TextBlock Text="Rating" Style="{StaticResource Heading 3}"></TextBlock>
@@ -82,7 +87,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <RadioButton Name="S5" GroupName="Rating" VerticalAlignment="Bottom" Checked="S5_Checked"></RadioButton>
                     <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
@@ -100,7 +105,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <RadioButton Name="S4" GroupName="Rating" VerticalAlignment="Bottom" Checked="S4_Checked"></RadioButton>
                     <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
@@ -118,7 +123,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <RadioButton Name="S3" GroupName="Rating" VerticalAlignment="Bottom" Checked="S3_Checked"></RadioButton>
                     <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
@@ -136,7 +141,7 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                    <RadioButton Name="S2" GroupName="Rating" VerticalAlignment="Bottom" Checked="S2_Checked"></RadioButton>
                     <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="3" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
