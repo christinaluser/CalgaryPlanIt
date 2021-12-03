@@ -41,11 +41,14 @@ namespace CalgaryPlanIt.Views
             TripSummaryCalendar.SelectedDates.AddRange(Trip.StartDate, Trip.EndDate);
             //TripSummaryCalendar.CalendarDayButtonStyle.Setters.Add(new Setter(UIElement.IsHitTestVisibleProperty, false));
             NumTravellers.Text = Trip.GetNumTravellersString();
+            
+            //TODO SCHEDULE
         }
 
-        private void HandleEditDates_Click(object sender, RoutedEventArgs e)
+        private void ListBackButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            ListName.Text = "Lists";
+
         }
     }
 }

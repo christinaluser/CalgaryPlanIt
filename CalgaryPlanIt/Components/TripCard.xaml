@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock x:Name="TripName" Grid.Row="0" Style="{StaticResource Heading 3}" TextWrapping="WrapWithOverflow"></TextBlock>
-        <Button Grid.Row="0" Background="Transparent" Content=">" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"></Button>
+        <Button Grid.Row="0" Style="{StaticResource CompletelyTransparentButton}" Content=">" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"></Button>
         <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 4}" TextWrapping="WrapWithOverflow"/>
         <TextBlock x:Name="NumTravellers" Grid.Row="2"></TextBlock>
