@@ -62,11 +62,11 @@
             <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
             <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
         </Style>
-        <Style TargetType="{x:Type TextBlock}">
+        <!--<Style TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="12"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
-        </Style>
+        </Style>-->
         <Style x:Key="IconButtonWithBackground" TargetType="Button">
             <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Background" Value="#87BBA2"></Setter>
