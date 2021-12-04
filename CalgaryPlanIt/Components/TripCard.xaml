@@ -5,26 +5,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="150">
-    <Grid Background="White" MaxWidth="150" MaxHeight="250">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="3*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="TripName" Grid.Row="0" Style="{StaticResource Heading 3}" TextWrapping="WrapWithOverflow"></TextBlock>
-        <Button Grid.Row="0" Style="{StaticResource CompletelyTransparentButton}" Content=">" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right"></Button>
-        <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 4}" TextWrapping="WrapWithOverflow"/>
-        <TextBlock x:Name="NumTravellers" Grid.Row="2"></TextBlock>
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="Archive" HorizontalAlignment="Center" Click="HandleArchive_Click"/>
-            <Button Grid.Column="1" Content="Plan" HorizontalAlignment="Center" Click="HandlePlan_Click"/>
+             d:DesignHeight="250" d:DesignWidth="250">
+    <Border Background="White" MaxWidth="250" Width="250" MaxHeight="250" Height="250" CornerRadius="15">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid Margin="10">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="TripName" Grid.Row="0" Style="{StaticResource Heading 2}" TextWrapping="WrapWithOverflow" Margin="5"></TextBlock>
+            <Button Grid.Row="0" Grid.RowSpan="3" Background="Transparent" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Top">
+                <Image Source="/Images/Right.png" Width="10" Margin="0,9"></Image>
+            </Button>
+            <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 3}" TextWrapping="WrapWithOverflow" Margin="5, 10"/>
+            <TextBlock x:Name="NumTravellers" Grid.Row="2" Margin="5"></TextBlock>
+            <Grid Grid.Row="3" Margin="0, 15, 0, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Content="Archive" HorizontalAlignment="Center" Click="HandleArchive_Click"/>
+                <Button Grid.Column="1" Content="Plan" HorizontalAlignment="Center" Click="HandlePlan_Click"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </UserControl>

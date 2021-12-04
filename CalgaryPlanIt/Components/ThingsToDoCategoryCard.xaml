@@ -5,14 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="150">
-    <Grid Height="150" Width="150">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="CategoryName" TextWrapping="WrapWithOverflow" Style="{StaticResource Heading 3}"></TextBlock>
-        <Button Content=">" HorizontalContentAlignment="Right" Style="{StaticResource CompletelyTransparentButton}" BorderThickness="0" Click="Button_Click"></Button>
-        <Image Grid.Row="1" x:Name="CategoryImage"></Image>
-    </Grid>
+             d:DesignHeight="250" d:DesignWidth="250">
+    <Border Height="250" Width="250" Background="White" CornerRadius="15" Cursor="Hand" MouseLeftButtonUp="Button_Click">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" x:Name="CategoryName" TextWrapping="WrapWithOverflow" Style="{StaticResource Heading 2}"></TextBlock>
+            <Image Grid.Row="0" HorizontalAlignment="Right" Source="/Images/Right.png" Width="10" Margin="5"></Image>
+            <Image Grid.Row="1" x:Name="CategoryImage"></Image>
+        </Grid>
+    </Border>
 </UserControl>

@@ -33,7 +33,7 @@
             </Grid>
             <Separator Grid.Row="0" Grid.ColumnSpan="4" Height=".5" Margin="0,0,0,-5" Background="Black" VerticalAlignment="Bottom"/>
         </Grid>
-        <WrapPanel x:Name="CategoriesGrid">
+        <WrapPanel x:Name="CategoriesGrid" Margin="0, 20">
             <WrapPanel.Resources>
                 <Style TargetType="{x:Type Components:ThingsToDoCategoryCard}">
                     <Setter Property="Margin" Value="10,0" />
