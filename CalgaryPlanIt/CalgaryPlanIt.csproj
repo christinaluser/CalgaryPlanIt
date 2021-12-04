@@ -121,7 +121,7 @@
     <Resource Include="Images\MapPin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\MapScreenshot.png">
+	  <Resource Include="Images\MapScreenshot.png"></Resource>
     <Resource Include="Images\Right.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
