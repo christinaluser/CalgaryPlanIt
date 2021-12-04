@@ -48,7 +48,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(10),
                 EndDate = DateTime.Now.AddDays(20),
-                Name = "trip 1",
+                Name = "bbbbb",
                 NumAdults = 0,
                 NumChildren = 0,
                 NumTeens = 6
@@ -57,7 +57,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(15),
                 EndDate = DateTime.Now.AddDays(25),
-                Name = "trip 2",
+                Name = "zzzzzz",
                 NumAdults = 1,
                 NumChildren = 3,
                 NumTeens = 0
@@ -66,7 +66,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(5),
                 EndDate = DateTime.Now.AddDays(7),
-                Name = "trip 3",
+                Name = "aaaaaa",
                 NumAdults = 2,
                 NumChildren = 1,
                 NumTeens = 2
@@ -75,16 +75,48 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(50),
                 EndDate = DateTime.Now.AddDays(57),
-                Name = "trip 4",
+                Name = "ccccc",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2
             });
             TripsList.Add(new Trip()
             {
-                StartDate = DateTime.Now.AddDays(35),
+                StartDate = DateTime.Now.AddHours(2),
+                EndDate = DateTime.Now.AddDays(3),
+                Name = "aa",
+                NumAdults = 3,
+                NumChildren = 1,
+                NumTeens = 2,
+                ItineraryItems = new List<ItineraryItem>() {
+                    new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = DateTime.Now.AddDays(37)},
+                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = DateTime.Now.AddDays(38)},
+                }
+            });
+            TripsList.Add(new Trip()
+            {
+                StartDate = DateTime.Now.AddDays(-3),
+                EndDate = DateTime.Now.AddDays(-1),
+                Name = "123213",
+                NumAdults = 3,
+                NumChildren = 1,
+                NumTeens = 2,
+                ItineraryItems = new List<ItineraryItem>() {
+                    new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = DateTime.Now.AddDays(36)},
+                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = DateTime.Now.AddDays(37)},
+                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = DateTime.Now.AddDays(38)},
+                }
+            });
+            TripsList.Add(new Trip()
+            {
+                StartDate = DateTime.Now.AddDays(-10),
                 EndDate = DateTime.Now.AddDays(57),
-                Name = "trip 5",
+                Name = "ddddd",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2,

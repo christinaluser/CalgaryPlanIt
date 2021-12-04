@@ -24,7 +24,7 @@
             <Setter Property="Background" Value="#87BBA2"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
-            <Setter Property="Padding" Value="10, 0"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Style.Resources>
                 <Style TargetType="Border">
@@ -33,10 +33,12 @@
             </Style.Resources>
         </Style>
         <Style x:Key="Title" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="10, 5"></Setter>
             <Setter Property="FontSize" Value="36"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
         </Style>
         <Style x:Key="Heading 1" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="20, 10"></Setter>
             <Setter Property="FontSize" Value="34"></Setter>
             <Setter Property="FontFamily" Value="{StaticResource Righteous}"></Setter>
         </Style>
