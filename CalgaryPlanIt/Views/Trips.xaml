@@ -32,7 +32,7 @@
                             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
+                                <DataTrigger Binding="{Binding Text, ElementName=SearchBox}" Value="">
                                     <Setter Property="Visibility" Value="Visible"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -48,7 +48,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="SearchResultsTitle" Text="Search Results for " Style="{StaticResource Heading 2}"></TextBlock>
-            <Button Grid.Column="1" Content="Clear Search" Click="ClearSearchResults" Padding="5" Background="Transparent" VerticalAlignment="Bottom" Margin="20,0"></Button>
+            <Button Grid.Column="1" Content="Clear Search" Click="ClearSearchResults" Padding="5" Background="Transparent" VerticalAlignment="Bottom" Margin="5"></Button>
         </Grid>
         <WrapPanel x:Name="TripsGrid" Margin="0, 20">
             <WrapPanel.Resources>
