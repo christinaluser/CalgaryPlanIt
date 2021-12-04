@@ -24,6 +24,7 @@ namespace CalgaryPlanIt
     {
         public static List<Trip> TripsList;
         public static List<Attraction> AttractionsList;
+        public static List<Lis> ListofLists;
 
         public MainWindow()
         {
@@ -32,6 +33,7 @@ namespace CalgaryPlanIt
             Navigation.NavigateTo(new Home());
             CreateTrips();
             CreateAttractions();
+            CreateList();
         }
 
         public void SwitchPage(Page newPage)
@@ -668,6 +670,35 @@ namespace CalgaryPlanIt
                 Address = "Glenbow Museum, 130 9th Ave SE Calgary, AB T2G 0P3, Canada"
             });
 
+        }
+
+        private void CreateList()
+        {
+            ListofLists = new List<Lis>();
+            ListofLists.Add(new Lis()
+            {
+                Name = "Date Night",
+                NumItems = 12
+
+            });
+            ListofLists.Add(new Lis()
+            {
+                Name = "Kids",
+                NumItems = 5,
+                Attractions = AttractionsList.FindAll((a) => a.Tags.HasFlag(CalgaryPlanIt.Tag.KidFriendly) && (a.Category == Category.MuseumsAndGalleries || a.Category == Category.Promotions))
+            });
+            ListofLists.Add(new Lis()
+            {
+                Name = "Late Night",
+                NumItems = 4,
+                Attractions = AttractionsList.FindAll((a) => a.Tags.HasFlag(CalgaryPlanIt.Tag.Nightlife))
+            });
+            ListofLists.Add(new Lis()
+            {
+                Name = "Near AirBNB",
+                Attractions = AttractionsList.FindAll((a) => a.Address.Contains("Centre St NE")),
+                NumItems = 4
+            });
         }
     }
 }

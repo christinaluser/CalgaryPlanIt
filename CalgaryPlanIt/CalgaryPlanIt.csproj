@@ -42,6 +42,7 @@
     <None Remove="Images\MapScreenshot.png" />
     <None Remove="Images\Right.png" />
     <None Remove="Images\YellowStar.png" />
+    <None Remove="OpenHand.cur" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,6 +61,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Drag.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\AddToCalendar.png" />
     <Resource Include="Images\CalendarIcon.png" />
     <Resource Include="Images\Categories\Attractions.jpg">
@@ -126,6 +130,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\YellowStar.png" />
+    <Resource Include="OpenHand.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

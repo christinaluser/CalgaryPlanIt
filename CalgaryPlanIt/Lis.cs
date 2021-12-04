@@ -9,7 +9,7 @@ namespace CalgaryPlanIt
     public class Lis
     {
         public string Name { get; set; } = "";
-        public List<ItineraryItem>? ItineraryItems { get; set; }
+        public List<Attraction>? Attractions { get; set; }
         public int NumItems { get; set; }
 
     }
