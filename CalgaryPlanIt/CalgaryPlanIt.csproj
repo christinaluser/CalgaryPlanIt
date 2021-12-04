@@ -18,6 +18,7 @@
     <None Remove="Fonts\Righteous-Regular.ttf" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
     <None Remove="Images\GreyStar.png" />
+    <None Remove="Images\Right.png" />
     <None Remove="Images\YellowStar.png" />
   </ItemGroup>
 
@@ -44,6 +45,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\GreyStar.png" />
+    <Resource Include="Images\Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\YellowStar.png" />
   </ItemGroup>
 
