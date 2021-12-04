@@ -40,6 +40,7 @@
     <None Remove="Images\MapMarker.png" />
     <None Remove="Images\MapPin.png" />
     <None Remove="Images\MapScreenshot.png" />
+    <None Remove="Images\Right.png" />
     <None Remove="Images\YellowStar.png" />
   </ItemGroup>
 
@@ -121,6 +122,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\MapScreenshot.png">
+    <Resource Include="Images\Right.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\YellowStar.png" />
