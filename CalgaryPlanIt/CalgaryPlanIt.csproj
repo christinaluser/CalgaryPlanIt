@@ -41,6 +41,7 @@
     <None Remove="Images\MapPin.png" />
     <None Remove="Images\MapScreenshot.png" />
     <None Remove="Images\YellowStar.png" />
+    <None Remove="OpenHand.cur" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +128,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\YellowStar.png" />
+    <Resource Include="OpenHand.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

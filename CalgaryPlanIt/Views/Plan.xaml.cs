@@ -96,9 +96,10 @@ namespace CalgaryPlanIt.Views
                         Background = Brushes.MintCream,
                         Style = Resources["ListButton"] as Style,
                         Tag = attraction,
-                        
-                    };
+                        Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream)
+                };
                     listButton.PreviewMouseLeftButtonDown += AttractionButtonClick;
+                    listButton.PreviewMouseLeftButtonUp += AttractionButtonMouseUp;
                     listButton.GiveFeedback += Button_GiveFeedback;
                     ListsStackPanel.Children.Add(listButton);
                 }
@@ -109,8 +110,17 @@ namespace CalgaryPlanIt.Views
         private void AttractionButtonClick(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-
+            button.Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/Drag.cur")).Stream);
+            button.Background = Brushes.AliceBlue;
             DragDrop.DoDragDrop(button,new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
+            
+        }
+        
+        private void AttractionButtonMouseUp(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            var index = ListsStackPanel.Children.IndexOf(button);
+            ((Button)ListsStackPanel.Children[index]).Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
             
         }
 
@@ -119,13 +129,14 @@ namespace CalgaryPlanIt.Views
             object data = e.Data.GetData(DataFormats.Serializable);
             if (data is Button element)
             {
+                element.Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
                 Attraction attraction = (Attraction)element.Tag;
                 Point dropPosition = e.GetPosition(element);
                 var textblock = new TextBlock()
                 {
                     Text = attraction.Name
                 };
-                SchedulePanelItineraryItems.Children.Add(textblock);
+                //SchedulePanelItineraryItems.Children.Add(textblock);
             }
         }
 

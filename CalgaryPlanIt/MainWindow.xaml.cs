@@ -653,7 +653,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Kids",
                 NumItems = 5,
-                Attractions = AttractionsList.FindAll((a) => a.Tags.HasFlag(CalgaryPlanIt.Tag.KidFriendly))
+                Attractions = AttractionsList.FindAll((a) => a.Tags.HasFlag(CalgaryPlanIt.Tag.KidFriendly) && (a.Category == Category.MuseumsAndGalleries || a.Category == Category.Promotions))
             });
             ListofLists.Add(new Lis()
             {
