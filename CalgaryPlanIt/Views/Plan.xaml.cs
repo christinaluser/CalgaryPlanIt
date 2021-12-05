@@ -24,6 +24,9 @@ namespace CalgaryPlanIt.Views
     {
         Trip Trip;
         DateTime CurrentPlannerDate;
+
+        Cursor OpenHand = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
+        Cursor Drag = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/Drag.cur")).Stream);
         public Plan()
         {
             InitializeComponent();
@@ -188,7 +191,7 @@ namespace CalgaryPlanIt.Views
         private void AttractionButtonClick(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/Drag.cur")).Stream);
+            button.Cursor = Drag;
             button.Background = Brushes.AliceBlue;
             DragDrop.DoDragDrop(button,new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
             
@@ -198,7 +201,7 @@ namespace CalgaryPlanIt.Views
         {
             Button button = (Button)sender;
             var index = ListsStackPanel.Children.IndexOf(button);
-            ((Button)ListsStackPanel.Children[index]).Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
+            ((Button)ListsStackPanel.Children[index]).Cursor = OpenHand;
             
         }
 
@@ -207,7 +210,7 @@ namespace CalgaryPlanIt.Views
             object data = e.Data.GetData(DataFormats.Serializable);
             if (data is Button element)
             {
-                element.Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
+                element.Cursor = OpenHand;
                 Attraction attraction = (Attraction)element.Tag;
                 Point dropPosition = e.GetPosition(element);
                 var textblock = new TextBlock()
@@ -224,8 +227,8 @@ namespace CalgaryPlanIt.Views
             if (e.Effects == DragDropEffects.Copy)
             {
                 if (customCursor == null)
-                    customCursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/Drag.cur")).Stream);
-                    //customCursor = new Cursor(new FileStream("pack://application:,,,/Views/Drag.cur", FileMode.Open));
+                    customCursor = Drag;
+                //customCursor = new Cursor(new FileStream("pack://application:,,,/Views/Drag.cur", FileMode.Open));
                 e.UseDefaultCursors = false;
                 Mouse.SetCursor(customCursor);
             }
@@ -329,6 +332,7 @@ namespace CalgaryPlanIt.Views
         {
             ListScollViewer.Visibility = Visibility.Collapsed;
             border.Visibility = Visibility.Visible;
+            border.Cursor = OpenHand;
             HideMapButton.Visibility = Visibility.Visible;
             MapButton.Visibility = Visibility.Collapsed;
             ToggleList.Visibility = Visibility.Visible;
