@@ -1,18 +1,8 @@
 ﻿using CalgaryPlanIt.Components;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CalgaryPlanIt.Views
 {
@@ -27,7 +17,7 @@ namespace CalgaryPlanIt.Views
             InitializeComponent();
             Trip = new Trip();
         }
-        
+
         public ViewTrip(Trip trip)
         {
             InitializeComponent();
@@ -46,15 +36,17 @@ namespace CalgaryPlanIt.Views
             if (Trip.ItineraryItems != null && Trip.ItineraryItems.Count > 0)
             {
                 Itinerary.Children.Clear();
-                DateTime d = new DateTime(Trip.StartDate.Year,Trip.StartDate.Month,Trip.StartDate.Day);
-                while (DateTime.Compare(d.Date, Trip.EndDate.Date) <= 0){
+                DateTime d = new DateTime(Trip.StartDate.Year, Trip.StartDate.Month, Trip.StartDate.Day);
+                while (DateTime.Compare(d.Date, Trip.EndDate.Date) <= 0)
+                {
                     List<ItineraryItem> itineraryList = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(d.Date));
                     Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, true));
                     d = d.AddDays(1);
                 }
-            } else
+            }
+            else
             {
-                Itinerary.Children.Add(new TextBlock { Text = "nothing on your itinerary yet"});
+                Itinerary.Children.Add(new TextBlock { Text = "nothing on your itinerary yet" });
             }
         }
 
@@ -72,7 +64,7 @@ namespace CalgaryPlanIt.Views
                     itineraryDayList.ReviewButtonClicked += ViewTrip_ReviewButtonClicked;
                 }
             }
-            
+
         }
 
         private void ViewTrip_ReviewButtonClicked(object sender, EventArgs e)
