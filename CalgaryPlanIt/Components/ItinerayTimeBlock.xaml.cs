@@ -49,7 +49,7 @@ namespace CalgaryPlanIt.Components
 
         public void MakeVisible()
         {
-
+            RemoveButton.Visibility = Visibility.Visible;
             TimeBlockComponent.Background = new SolidColorBrush(Color.FromArgb(90, 255, 192, 203));
             AttractionName.Visibility = Visibility.Visible;
             AttractionName.Text = Item.Name;
@@ -87,7 +87,6 @@ namespace CalgaryPlanIt.Components
                 MakeVisible();
                 ItineraryItemAdded.Invoke(Item, e);
             }
-
         }
 
         private void OnDragEnter(object sender, EventArgs e)

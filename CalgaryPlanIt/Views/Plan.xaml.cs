@@ -47,14 +47,13 @@ namespace CalgaryPlanIt.Views
 
             PopulateListPanel();
             
-            RefreshWeek();
-            //RefreshDay();
+            RefreshDay();
 
         }
 
         private void RefreshDay()
         {
-            PlannerDate.Text = CurrentPlannerDate.ToString("MMMM d");
+            PlannerDate.Text = CurrentPlannerDate.ToString("MMMM d, yyyy");
 
             var DayItineraryItems = Trip.ItineraryItems?.FindAll(i => CurrentPlannerDate.Date.Equals(i.PlannedStartDate.Date));
 
@@ -248,6 +247,21 @@ namespace CalgaryPlanIt.Views
         {
             CurrentPlannerDate = CurrentPlannerDate.AddDays(-1);
             RefreshDay();
+        }
+
+        private void DayRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if(MapButton != null) {
+                MapButton.Visibility = Visibility.Visible;
+                RefreshDay();
+            }
+                
+        }
+
+        private void WeekRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            MapButton.Visibility= Visibility.Hidden;
+            RefreshWeek();
         }
     }
 }
