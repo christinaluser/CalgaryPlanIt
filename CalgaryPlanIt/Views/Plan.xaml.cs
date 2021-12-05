@@ -36,7 +36,7 @@ namespace CalgaryPlanIt.Views
             Trip = trip;
             CurrentPlannerDate = trip.StartDate;
             SetPageContent();
-
+            SetMap();
         }
 
         private void SetPageContent()
@@ -46,9 +46,7 @@ namespace CalgaryPlanIt.Views
             NumTravellers.Text = Trip.GetNumTravellersString();
 
             PopulateListPanel();
-            
             RefreshDay();
-
         }
 
         private void RefreshDay()
@@ -262,6 +260,101 @@ namespace CalgaryPlanIt.Views
         {
             MapButton.Visibility= Visibility.Hidden;
             RefreshWeek();
+        }
+
+        /********** MAP *********/
+        private Point origin;
+        private Point start;
+        private void SetMap()
+        {
+            TransformGroup group = new TransformGroup();
+
+            ScaleTransform xform = new ScaleTransform();
+            group.Children.Add(xform);
+
+            TranslateTransform tt = new TranslateTransform();
+            group.Children.Add(tt);
+
+            MapCanvas.RenderTransform = group;
+
+            MapCanvas.MouseWheel += MapCanvas_MouseWheel;
+            MapCanvas.MouseLeftButtonDown += MapCanvas_MouseLeftButtonDown;
+            MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
+            MapCanvas.MouseMove += MapCanvas_MouseMove;
+
+            var mapMarker = new MapMarker("You", null);
+            Canvas.SetTop(mapMarker, 100);
+            Canvas.SetLeft(mapMarker, 100);
+            MapCanvas.Children.Add(mapMarker);
+
+
+        }
+        private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MapCanvas.ReleaseMouseCapture();
+        }
+
+        private void MapCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!MapCanvas.IsMouseCaptured) return;
+
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            Vector v = start - e.GetPosition(border);
+            tt.X = origin.X - v.X;
+            tt.Y = origin.Y - v.Y;
+        }
+
+        private void MapCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            start = e.GetPosition(border);
+            origin = new Point(tt.X, tt.Y);
+            MapCanvas.CaptureMouse();
+        }
+
+        private void MapCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            TransformGroup transformGroup = (TransformGroup)MapCanvas.RenderTransform;
+            ScaleTransform transform = (ScaleTransform)transformGroup.Children[0];
+
+            double zoom = e.Delta > 0 ? .2 : -.2;
+            if (MapCanvas.ActualWidth * (transform.ScaleX + zoom) < 130 || MapCanvas.ActualHeight * (transform.ScaleY + zoom) < 130) //don't zoom out too small.
+                return;
+            transform.ScaleX += zoom;
+            transform.ScaleY += zoom;
+
+        }
+
+        private void MapButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListScollViewer.Visibility = Visibility.Collapsed;
+            border.Visibility = Visibility.Visible;
+            HideMapButton.Visibility = Visibility.Visible;
+            MapButton.Visibility = Visibility.Collapsed;
+            ToggleList.Visibility = Visibility.Visible;
+        }
+
+        private void CloseMapButton_Click(object sender, RoutedEventArgs e)
+        {
+            ListScollViewer.Visibility = Visibility.Visible;
+            border.Visibility = Visibility.Collapsed;
+            HideMapButton.Visibility = Visibility.Collapsed;
+            MapButton.Visibility = Visibility.Visible;
+            ToggleList.Visibility = Visibility.Collapsed;
+        }
+
+        private void ToggleList_Click(object sender, RoutedEventArgs e)
+        {
+            if (ToggleList.Content.Equals("Show Lists"))
+            {
+                ToggleList.Content = "Hide Lists";
+                ListScollViewer.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ToggleList.Content = "Show Lists";
+                ListScollViewer.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

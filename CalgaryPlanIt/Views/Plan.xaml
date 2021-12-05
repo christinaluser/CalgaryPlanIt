@@ -126,7 +126,7 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="1">
-                <ScrollViewer  Height="700" Margin="10,0">
+                <ScrollViewer  Height="690" Margin="10,0">
                     <Grid x:Name="ItineraryContainer" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -139,9 +139,7 @@
             </Grid>
         </Grid>
         
-        
-        
-        
+
         <Separator Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" >
             <Separator.LayoutTransform>
                 <RotateTransform Angle="90" />
@@ -153,19 +151,42 @@
             </Separator.LayoutTransform>
         </Separator>
 
-        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="10" x:Name="MapButton">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Image Source="/Images/Map.png" Width="15" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0"></Image>
-                <TextBlock Text="Show Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
-            </Grid>
-        </Button>
 
+        <Grid Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Right">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" HorizontalAlignment="Right" Margin="10" x:Name="MapButton" Click="MapButton_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Images/Map.png" Width="15" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0"></Image>
+                    <TextBlock Text="Show Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+            </Button>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="2" Height="710" VerticalScrollBarVisibility="Auto" Margin="10,0">
+            <Button Grid.Column="0" HorizontalAlignment="Right" Margin="10" x:Name="HideMapButton" Click="CloseMapButton_Click" Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Hide Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                </Grid>
+            </Button>
+
+            <Button Grid.Column="1" HorizontalAlignment="Right" Content="Show Lists" Margin="10" x:Name="ToggleList" Click="ToggleList_Click" Visibility="Collapsed"></Button>
+        </Grid>
+
+        <Border Grid.Row="1" Grid.Column="2" Height="725" Width="600"  Name="border" ClipToBounds="True" Visibility="Collapsed" Margin="5,0">
+            <Canvas x:Name="MapCanvas">
+                <Image Source="/Images/MapScreenshot.png"></Image>
+            </Canvas>
+        </Border>
+        <ScrollViewer x:Name="ListScollViewer" Grid.Row="1" Grid.Column="2" Height="710" VerticalScrollBarVisibility="Auto" Padding="10,0" Background="White" HorizontalAlignment="Right">
             <StackPanel  MinWidth="200" Margin="10">
                 <Button x:Name="ListBackButton" Visibility="Collapsed" Click="ListBackButton_Click" Style="{StaticResource ListButton}" Padding="5" Background="AliceBlue" HorizontalContentAlignment="Stretch">
                     <Grid>
