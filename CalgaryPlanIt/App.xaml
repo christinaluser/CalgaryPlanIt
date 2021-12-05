@@ -31,6 +31,9 @@
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="6"></Setter>
                 </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                </Style>
             </Style.Resources>
         </Style>
         <Style x:Key="Title" TargetType="{x:Type TextBlock}">

@@ -13,15 +13,23 @@
             <Setter Property="Cursor" Value="Hand"></Setter>
             <Setter Property="Background" Value="Beige"></Setter>
             <Setter Property="BorderThickness" Value="0"></Setter>
-            <Setter Property="Width" Value="300"></Setter>
+            <Setter Property="Width" Value="250"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="Padding" Value="15"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="6"></Setter>
                 </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                </Style>
             </Style.Resources>
+        </Style>
+        <Style TargetType="RadioButton">
+            
         </Style>
     </Page.Resources>
     <Grid Background="White">
@@ -46,21 +54,24 @@
                 <RadioButton GroupName="CalendarView" Content="Day" IsChecked="True"></RadioButton>
             </StackPanel>
         </Grid>
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="1" Grid.Column="0" Width="250" Margin="20, 0">
             <!--TODO: SelectionMode="SingleRange" requires click and drag which isn't ideal-->
-            <Calendar x:Name="TripSummaryCalendar" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="SingleRange" >
-                <Calendar.CalendarDayButtonStyle>
-                    <Style TargetType="CalendarDayButton">
-                        <Setter Property="IsHitTestVisible" Value="false"></Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=EditDatesButton, Path=IsChecked}" Value="true">
-                                <Setter Property="IsHitTestVisible" Value="true"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Calendar.CalendarDayButtonStyle>
-            </Calendar>
-            <Grid DockPanel.Dock="Bottom">
+            <Viewbox HorizontalAlignment="Stretch">
+                <Calendar x:Name="TripSummaryCalendar" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="SingleRange">
+                    <Calendar.CalendarDayButtonStyle>
+                        <Style TargetType="CalendarDayButton">
+                            <Setter Property="IsHitTestVisible" Value="false"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=EditDatesButton, Path=IsChecked}" Value="true">
+                                    <Setter Property="IsHitTestVisible" Value="true"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Calendar.CalendarDayButtonStyle>
+                </Calendar>
+            </Viewbox>
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -103,26 +114,76 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid>
+            <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="300"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <!--TODO arrows-->
+                <Button Style="{StaticResource IconButtonSmall}" Click="PrevDayButton_Click">
+                    <Image Source="/Images/Left.png" ></Image>
+                </Button>
                 <TextBlock Grid.Column="1" x:Name="PlannerDate" Text="Planner Date" Style="{StaticResource Heading 2}" HorizontalAlignment="Center"></TextBlock>
+                <Button Grid.Column="2" Style="{StaticResource IconButtonSmall}" Click="NextDayButton_Click">
+                    <Image Source="/Images/Right.png"></Image>
+                </Button>
             </Grid>
             <Grid Grid.Row="1">
-                <Components:ItineraryDayScheduler></Components:ItineraryDayScheduler>
+                <ScrollViewer  Height="700" Margin="10,0">
+                    <Grid x:Name="ItineraryContainer" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <!--<Components:ItineraryDayScheduler Margin="10,0"></Components:ItineraryDayScheduler>-->
+                    </Grid>
+                    
+                </ScrollViewer>
+                
             </Grid>
         </Grid>
         
-        <Button Grid.Row="0" Grid.Column="2" Content="Map View"></Button>
-        <StackPanel Grid.Row="1" Grid.Column="2">
-            <Button x:Name="ListBackButton" Content="Back to lists" Click="ListBackButton_Click"></Button>
-            <TextBlock x:Name="ListName" Text="Lists"></TextBlock>
-            <StackPanel x:Name="ListsStackPanel"></StackPanel>
-        </StackPanel>
+        
+        
+        
+        <Separator Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" >
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
+        <Separator Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" >
+            <Separator.LayoutTransform>
+                <RotateTransform Angle="90" />
+            </Separator.LayoutTransform>
+        </Separator>
+
+        <Button Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image Source="/Images/Map.png" Width="15" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0"></Image>
+                <TextBlock Text="Show Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+            </Grid>
+        </Button>
+
+
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Height="710" VerticalScrollBarVisibility="Auto" Margin="10,0">
+            <StackPanel  MinWidth="200" Margin="10">
+                <Button x:Name="ListBackButton" Visibility="Collapsed" Click="ListBackButton_Click" Style="{StaticResource ListButton}" Padding="5" Background="AliceBlue" HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Images/Left.png" Width="10" Grid.Column="0" HorizontalAlignment="Left"></Image>
+                        <TextBlock Text="Back to lists" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                    </Grid>
+                </Button>
+                <TextBlock x:Name="ListName" Text="Lists" Style="{StaticResource Heading 3}"></TextBlock>
+                <StackPanel x:Name="ListsStackPanel"></StackPanel>
+            </StackPanel>
+        </ScrollViewer>
 
     </Grid>
 </Page>

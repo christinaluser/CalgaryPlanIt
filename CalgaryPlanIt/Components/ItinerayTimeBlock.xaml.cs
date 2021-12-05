@@ -20,8 +20,10 @@ namespace CalgaryPlanIt.Components
     /// </summary>
     public partial class ItinerayTimeBlock : UserControl
     {
-        ItineraryItem Item = new ItineraryItem();
+        public ItineraryItem Item;
         public DateTime StartOfTimeBlock;
+        public event EventHandler ItineraryItemAdded;
+        public event EventHandler ItineraryItemRemoved;
 
         public ItinerayTimeBlock()
         {
@@ -37,10 +39,12 @@ namespace CalgaryPlanIt.Components
             StartOfTimeBlock = t;
         }
 
-        public ItinerayTimeBlock(ItineraryItem item)
+        public ItinerayTimeBlock(DateTime t, ItineraryItem item)
         {
             InitializeComponent();
+            StartOfTimeBlock = t;
             Item = item;
+            MakeVisible();
         }
 
         public void MakeVisible()
@@ -70,6 +74,10 @@ namespace CalgaryPlanIt.Components
             object data = e.Data.GetData(DataFormats.Serializable);
             if (data is Button element)
             {
+                if (Item != null)
+                {
+                    ItineraryItemRemoved.Invoke(Item, e);
+                }
                 element.Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
                 element.Background = Brushes.MintCream;
                 Attraction attraction = (Attraction)element.Tag;
@@ -77,7 +85,9 @@ namespace CalgaryPlanIt.Components
                 Item.PlannedStartDate = StartOfTimeBlock;
                 Item.PlannedEndDate = StartOfTimeBlock.AddHours(1);
                 MakeVisible();
+                ItineraryItemAdded.Invoke(Item, e);
             }
+
         }
 
         private void OnDragEnter(object sender, EventArgs e)
@@ -88,6 +98,12 @@ namespace CalgaryPlanIt.Components
         private void OnMouseLeave(object sender, EventArgs e)
         {
             TimeBlockComponent.BorderBrush = Brushes.Transparent;
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            ItineraryItemRemoved.Invoke(Item, e);
+            HideContents();
         }
     }
 }
