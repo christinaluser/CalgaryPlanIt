@@ -29,6 +29,7 @@ namespace CalgaryPlanIt
             CanvasLeftValue = attraction.CanvasLeftValue;
             CanvasTopValue = attraction.CanvasTopValue;
         }
+        public string Notes { get; set; }
         public DateTime PlannedStartDate { get; set; }
         public DateTime PlannedEndDate { get; set;}
 

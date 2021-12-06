@@ -24,6 +24,7 @@ namespace CalgaryPlanIt.Components
         public DateTime StartOfTimeBlock;
         public event EventHandler ItineraryItemAdded;
         public event EventHandler ItineraryItemRemoved;
+        public event EventHandler BlockClick;
 
         public ItinerayTimeBlock()
         {
@@ -93,16 +94,32 @@ namespace CalgaryPlanIt.Components
         {
             TimeBlockComponent.BorderBrush = Brushes.LightBlue;
         }
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            TimeBlockComponent.BorderBrush = Brushes.LightBlue;
+            if (Item != null)
+                RemoveButton.Visibility = Visibility.Visible;
+        }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
             TimeBlockComponent.BorderBrush = Brushes.Transparent;
+            RemoveButton.Visibility = Visibility.Collapsed;    
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             ItineraryItemRemoved.Invoke(Item, e);
             HideContents();
+        }
+
+        private void TimeBlockComponent_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (Item == null)
+                Item = new ItineraryItem();
+            Item.PlannedStartDate = StartOfTimeBlock;
+            Item.PlannedEndDate = StartOfTimeBlock.AddHours(1);
+            BlockClick.Invoke(Item, e);
         }
     }
 }

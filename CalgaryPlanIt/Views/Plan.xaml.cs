@@ -63,6 +63,7 @@ namespace CalgaryPlanIt.Views
             var day = new ItineraryDayScheduler(DayItineraryItems, CurrentPlannerDate, true, false);
             day.ItineraryItemAdded += AddItem;
             day.ItineraryItemRemoved += RemoveItem;
+            day.BlockClick += HandleBlockClick;
             ItineraryContainer.Children.Add(day);
         }
 
@@ -108,12 +109,49 @@ namespace CalgaryPlanIt.Views
                 var day = new ItineraryDayScheduler(DayItineraryItems, temp, i == 0, true);
                 day.ItineraryItemAdded += AddItem;
                 day.ItineraryItemRemoved += RemoveItem;
+                day.BlockClick += HandleBlockClick;
                 Grid.SetColumn(day, i);
                 ItineraryContainer.Children.Add(day);
                 temp = temp.AddDays(1);
             }
 
             
+        }
+
+        private void HandleBlockClick(object sender, EventArgs e)
+        {
+            ItineraryItem item = (ItineraryItem)sender;
+            
+            var atp = new AddToPlanPopup(item);
+            atp.CloseClicked += HandleClose;
+            atp.AddToPlanClicked += HandleAddToPlan ;
+            Overlay.Children.Add(atp);
+            Overlay.Visibility = Visibility.Visible;
+            
+        }
+
+        private void HandleClose(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            Overlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void HandleAddToPlan(object sender, EventArgs e)
+        {
+            ItineraryItem i = (ItineraryItem)sender;
+            if (i?.Name != null && i?.Name != "")
+            {
+                var index = MainWindow.TripsList.FindIndex(t => t.Name == Trip.Name);
+                MainWindow.TripsList[index].ItineraryItems.Add(i);
+                Trip.ItineraryItems.Add(i);
+                if (WeekButton.IsChecked == true)
+                {
+                    RefreshWeek();
+                } else
+                {
+                    RefreshDay();
+                }
+            }
         }
 
         private void AddItem(object sender, EventArgs e)
@@ -336,6 +374,7 @@ namespace CalgaryPlanIt.Views
             HideMapButton.Visibility = Visibility.Visible;
             MapButton.Visibility = Visibility.Collapsed;
             ToggleList.Visibility = Visibility.Visible;
+            MapControls.Visibility = Visibility.Visible;
         }
 
         private void CloseMapButton_Click(object sender, RoutedEventArgs e)
@@ -345,6 +384,7 @@ namespace CalgaryPlanIt.Views
             HideMapButton.Visibility = Visibility.Collapsed;
             MapButton.Visibility = Visibility.Visible;
             ToggleList.Visibility = Visibility.Collapsed;
+            MapControls.Visibility = Visibility.Collapsed;
         }
 
         private void ToggleList_Click(object sender, RoutedEventArgs e)
@@ -359,6 +399,16 @@ namespace CalgaryPlanIt.Views
                 ToggleList.Content = "Show Lists";
                 ListScollViewer.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void MapControlToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void YourLocationToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

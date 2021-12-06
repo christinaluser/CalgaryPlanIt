@@ -107,6 +107,19 @@
                     <Setter Property="CornerRadius" Value="6"></Setter>
                 </Style>
             </Style.Resources>
+        </Style> 
+        <Style x:Key="ToggleIconButtonSmallWithBackground" TargetType="ToggleButton">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="#87BBA2"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="30"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
         </Style>
         <Style x:Key="IconButtonSmall" TargetType="Button">
             <Setter Property="Cursor" Value="Hand"></Setter>

@@ -18,8 +18,11 @@
     <None Remove="Fonts\Montserrat-Italic.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Righteous-Regular.ttf" />
+    <None Remove="Images\Bus.png" />
     <None Remove="Images\CalendarIcon.png" />
+    <None Remove="Images\CalgaryPlanItLogo.png" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
+    <None Remove="Images\Car.png" />
     <None Remove="Images\Categories\Attractions.jpg" />
     <None Remove="Images\Categories\Events.jpg" />
     <None Remove="Images\Categories\FoodAndDrink.jpg" />
@@ -38,13 +41,18 @@
     <None Remove="Images\Heart.png" />
     <None Remove="Images\Left.png" />
     <None Remove="Images\Map.png" />
-    <None Remove="Images\MapCalgaryTower.png" />
+    <None Remove="Images\MapPin2.png" />
     <None Remove="Images\RightArrow.png" />
     <None Remove="Images\MapMarker.png" />
     <None Remove="Images\MapPin.png" />
     <None Remove="Images\MapScreenshot.png" />
     <None Remove="Images\Right.png" />
+<<<<<<< Updated upstream
+=======
+    <None Remove="Images\SquareMinus.png" />
     <None Remove="Images\Trash.png" />
+    <None Remove="Images\Walking.png" />
+>>>>>>> Stashed changes
     <None Remove="Images\YellowStar.png" />
     <None Remove="OpenHand.cur" />
   </ItemGroup>
@@ -68,8 +76,21 @@
     <Resource Include="Drag.cur">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\AddToCalendar.png" />
-    <Resource Include="Images\CalendarIcon.png" />
+    <Resource Include="Images\AddToCalendar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Bus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\CalendarIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\CalgaryPlanItLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Car.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Categories\Attractions.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -118,7 +139,9 @@
     <Resource Include="Images\CalgaryPlanItNoTextLogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\GreyStar.png" />
+    <Resource Include="Images\GreyStar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Heart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -128,37 +151,53 @@
     <Resource Include="Images\Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\MapCalgaryTower.png">
+    <Resource Include="Images\MapPin2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\RightArrow.png" />
+    <Resource Include="Images\RightArrow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\MapMarker.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\MapPin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-	  <Resource Include="Images\MapScreenshot.png"></Resource>
+	  <Resource Include="Images\MapScreenshot.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Resource>
     <Resource Include="Images\Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+<<<<<<< Updated upstream
+    <Resource Include="Images\YellowStar.png" />
+=======
+    <Resource Include="Images\SquareMinus.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Trash.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\YellowStar.png" />
+    <Resource Include="Images\Walking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\YellowStar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+>>>>>>> Stashed changes
     <Resource Include="OpenHand.cur">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Images\CalgaryPlanItLogo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Folder Include="Images\Attractions\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\Attractions\" />
+    <Compile Update="Components\GreaterThanConverter.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
 </Project>

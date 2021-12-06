@@ -150,6 +150,7 @@ namespace CalgaryPlanIt.Views
                 var card = new AttractionCard(attraction);
                 card.AttractionCardClicked += AttractionCard_Clicked;
                 card.AttractionCardAddToListClicked += AttractionCardAddToList_Clicked;
+                card.AttractionCardAddToTripClicked += AttractionCardAddToTrip_Clicked;
                 AttractionsList.Children.Add(card);
             }
             if (AttractionsList.Children.Count == 0)
@@ -165,6 +166,46 @@ namespace CalgaryPlanIt.Views
             overlay.CloseHandler += OverlayClosed;
             Overlay.Children.Add(overlay);
             Overlay.Visibility = Visibility.Visible;
+        }
+
+        private Attraction att;
+        private Trip t;
+        private void AttractionCardAddToTrip_Clicked(object sender, EventArgs e)
+        {
+            att = (Attraction)sender;
+            var overlay = new TripPickerPopup() { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            overlay.TripSelectedHandler += AttractionCardAddToTripNext_Clicked;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+
+        }
+
+        private void AttractionCardAddToTripNext_Clicked(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            t = (Trip)sender;
+            ItineraryItem item = new ItineraryItem(att);
+            item.PlannedStartDate=new DateTime(t.StartDate.Year,t.StartDate.Month,t.StartDate.Day,t.StartDate.Hour,0,0);
+            item.PlannedEndDate=new DateTime(t.StartDate.Year,t.StartDate.Month,t.StartDate.Day,t.StartDate.Hour +1,0,0);
+            var overlay = new AddToPlanPopup(item) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseClicked += OverlayClosed;
+            overlay.AddToPlanClicked += AttractionCardAddToTripFinal_Clicked;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void AttractionCardAddToTripFinal_Clicked(object sender, EventArgs e)
+        {
+            ItineraryItem i = (ItineraryItem)sender;
+            if (i?.Name != null && i?.Name != "")
+            {
+                var index = MainWindow.TripsList.FindIndex(trip => trip == t || trip.Name == t.Name);
+                if (MainWindow.TripsList[index].ItineraryItems == null)
+                    MainWindow.TripsList[index].ItineraryItems = new List<ItineraryItem> { i };
+                else 
+                    MainWindow.TripsList[index].ItineraryItems.Add(i);
+            }
         }
 
         private void OverlayClosed(object sender, EventArgs e)
@@ -469,6 +510,8 @@ namespace CalgaryPlanIt.Views
 
         private void FilterByTrip(object sender, EventArgs e)
         {
+            Overlay.Children.Clear();
+            Overlay.Visibility=Visibility.Collapsed;
             Trip trip = (Trip)sender;
             if (trip != null)
             {

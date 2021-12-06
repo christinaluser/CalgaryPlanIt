@@ -26,6 +26,8 @@ namespace CalgaryPlanIt.Components
         bool ShowDayOfWeek;
         public event EventHandler ItineraryItemAdded;
         public event EventHandler ItineraryItemRemoved;
+        public event EventHandler BlockClick;
+
 
         public ItineraryDayScheduler()
         {
@@ -115,6 +117,7 @@ namespace CalgaryPlanIt.Components
                         TimeBlockGrid.Children.Add(tbcomponent);
                         tbcomponent.ItineraryItemAdded += AddItem;
                         tbcomponent.ItineraryItemRemoved += RemoveItem;
+                        tbcomponent.BlockClick += HandleBlockClick;
                     }
                     else
                     {
@@ -130,6 +133,7 @@ namespace CalgaryPlanIt.Components
                         }
                         tbcomponent.ItineraryItemAdded += AddItem;
                         tbcomponent.ItineraryItemRemoved += RemoveItem;
+                        tbcomponent.BlockClick += HandleBlockClick;
                         Grid.SetRow(tbcomponent, gridRow);
                         TimeBlockGrid.Children.Add(tbcomponent);
                     }
@@ -149,6 +153,11 @@ namespace CalgaryPlanIt.Components
         {
             ItineraryItemRemoved.Invoke(sender, e);
             ItineraryItems.Remove((ItineraryItem)sender);
+        }
+
+        private void HandleBlockClick(object sender, EventArgs e)
+        {
+            BlockClick.Invoke(sender, e);
         }
     }
 }
