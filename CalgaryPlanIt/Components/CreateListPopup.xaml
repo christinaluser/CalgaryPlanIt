@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="CalgaryPlanIt.Components.CreateListPopup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalgaryPlanIt.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+    <Border CornerRadius="15" Background="White" MinHeight="200" MinWidth="300">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Text="New list" Style="{StaticResource Heading 1}"></TextBlock>
+            <Separator VerticalAlignment="Bottom" ></Separator>
+            <Button Style="{StaticResource IconButtonSmall}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseClick">
+                <Image Source="/Images/Close.png" ></Image>
+            </Button>
+            <TextBlock Grid.Row="1" Text="List Name:" Margin="5,10"></TextBlock>
+            <TextBox Grid.Row="2" x:Name="ListName" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" VerticalAlignment="Bottom" />
+            <Button Grid.Row="3" Content="Create List" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="10" Click="CreateList"></Button>
+        </Grid>
+    </Border>
+</UserControl>

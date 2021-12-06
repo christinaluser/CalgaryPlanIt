@@ -7,39 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ThingsToDoSubsection">
-
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="back" Click="BackButton_Click" HorizontalAlignment="Left"></Button>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="CategoryName" Style="{StaticResource Heading 1}"></TextBlock>
-                
-            <Grid Grid.Column="3" HorizontalAlignment="Right">
-                <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5"/>
-                <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
-            <Separator Grid.Row="0" Grid.ColumnSpan="4" Height=".5" Margin="0,0,0,-5" Background="Black" VerticalAlignment="Bottom"/>
+    <Grid>
+        <Grid x:Name="Overlay" Panel.ZIndex="1000" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".5"/>
+            </Grid.Background>
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -112,34 +84,213 @@
                     <Image Grid.Column="4" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--TOP BAR-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="CategoryName" Style="{StaticResource Heading 1}"></TextBlock>
+
+                <Grid Grid.Column="2" HorizontalAlignment="Right">
+                    <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5" BorderBrush="#333" KeyDown="OnKeyDown"></TextBox>
+                    <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="SlateGray" Background="Transparent">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Grid>
-                <Grid>
+
+                <Separator Grid.Row="0" Grid.ColumnSpan="4" Height=".5" Margin="0,0,0,-5" Background="Black" VerticalAlignment="Bottom"/>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+                <!--SEARCH HEADER-->
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SearchHeader" Visibility="Collapsed" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Name="S3" GroupName="Rating" VerticalAlignment="Bottom" Checked="S3_Checked"></RadioButton>
-                    <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="2" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="3" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
-                    <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    <TextBlock x:Name="SearchResultsTitle" Text="Search Results for " Style="{StaticResource Heading 2}"></TextBlock>
+                    <Button Grid.Column="1" Content="Clear Search" Click="ClearSearchResults" Padding="5" Background="Transparent" VerticalAlignment="Bottom" Margin="5"></Button>
                 </Grid>
-                <Grid>
+
+                <!--MAP BUTTON-->
+                <ToggleButton Grid.Row="0" Grid.Column="1" x:Name="SwitchViewButton" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" IsChecked="True">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Background" Value="#87BBA2"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Padding" Value="5"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"></Setter>
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Content" Value="List View" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Content" Value="Map View" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+
+                <!--FILTER-->
+                <StackPanel Grid.Column="0" Grid.Row="1" x:Name="FilterColumn" Margin="10">
+                    <StackPanel.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Height" Value="15"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Content="Auto Apply Filters For Trip" Click="AutoApplyButton_Click"></Button>
+                    <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="from"></TextBlock>
+                        <TextBlock Grid.Row="1" Text="to"></TextBlock>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Select Start Date"></Button>
+                        <Button Grid.Row="1" Grid.Column="1" Content="Select End Date"></Button>
+                    </Grid>
+                    <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
+                    <RadioButton GroupName="Sort" Content="Price: Low to High"></RadioButton>
+                    <RadioButton GroupName="Sort" Content="Price: High to Low"></RadioButton>
+                    <RadioButton GroupName="Sort" Content="Most Popular"></RadioButton>
+                    <RadioButton GroupName="Sort" Content="Near You"></RadioButton>
+                    <RadioButton GroupName="Sort" Content="Date"></RadioButton>
+                    <TextBlock Text="Tags" Style="{StaticResource Heading 3}"></TextBlock>
+                    <StackPanel x:Name="FilterTagsPanel"></StackPanel>
+                    <TextBlock Text="Rating" Style="{StaticResource Heading 3}"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png"></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/YellowStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" VerticalAlignment="Bottom"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    </Grid>
+                </StackPanel>
+
+
+                <Grid Grid.Row="1" Grid.Column="1" x:Name="PageMainContent" Height="660">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition>
+                            <ColumnDefinition.Style>
+                                <Style TargetType="ColumnDefinition">
+                                    <Setter Property="Width" Value="*" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=SwitchViewButton, Path=IsChecked}" Value="False">
+                                            <Setter Property="Width" Value="0" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ColumnDefinition.Style>
+                        </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <RadioButton Name="S2" GroupName="Rating" VerticalAlignment="Bottom" Checked="S2_Checked"></RadioButton>
                     <Image Grid.Column="1" Source="/Images/YellowStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
@@ -148,15 +299,20 @@
                     <Image Grid.Column="4" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <Image Grid.Column="5" Source="/Images/GreyStar.png" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left"></Image>
                     <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                    <ScrollViewer Height="660">
+                        <StackPanel Grid.Column="0" x:Name="AttractionsList"></StackPanel>
+                    </ScrollViewer>
+
+                    <Border Grid.Column="1" Name="border" ClipToBounds="True">
+                        <Canvas x:Name="MapCanvas">
+                            <Image Source="/Images/MapScreenshot.png"></Image>
+                        </Canvas>
+                    </Border>
                 </Grid>
-                
-            </StackPanel>
-            <StackPanel Grid.Column="1">
-                <Button Content="Map View" HorizontalAlignment="Right"></Button>
-                <StackPanel x:Name="AttractionsList"></StackPanel>
-            </StackPanel>
+
+            </Grid>
+
         </Grid>
-        
     </Grid>
-        
+
 </Page>

@@ -1,5 +1,4 @@
-﻿using CalgaryPlanIt.Components;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,18 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Linq;
 
-namespace CalgaryPlanIt.Views
+namespace CalgaryPlanIt.Components
 {
     /// <summary>
-    /// Interaction logic for Trips.xaml
+    /// Interaction logic for TripPickerPopup.xaml
     /// </summary>
-    public partial class Trips : Page
+    public partial class TripPickerPopup : UserControl
     {
+        public event EventHandler CloseHandler;
+        public event EventHandler TripSelectedHandler;
         string SortType = "A-Z";
-
-        public Trips()
+        public TripPickerPopup()
         {
             InitializeComponent();
             RefreshTripsGrid(MainWindow.TripsList);
@@ -38,17 +37,17 @@ namespace CalgaryPlanIt.Views
                 if (!trip.IsArchived)
                 {
                     var card = new TripCard(trip);
+                    card.ButtonContainer.Visibility = Visibility.Collapsed;
+                    card.TripClicked += TripClicked;
                     card.ArchiveButtonClicked += Trip_ArchiveButtonClicked;
-                    card.TripClicked += HandleTripClicked;
                     TripsGrid.Children.Add(card);
                 }
             }
         }
 
-        private void HandleTripClicked(object sender, EventArgs e)
+        private void TripClicked(object sender, EventArgs e) 
         {
-            Trip trip = (Trip)sender;
-            Navigation.NavigateTo(new ViewTrip(trip));
+            TripSelectedHandler.Invoke(sender, e);
         }
 
         private void Trip_ArchiveButtonClicked(object sender, EventArgs e)
@@ -63,7 +62,7 @@ namespace CalgaryPlanIt.Views
             if (SortType == "A-Z")
             {
                 MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.Name).ToList();
-            } 
+            }
             else if (SortType == "Z-A")
             {
                 MainWindow.TripsList = MainWindow.TripsList.OrderByDescending(t => t.Name).ToList();
@@ -78,11 +77,11 @@ namespace CalgaryPlanIt.Views
                 {
                     MainWindow.TripsList.Add(t);
                 }
-                
+
             }
             else if (SortType == "Closest Date")
             {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => Math.Abs(DateTime.Compare(t.StartDate,DateTime.Now))).ToList();
+                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => Math.Abs(DateTime.Compare(t.StartDate, DateTime.Now))).ToList();
             }
         }
 
@@ -93,11 +92,12 @@ namespace CalgaryPlanIt.Views
             if (split.Length > 2)
                 SortType += " " + split[2];
             Sort();
-            if(TripsGrid != null && TripsGrid.Children.Count > 0) 
+            if (TripsGrid != null && TripsGrid.Children.Count > 0)
                 RefreshTripsGrid(MainWindow.TripsList);
         }
 
-        private void OnKeyDown(object sender, KeyEventArgs e) { 
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
             if (e.Key == Key.Enter || e.Key == Key.Return)
             {
                 var searchVal = SearchBox.Text;
@@ -115,25 +115,11 @@ namespace CalgaryPlanIt.Views
             RefreshTripsGrid(MainWindow.TripsList);
         }
 
-        private void CreateTripButton_Clicked(object sender, RoutedEventArgs e)
+        private void CloseClick(object sender, RoutedEventArgs e)
         {
-            CreateNewTrip newTrip = new CreateNewTrip();
-            newTrip.HorizontalAlignment = HorizontalAlignment.Center;
-            newTrip.CloseButtonClicked += AddNewTrip_CloseButtonClicked;
-            newTrip.AddingNewTripClicked += AddNewTrip_AddTripButtonClicked;
-            TripOverlay.Children.Add(newTrip);
-            TripOverlay.Visibility = Visibility.Visible;
-        }
-        private void AddNewTrip_CloseButtonClicked(object sender, EventArgs e)
-        {
-            TripOverlay.Children.Clear();
-            TripOverlay.Visibility = Visibility.Collapsed;
-        }
-        private void AddNewTrip_AddTripButtonClicked(object sender, EventArgs e)
-        {
-            TripOverlay.Children.Clear();
-            TripOverlay.Visibility = Visibility.Collapsed;
-            Navigation.NavigateTo(new Trips());
+            CloseHandler.Invoke(this, EventArgs.Empty);
         }
     }
+
+    
 }

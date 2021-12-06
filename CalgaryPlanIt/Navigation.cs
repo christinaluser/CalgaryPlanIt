@@ -15,5 +15,10 @@ namespace CalgaryPlanIt
         {
             window.SwitchPage(newPage);
         }
+        
+        public static void HightLightFromStartPlanning ()
+        {
+            window.navbar.HighlightNavBarButton("Things To Do");
+        }
     }
 }

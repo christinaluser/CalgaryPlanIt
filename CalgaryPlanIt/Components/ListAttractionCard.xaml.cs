@@ -16,18 +16,17 @@ using System.Windows.Shapes;
 namespace CalgaryPlanIt.Components
 {
     /// <summary>
-    /// Interaction logic for AttractionCard.xaml
+    /// Interaction logic for ListAttractionCard.xaml
     /// </summary>
-    public partial class AttractionCard : UserControl
+    public partial class ListAttractionCard : UserControl
     {
         public Attraction Attraction;
-        public event EventHandler AttractionCardClicked;
-        public event EventHandler AttractionCardAddToListClicked;
-        public AttractionCard()
+        public event EventHandler ArchiveButtonClicked;
+        public ListAttractionCard()
         {
             InitializeComponent();
         }
-        public AttractionCard(Attraction attraction)
+        public ListAttractionCard(Attraction attraction)
         {
             InitializeComponent();
             Attraction = attraction;
@@ -41,15 +40,15 @@ namespace CalgaryPlanIt.Components
             if (Attraction.Rating >= 1)
             {
                 Star1.Content = FindResource("YellowStar1");
-            } 
+            }
             if (Attraction.Rating >= 2)
             {
                 Star2.Content = FindResource("YellowStar2");
-            } 
+            }
             if (Attraction.Rating >= 3)
             {
                 Star3.Content = FindResource("YellowStar3");
-            } 
+            }
             if (Attraction.Rating >= 4)
             {
                 Star4.Content = FindResource("YellowStar4");
@@ -87,29 +86,9 @@ namespace CalgaryPlanIt.Components
             }
         }
 
-        private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AttractionCardClicked.Invoke(this, e);
-        }
-
-        private void Border_MouseEnter(object sender, MouseEventArgs e)
-        {
-            CardBorder.BorderThickness = new Thickness(2);
-        }
-
-        private void Border_MouseLeave(object sender, MouseEventArgs e)
-        {
-            CardBorder.BorderThickness = new Thickness(0);
-        }
-
-        private void AddToList(object sender, RoutedEventArgs e)
-        { 
-            AttractionCardAddToListClicked.Invoke(Attraction, e);
-        }
-            
-        private void AddToTrip(object sender, RoutedEventArgs e)
-        {
-
+            ArchiveButtonClicked.Invoke(Attraction, e);
         }
     }
 }

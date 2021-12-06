@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="CalgaryPlanIt.Components.AttractionCard"
+﻿<UserControl x:Class="CalgaryPlanIt.Components.ListAttractionCard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="600">
+             d:DesignHeight="130" d:DesignWidth="800">
     <UserControl.Resources>
         <Image x:Key="GreyStar1" Source="/Images/GreyStar.png" Height="20" Width="20"/>
         <Image x:Key="YellowStar1" Source="/Images/YellowStar.png" Height="20" Width="20"/>
@@ -36,38 +36,28 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="130" Margin="5" BorderBrush="LightBlue" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+    <Border CornerRadius="15" Background="White" Margin="20, 10">
         <Border.Effect>
-            <DropShadowEffect x:Name="blur" BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
+            <DropShadowEffect BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>
-        <Grid x:Name="AttractionCardWrapper"  MouseLeftButtonUp="Grid_MouseLeftButtonUp">
+        <Grid x:Name="AttractionCardWrapper" Margin="20,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" HorizontalAlignment="Left" x:Name="ButtonContainer">
+            <Button Grid.Column="3" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" VerticalAlignment="Center" Click="Button_Click">
+                <Image Source="/Images/Trash.png"></Image>
+            </Button>
+            <Image Grid.Column="0" x:Name="AttractionImage" Width="100" Margin="10"></Image>
+            <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" Margin="10, 5" Click="AddToList">
-                    <Image Source="/Images/Heart.png"/>
-                </Button>
-                <Button Grid.Row="1" Style="{StaticResource IconButtonSmallWithBackground}" Background="Beige" Margin="10, 5" Click="AddToTrip">
-                    <Image Source="/Images/AddToCalendar.png"></Image>
-                </Button>
-
-            </Grid>
-            <Image Grid.Column="1" x:Name="AttractionImage" Width="100" Margin="10"></Image>
-            <Grid Grid.Column="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" x:Name="AttractionName" Text="Attraction Name" Style="{StaticResource Heading 3}" Padding="10, 10, 10, 5"></TextBlock>
-                <Grid Grid.Row="1" Margin="10, 0" Height="25">
+                <TextBlock Grid.Row="0" x:Name="AttractionName" Text="Attraction Name" Style="{StaticResource Heading 3}" Padding="10"></TextBlock>
+                <Grid Grid.Row="1" Margin="10, 0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -91,7 +81,7 @@
                         <DynamicResource ResourceKey="GreyStar5"/>
                     </Button>
                 </Grid>
-                <StackPanel Grid.Row="2" x:Name="TagsContainer" Orientation="Horizontal" Margin="0"></StackPanel>
+                <StackPanel Grid.Row="2" x:Name="TagsContainer" Orientation="Horizontal"></StackPanel>
             </Grid>
         </Grid>
     </Border>

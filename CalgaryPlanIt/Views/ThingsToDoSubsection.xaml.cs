@@ -29,6 +29,12 @@ namespace CalgaryPlanIt.Views
         List<Attraction> Attractions = new List<Attraction>();
         List<Attraction> TagAttractions = new List<Attraction>();
         List<Attraction> TmpAttractions = new List<Attraction>();
+        AttractionDetails? CurrentDetails;
+        bool SwitchViewOnDetailsClose = false;
+
+
+        private Point origin;
+        private Point start;
 
         public ThingsToDoSubsection(Category category)
         {
@@ -44,6 +50,76 @@ namespace CalgaryPlanIt.Views
             CategoryName.Text = Category.ToFriendlyString();
             PopulateFilterTags();
             PopulateAttractionsList();
+            SetMap();
+        }
+
+        private void SetMap() 
+        {
+            TransformGroup group = new TransformGroup();
+
+            ScaleTransform xform = new ScaleTransform();
+            group.Children.Add(xform);
+
+            TranslateTransform tt = new TranslateTransform();
+            group.Children.Add(tt);
+
+            MapCanvas.RenderTransform = group;
+
+            MapCanvas.MouseWheel += MapCanvas_MouseWheel;
+            MapCanvas.MouseLeftButtonDown += MapCanvas_MouseLeftButtonDown;
+            MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
+            MapCanvas.MouseMove += MapCanvas_MouseMove;
+
+            SetMapMarkers();
+        }
+
+        private void SetMapMarkers()
+        {
+            var mapMarker = new MapMarker("You", null);
+            Canvas.SetTop(mapMarker, 100);
+            Canvas.SetLeft(mapMarker, 100);
+            MapCanvas.Children.Add(mapMarker);
+
+            //var mapMarker2 = new MapMarker(Attractions[0].Name, null, true);
+            //Canvas.SetTop(mapMarker2, 200);
+            //Canvas.SetLeft(mapMarker2, 200);
+            //MapCanvas.Children.Add(mapMarker2);
+        }
+
+        private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            MapCanvas.ReleaseMouseCapture();
+        }
+
+        private void MapCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!MapCanvas.IsMouseCaptured) return;
+
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            Vector v = start - e.GetPosition(border);
+            tt.X = origin.X - v.X;
+            tt.Y = origin.Y - v.Y;
+        }
+
+        private void MapCanvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            start = e.GetPosition(border);
+            origin = new Point(tt.X, tt.Y);
+            MapCanvas.CaptureMouse();
+        }
+
+        private void MapCanvas_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            TransformGroup transformGroup = (TransformGroup)MapCanvas.RenderTransform;
+            ScaleTransform transform = (ScaleTransform)transformGroup.Children[0];
+
+            double zoom = e.Delta > 0 ? .2 : -.2;
+            if (MapCanvas.ActualWidth * (transform.ScaleX + zoom) < 130 || MapCanvas.ActualHeight * (transform.ScaleY + zoom) < 130) //don't zoom out too small.
+                return;
+            transform.ScaleX += zoom;
+            transform.ScaleY += zoom;
+            
         }
 
         private void PopulateFilterTags()
@@ -67,14 +143,34 @@ namespace CalgaryPlanIt.Views
             AttractionsList.Children.Clear();
             foreach (Attraction attraction in Attractions)
             {
-                AttractionsList.Children.Add(new AttractionCard(attraction));
+                var card = new AttractionCard(attraction);
+                card.AttractionCardClicked += AttractionCard_Clicked;
+                card.AttractionCardAddToListClicked += AttractionCardAddToList_Clicked;
+                AttractionsList.Children.Add(card);
             }
+        }
+
+        private void AttractionCardAddToList_Clicked(object sender, EventArgs e)
+        {
+            Attraction att = (Attraction)sender;
+            var overlay = new AddToListPopup(att) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void OverlayClosed(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            Overlay.Visibility = Visibility.Collapsed;
         }
 
         public void AddFilterTag(object sender, RoutedEventArgs e)
         {
             Tag t = (Tag)((CheckBox)sender).Tag;
             SelectedTags |= t;
+
+            var temp = Attractions[1].Tags.HasFlag(SelectedTags);
         }
 
         public void RemoveFilterTag(object sender, RoutedEventArgs e)
@@ -283,6 +379,84 @@ namespace CalgaryPlanIt.Views
                 AttractionsList.Children.Add(new AttractionCard(attraction));
             }
             
+        private void SwitchViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void AttractionCard_Clicked(object sender, EventArgs e)
+        {
+            //map is not visible
+            if (SwitchViewButton.IsChecked == false)
+            {
+                SwitchViewOnDetailsClose = true;
+                SwitchViewButton.IsChecked = true;
+            }
+            
+            if (CurrentDetails != null)
+            {
+                PageMainContent.Children.Remove(CurrentDetails);
+            }
+            var attraction = ((AttractionCard)sender).Attraction;
+            var attractionDetails = new AttractionDetails(attraction);
+
+            Grid.SetColumn(attractionDetails, 1);
+            attractionDetails.AttractionDetailsCloseClicked += AttractionDetails_CloseClicked;
+            CurrentDetails = attractionDetails;
+            PageMainContent.Children.Add(attractionDetails);
+            SwitchViewButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void AttractionDetails_CloseClicked(object sender, EventArgs e)
+        {
+            if (SwitchViewOnDetailsClose)
+            {
+                SwitchViewButton.IsChecked = !SwitchViewButton.IsChecked;
+            }
+            PageMainContent.Children.Remove((AttractionDetails)sender);
+            CurrentDetails = null;
+            SwitchViewOnDetailsClose = false;
+            SwitchViewButton.Visibility=Visibility.Visible;
+        }
+
+        private void ClearSearchResults(object sender, EventArgs e)
+        {
+            SearchBar.Clear();
+            Attractions = MainWindow.AttractionsList.FindAll(a => a.Category == Category);
+            PopulateAttractionsList();
+            SetMapMarkers();
+            SearchHeader.Visibility = Visibility.Collapsed;
+        }
+
+        
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Return)
+            {
+                var searchVal = SearchBar.Text;
+                List<Attraction> searchResults = Attractions.FindAll(a => a.Name.Contains(searchVal, StringComparison.OrdinalIgnoreCase));
+                Attractions = searchResults;
+                SearchResultsTitle.Text += "\"" + searchVal + "\"    (" + searchResults.Count + " results)";
+                SearchHeader.Visibility = Visibility.Visible;
+                PopulateAttractionsList();
+                SetMapMarkers();
+            }
+        }
+
+        private void AutoApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var overlay = new TripPickerPopup() { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            overlay.TripSelectedHandler += FilterByTrip;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void FilterByTrip(object sender, EventArgs e)
+        {
+            Trip trip = (Trip)sender;
+            //TODO set filters
         }
     }
 }

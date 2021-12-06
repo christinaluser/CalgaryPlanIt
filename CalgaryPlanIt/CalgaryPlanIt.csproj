@@ -36,8 +36,16 @@
     <None Remove="Images\Categories\Tours.jpg" />
     <None Remove="Images\GreyStar.png" />
     <None Remove="Images\Heart.png" />
+    <None Remove="Images\Left.png" />
+    <None Remove="Images\Map.png" />
     <None Remove="Images\RightArrow.png" />
+    <None Remove="Images\MapMarker.png" />
+    <None Remove="Images\MapPin.png" />
+    <None Remove="Images\MapScreenshot.png" />
+    <None Remove="Images\Right.png" />
+    <None Remove="Images\Trash.png" />
     <None Remove="Images\YellowStar.png" />
+    <None Remove="OpenHand.cur" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +64,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Drag.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\AddToCalendar.png" />
     <Resource Include="Images\CalendarIcon.png" />
     <Resource Include="Images\Categories\Attractions.jpg">
@@ -110,8 +121,30 @@
     <Resource Include="Images\Heart.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Map.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\RightArrow.png" />
+    <Resource Include="Images\MapMarker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\MapPin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+	  <Resource Include="Images\MapScreenshot.png"></Resource>
+    <Resource Include="Images\Right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Trash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\YellowStar.png" />
+    <Resource Include="OpenHand.cur">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

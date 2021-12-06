@@ -13,18 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CalgaryPlanIt.Views
+namespace CalgaryPlanIt.Components
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for CreateNewTrip.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class CreateNewTrip : UserControl
     {
-        public Home()
+        public event EventHandler CloseButtonClicked;
+        public event EventHandler AddingNewTripClicked;
+        public CreateNewTrip()
         {
             InitializeComponent();
         }
-
         private void AdultIncrease_Click(object sender, RoutedEventArgs e)
         {
             int value = Convert.ToInt32(AdultCounter.Content);
@@ -82,15 +83,14 @@ namespace CalgaryPlanIt.Views
             }
         }
 
-        public void StartPlanning_Click(object sender, RoutedEventArgs e)
+        public void AddNewTrip_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(startDateTextBox.Text) | String.IsNullOrWhiteSpace(endDateTextBox.Text) | String.IsNullOrWhiteSpace(TripNameTextBox.Text))
             {
 
-            } 
+            }
             else
             {
-                Navigation.NavigateTo(new ThingsToDo());
                 MainWindow.TripsList.Insert(0, (new Trip()
                 {
                     StartDate = DateTime.Parse(startDateTextBox.Text),
@@ -102,7 +102,14 @@ namespace CalgaryPlanIt.Views
                 }
                 ));
                 Navigation.HightLightFromStartPlanning();
+                AddingNewTripClicked.Invoke(this, e);
             }
         }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            CloseButtonClicked.Invoke(this, e);
+        }
+
     }
 }
