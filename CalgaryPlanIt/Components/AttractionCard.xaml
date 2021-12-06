@@ -38,7 +38,7 @@
     </UserControl.Resources>
     <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="130" Margin="5" BorderBrush="LightBlue" Cursor="Hand" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
         <Border.Effect>
-            <DropShadowEffect BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
+            <DropShadowEffect x:Name="blur" BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>
         <Grid x:Name="AttractionCardWrapper"  MouseLeftButtonUp="Grid_MouseLeftButtonUp">
             <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" HorizontalAlignment="Left">
+            <Grid Grid.Column="0" HorizontalAlignment="Left" x:Name="ButtonContainer">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>

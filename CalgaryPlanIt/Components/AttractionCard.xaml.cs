@@ -22,6 +22,7 @@ namespace CalgaryPlanIt.Components
     {
         public Attraction Attraction;
         public event EventHandler AttractionCardClicked;
+        public event EventHandler AttractionCardAddToListClicked;
         public AttractionCard()
         {
             InitializeComponent();
@@ -103,7 +104,7 @@ namespace CalgaryPlanIt.Components
 
         private void AddToList(object sender, RoutedEventArgs e)
         { 
-
+            AttractionCardAddToListClicked.Invoke(Attraction, e);
         }
             
         private void AddToTrip(object sender, RoutedEventArgs e)

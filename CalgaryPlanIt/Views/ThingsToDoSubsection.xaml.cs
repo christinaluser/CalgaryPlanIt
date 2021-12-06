@@ -139,8 +139,24 @@ namespace CalgaryPlanIt.Views
             {
                 var card = new AttractionCard(attraction);
                 card.AttractionCardClicked += AttractionCard_Clicked;
+                card.AttractionCardAddToListClicked += AttractionCardAddToList_Clicked;
                 AttractionsList.Children.Add(card);
             }
+        }
+
+        private void AttractionCardAddToList_Clicked(object sender, EventArgs e)
+        {
+            Attraction att = (Attraction)sender;
+            var overlay = new AddToListPopup(att) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void OverlayClosed(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            Overlay.Visibility = Visibility.Collapsed;
         }
 
         public void AddFilterTag(object sender, RoutedEventArgs e)

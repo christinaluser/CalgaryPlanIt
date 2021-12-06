@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="600">
     <UserControl.Resources>
         <Style x:Key="IconButtonSmallWithBackground" TargetType="Button">
             <Setter Property="Cursor" Value="Hand"></Setter>
@@ -20,8 +20,14 @@
                 </Style>
             </Style.Resources>
         </Style>
+        <Style x:Key="Heading 4" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="14"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="Typography.Capitals" Value="AllSmallCaps"></Setter>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+        </Style>
     </UserControl.Resources>
-    <Border CornerRadius="15" Background="White">
+    <Border CornerRadius="15" Background="White" Width="600">
         <Grid x:Name="MainContent" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
