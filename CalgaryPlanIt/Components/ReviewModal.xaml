@@ -18,66 +18,77 @@
         <Image x:Key="GreyStar5" Source="/Images/GreyStar.png" Height="30" Width="30" />
         <Image x:Key="YellowStar5" Source="/Images/YellowStar.png" Height="30" Width="30"/>
     </UserControl.Resources>
-    <StackPanel Background="White" Width="500">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" x:Name="Title" Text="How was " Style="{StaticResource Heading 1}" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"></TextBlock>
-            <Button Style="{StaticResource IconButtonLarge}" Click="CloseButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top">
+    <Border Background="White" Width="600" Height="600" CornerRadius="15">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+           
+            <TextBlock Grid.Row="0" x:Name="Title" Text="How was " Style="{StaticResource Heading 1}" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"></TextBlock>
+            <Button Grid.Row="0" Style="{StaticResource IconButtonLarge}" Click="CloseButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top">
                 <Image Source="/Images/Close.png" Width="30" Height="30"></Image>
             </Button>
+
+
+            <TextBlock Grid.Row="1" Text="Rating" Style="{StaticResource Heading 2}"></TextBlock>
+            <Grid Grid.Row="2" x:Name="RatingContainer" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Tag="1" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
+                    <DynamicResource ResourceKey="GreyStar1"/>
+                </Button>
+                <Button Grid.Column="1" Tag="2" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
+                    <DynamicResource ResourceKey="GreyStar2"/>
+                </Button>
+                <Button Grid.Column="2" Tag="3" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
+                    <DynamicResource ResourceKey="GreyStar3"/>
+                </Button>
+                <Button Grid.Column="3" Tag="4" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
+                    <DynamicResource ResourceKey="GreyStar4"/>
+                </Button>
+                <Button Grid.Column="4" Tag="5" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
+                    <DynamicResource ResourceKey="GreyStar5"/>
+                </Button>
+            </Grid>
+            <TextBlock Grid.Row="3" Text="Review" Style="{StaticResource Heading 2}"></TextBlock>
+            <Grid Grid.Row="4">
+                <TextBox Width="450" Height="100" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ReviewTextBox" Margin="5"/>
+                <TextBlock IsHitTestVisible="False" Text="Type your review here" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="DarkGray" >
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ReviewTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <TextBlock Grid.Row="5" Text="Photos &amp; Videos" Style="{StaticResource Heading 2}"></TextBlock>
+            <Button Grid.Row="6" Content="Upload" HorizontalAlignment="Left" Click="UploadButton_Click" Padding="10" Background="Beige"></Button>
+            <WrapPanel x:Name="Photos" Grid.Row="7">
+                
+            </WrapPanel>
+            <Grid Grid.Row="8">
+                <Button Content="Post" HorizontalAlignment="Right" Click="PostButton_Click" Padding="10"></Button>
+            </Grid>
+            <!--TODO PHOTOS-->
         </Grid>
-        
-        <TextBlock Text="Rating" Style="{StaticResource Heading 2}"></TextBlock>
-        <Grid x:Name="RatingContainer" HorizontalAlignment="Left">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Tag="1" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
-                <DynamicResource ResourceKey="GreyStar1"/>
-            </Button>
-            <Button Grid.Column="1" Tag="2" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
-                <DynamicResource ResourceKey="GreyStar2"/>
-            </Button>
-            <Button Grid.Column="2" Tag="3" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
-                <DynamicResource ResourceKey="GreyStar3"/>
-            </Button>
-            <Button Grid.Column="3" Tag="4" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
-                <DynamicResource ResourceKey="GreyStar4"/>
-            </Button>
-            <Button Grid.Column="4" Tag="5" Click="StarToggleButton_Click" Style="{StaticResource IconButtonSmall}">
-                <DynamicResource ResourceKey="GreyStar5"/>
-            </Button>
-        </Grid>
-        <TextBlock Text="Review" Style="{StaticResource Heading 2}"></TextBlock>
-        <Grid>
-            <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="ReviewTextBox" Margin="5"/>
-            <TextBlock IsHitTestVisible="False" Text="Type your review here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=ReviewTextBox}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-        </Grid>
-        <TextBlock Text="Photos &amp; Videos" Style="{StaticResource Heading 2}"></TextBlock>
-        <Grid>
-            <Button Content="Upload" HorizontalAlignment="Left" Click="UploadButton_Click"></Button>
-        </Grid>
-        <Grid>
-            <Button Content="Post" HorizontalAlignment="Right" Click="PostButton_Click"></Button>
-        </Grid>
-        <!--TODO PHOTOS-->
-    </StackPanel>
+    </Border>
 </UserControl>

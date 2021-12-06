@@ -7,6 +7,11 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ThingsToDoSubsection">
+    <Page.Resources>
+        <Style TargetType="CheckBox">
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
         <Grid x:Name="Overlay" Panel.ZIndex="1000" Visibility="Collapsed">
             <Grid.Background>
@@ -35,6 +40,7 @@
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
+                                <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
                                         <Setter Property="Visibility" Value="Visible"/>
@@ -120,17 +126,18 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
+                        <!--TODO-->
                         <TextBlock Grid.Row="0" Text="from"></TextBlock>
                         <TextBlock Grid.Row="1" Text="to"></TextBlock>
                         <Button Grid.Row="0" Grid.Column="1" Content="Select Start Date"></Button>
                         <Button Grid.Row="1" Grid.Column="1" Content="Select End Date"></Button>
                     </Grid>
                     <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
-                    <RadioButton Name="MP" GroupName="Sort" Content="Most Popular" Checked="MP_Checked"></RadioButton>
-                    <RadioButton Name="LTH" GroupName="Sort" Content="Price: Low to High"  Checked="LTH_Checked"></RadioButton>
-                    <RadioButton Name="HTL" GroupName="Sort" Content="Price: High to Low" Checked="HTL_Checked"></RadioButton>
-                    <RadioButton Name="NY" GroupName="Sort" Content="Near You" Checked="NY_Checked"></RadioButton>
-                    <RadioButton Name="DT" GroupName="Sort" Content="Date" Checked="DT_Checked"></RadioButton>
+                    <RadioButton Name="MP" GroupName="Sort" Content="Most Popular" Checked="MP_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="LTH" GroupName="Sort" Content="Price: Low to High"  Checked="LTH_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="HTL" GroupName="Sort" Content="Price: High to Low" Checked="HTL_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="NY" GroupName="Sort" Content="Near You" Checked="NY_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="DT" GroupName="Sort" Content="Date" Checked="DT_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
                     <TextBlock Text="Tags" Style="{StaticResource Heading 3}"></TextBlock>
                     <StackPanel x:Name="FilterTagsPanel"></StackPanel>
                     <TextBlock Text="Rating" Style="{StaticResource Heading 3}"></TextBlock>
@@ -150,7 +157,7 @@
                         <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
                         <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
                         <Image Grid.Column="5" Source="/Images/YellowStar.png" ></Image>
-                        <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"  Style="{StaticResource Body}"></TextBlock>
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -168,7 +175,7 @@
                         <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
                         <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
                         <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
-                        <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -186,7 +193,7 @@
                         <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
                         <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
                         <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
-                        <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -204,7 +211,7 @@
                         <Image Grid.Column="3" Source="/Images/GreyStar.png" ></Image>
                         <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
                         <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
-                        <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"></TextBlock>
+                        <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
                     </Grid>
                 </StackPanel>
 

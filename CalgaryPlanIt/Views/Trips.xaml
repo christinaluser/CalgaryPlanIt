@@ -51,16 +51,18 @@
                 <TextBlock x:Name="SearchResultsTitle" Text="Search Results for " Style="{StaticResource Heading 2}"></TextBlock>
                 <Button Grid.Column="1" Content="Clear Search" Click="ClearSearchResults" Padding="5" Background="Transparent" VerticalAlignment="Bottom" Margin="5"></Button>
             </Grid>
-            <WrapPanel x:Name="TripsGrid" Margin="0, 20">
-                <WrapPanel.Resources>
-                    <Style TargetType="{x:Type Components:TripCard}">
-                        <Setter Property="Margin" Value="10,0" />
-                        <Setter Property="Padding" Value="10,10"/>
-                    </Style>
-                </WrapPanel.Resources>
-            </WrapPanel>
+            <ScrollViewer Height="733">
+                <WrapPanel x:Name="TripsGrid" Margin="0, 20">
+                    <WrapPanel.Resources>
+                        <Style TargetType="{x:Type Components:TripCard}">
+                            <Setter Property="Margin" Value="10,0" />
+                            <Setter Property="Padding" Value="10,10"/>
+                        </Style>
+                    </WrapPanel.Resources>
+                </WrapPanel>
+            </ScrollViewer>
         </StackPanel>
-        <Grid x:Name="TripOverlay" Visibility="Collapsed">
+        <Grid x:Name="TripOverlay" Panel.ZIndex="1000" Visibility="Collapsed">
             <Grid.Background>
                 <SolidColorBrush Color="Black" Opacity=".5"/>
             </Grid.Background>

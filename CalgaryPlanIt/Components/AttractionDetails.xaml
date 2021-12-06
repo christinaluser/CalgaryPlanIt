@@ -62,10 +62,10 @@
                 </Button>
             </Grid>
             <Separator Grid.Row="0" VerticalAlignment="Bottom"/>
-            <TextBlock Grid.Row="1" x:Name="Dates" Text="Dates"></TextBlock>
-            <TextBlock Grid.Row="2" x:Name="ExpectedDuration" Text="Expected Duration: "></TextBlock>
-            <TextBlock Grid.Row="3" x:Name="Address" Text="Address"></TextBlock>
-            <TextBlock Grid.Row="4" x:Name="Description" Text="Description" FontSize="16"></TextBlock>
+            <TextBlock Grid.Row="1" x:Name="Dates" Text="Dates" Style="{StaticResource Body}"></TextBlock>
+            <TextBlock Grid.Row="2" x:Name="ExpectedDuration" Text="Expected Duration: " Style="{StaticResource Body}"></TextBlock>
+            <TextBlock Grid.Row="3" x:Name="Address" Text="Address" Style="{StaticResource Body}"></TextBlock>
+            <TextBlock Grid.Row="4" x:Name="Description" Text="Description" FontSize="16" Style="{StaticResource Body}"></TextBlock>
             <TextBlock Grid.Row="5" Text="Photos" Style="{StaticResource Heading 3}"></TextBlock>
             <Separator Grid.Row="5" VerticalAlignment="Bottom"/>
             <WrapPanel Grid.Row="6" x:Name="PhotosGrid"></WrapPanel>

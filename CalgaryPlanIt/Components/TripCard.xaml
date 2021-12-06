@@ -23,7 +23,7 @@
             
             <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
             <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 3}" TextWrapping="WrapWithOverflow" Margin="5, 10"/>
-            <TextBlock x:Name="NumTravellers" Grid.Row="2" Margin="5"></TextBlock>
+            <TextBlock x:Name="NumTravellers" Grid.Row="2" Margin="5" Style="{StaticResource Body}"></TextBlock>
             <Grid Grid.Row="3" Margin="0, 15, 0, 0" x:Name="ButtonContainer">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>

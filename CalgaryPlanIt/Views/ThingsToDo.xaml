@@ -28,6 +28,7 @@
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
                                     <Setter Property="Visibility" Value="Visible"/>

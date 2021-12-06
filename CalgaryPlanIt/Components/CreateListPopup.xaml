@@ -19,7 +19,7 @@
             <Button Style="{StaticResource IconButtonSmall}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseClick">
                 <Image Source="/Images/Close.png" ></Image>
             </Button>
-            <TextBlock Grid.Row="1" Text="List Name:" Margin="5,10"></TextBlock>
+            <TextBlock Grid.Row="1" Text="List Name:" Margin="5,10" Style="{StaticResource Heading 5}"></TextBlock>
             <TextBox Grid.Row="2" x:Name="ListName" Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" VerticalAlignment="Bottom" />
             <Button Grid.Row="3" Content="Create List" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="10" Click="CreateList"></Button>
         </Grid>

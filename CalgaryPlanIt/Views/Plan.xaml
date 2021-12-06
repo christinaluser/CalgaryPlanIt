@@ -164,17 +164,17 @@
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image Source="/Images/Map.png" Width="15" Grid.Column="0" HorizontalAlignment="Left" Margin="5, 0"></Image>
-                    <TextBlock Text="Show Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="Show Map" Grid.Column="1" HorizontalAlignment="Right"  Style="{StaticResource Heading 5}"></TextBlock>
                 </Grid>
             </Button>
 
-            <Button Grid.Column="0" HorizontalAlignment="Right" Margin="10" x:Name="HideMapButton" Click="CloseMapButton_Click" Visibility="Collapsed">
+            <Button Grid.Column="0" HorizontalAlignment="Right" Margin="10" x:Name="HideMapButton"  Click="CloseMapButton_Click" Visibility="Collapsed">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Hide Map" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                    <TextBlock Text="Hide Map" Grid.Column="1" Style="{StaticResource Heading 5}" HorizontalAlignment="Right"></TextBlock>
                 </Grid>
             </Button>
 
@@ -195,7 +195,7 @@
                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Image Source="/Images/Left.png" Width="10" Grid.Column="0" HorizontalAlignment="Left"></Image>
-                        <TextBlock Text="Back to lists" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                        <TextBlock Text="Back to lists" Style="{StaticResource Heading 5}" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
                     </Grid>
                 </Button>
                 <TextBlock x:Name="ListName" Text="Lists" Style="{StaticResource Heading 3}"></TextBlock>

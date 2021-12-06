@@ -6,8 +6,18 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+        </Style>
+    </UserControl.Resources>
     <StackPanel Background="White">
-        <TextBlock x:Name="Date" Text="Date" Style="{StaticResource Heading 3}" Background="pink" Margin="0, 15" HorizontalAlignment="Left"></TextBlock>
-        <Grid x:Name="ItineraryItemsGrid"></Grid> 
+        <Border Background="LightBlue" CornerRadius="20" HorizontalAlignment="Left">
+            <TextBlock x:Name="Date" Text="Date" Style="{StaticResource Heading 3}"  Margin="10,5"></TextBlock>
+        </Border>
+        <Border CornerRadius="10" Background="Beige" Margin="10">
+            <Grid x:Name="ItineraryItemsGrid" Margin="10"></Grid>
+        </Border>
     </StackPanel>
 </UserControl>

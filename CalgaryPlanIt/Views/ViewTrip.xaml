@@ -23,22 +23,31 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Content="Back" HorizontalAlignment="Left" Click="HandleBack_Click"></Button>
-            <Grid Grid.Row="1" Margin="100,10,100,10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
+            <Grid Grid.Row="1" Margin="300,10,300,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TripName" Padding="10, 5" Style="{StaticResource Heading 1}" Text="Trip Name" Background="Pink"></TextBlock>
-                <TextBlock Grid.Row="1" Grid.Column="0" x:Name="TripDates" Padding="10, 5" Style="{StaticResource Heading 3}" Text="Trip Dates" Background="Pink"></TextBlock>
-                <TextBlock Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" x:Name="NumTravellers" Padding="10, 5" Text="num travellers" Background="AliceBlue"></TextBlock>
+                <Border CornerRadius="10, 0, 0, 10" Background="Pink">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TripName" Style="{StaticResource Heading 1}" Text="Trip Name"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="TripDates" Margin="20, 0" Style="{StaticResource Heading 3}" Text="Trip Dates"></TextBlock>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="0, 10, 10, 0" Background="LightBlue" Grid.Column="1">
+                    <TextBlock x:Name="NumTravellers" Padding="10, 5" Text="num travellers" Style="{StaticResource Body}"></TextBlock>
+                </Border>
             </Grid>
             <Button Grid.Row="2" HorizontalAlignment="Left" Margin="100, 0" Content="Print Itinerary"></Button>
-            <StackPanel Grid.Row="3" x:Name="Itinerary" Margin="100,0"></StackPanel>
+            
+            <ScrollViewer Height="630" Grid.Row="3" >
+                <StackPanel x:Name="Itinerary" Margin="100,0"></StackPanel>
+            </ScrollViewer>
         </Grid>
 
     </Grid>

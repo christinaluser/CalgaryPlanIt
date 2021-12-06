@@ -47,21 +47,37 @@ namespace CalgaryPlanIt.Components
             foreach(ItineraryItem itineraryItem in ItineraryItems)
             {
                 ItineraryItemsGrid.RowDefinitions.Add(new RowDefinition());
+                TextBlock timetextBlock = new()
+                {
+                    Text = itineraryItem.PlannedStartDate.ToString("h tt") + " - " + itineraryItem.PlannedEndDate.ToString("h tt"),
+                    HorizontalAlignment = HorizontalAlignment.Left,
+                    Margin = new Thickness(0, 10, 0, 0),
+                };
+                Grid.SetRow(timetextBlock, row);
+                ItineraryItemsGrid.Children.Add(timetextBlock);
+
                 TextBlock textBlock = new()
                 {
                     Text = itineraryItem.Name,
-                    HorizontalAlignment = HorizontalAlignment.Left
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
                 };
                 Grid.SetRow(textBlock, row);
                 ItineraryItemsGrid.Children.Add(textBlock);
-                
+
+                Separator sep = new Separator() { VerticalAlignment = VerticalAlignment.Bottom };
+                Grid.SetRow(sep, row);
+                ItineraryItemsGrid.Children.Add(sep);
+
                 if (ShowReviewButtons)
                 {
                     Button reviewButton = new Button()
                     {
                         Content = "Review",
                         Tag = itineraryItem,
-                        HorizontalAlignment = HorizontalAlignment.Right 
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        Padding = new Thickness(10),
+                        Margin=new Thickness(0,0,0,10)
                     };
                     reviewButton.Click += new RoutedEventHandler(HandleReviewButton_Click);
                     Grid.SetRow(reviewButton, row);

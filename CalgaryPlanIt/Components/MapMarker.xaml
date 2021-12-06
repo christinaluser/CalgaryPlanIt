@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Button x:Name="MarkerLabel" Padding="10" HorizontalAlignment="Center" BorderBrush="SlateGray" BorderThickness="1" IsHitTestVisible="False" MaxWidth="130" VerticalAlignment="Bottom" HorizontalContentAlignment="Center">
-            <TextBlock x:Name="MarkerLabelText" Text="Label" TextWrapping="Wrap" HorizontalAlignment="Stretch"></TextBlock>
+            <TextBlock x:Name="MarkerLabelText" Text="Label" TextWrapping="Wrap" HorizontalAlignment="Stretch" Style="{StaticResource Body}"></TextBlock>
         </Button>
         <Image Grid.Row="1" x:Name="MarkerIcon" Source="/Images/MapMarker.png" Width="20" HorizontalAlignment="Center" VerticalAlignment="Top" MouseEnter="MarkerIcon_MouseEnter" MouseLeave="MarkerIcon_MouseLeave"></Image>
     </Grid>
