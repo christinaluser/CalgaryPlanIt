@@ -128,13 +128,17 @@ namespace CalgaryPlanIt.Views
             Tag[] allTags = (Tag[])Enum.GetValues(typeof(Tag));
             foreach (Tag tag in allTags)
             {
-                CheckBox checkbox = new CheckBox() { 
-                    Content = tag.ToFriendlyString(),
-                    Tag = tag
-                };
-                checkbox.Checked += new RoutedEventHandler(AddFilterTag);
-                checkbox.Unchecked += new RoutedEventHandler(RemoveFilterTag);
-                FilterTagsPanel.Children.Add(checkbox);
+                if (tag != CalgaryPlanIt.Tag.None)
+                {
+                    CheckBox checkbox = new CheckBox() { 
+                        Content = tag.ToFriendlyString(),
+                        Tag = tag
+                    };
+                    this.RegisterName(tag.ToString(), checkbox);
+                    checkbox.Checked += new RoutedEventHandler(AddFilterTag);
+                    checkbox.Unchecked += new RoutedEventHandler(RemoveFilterTag);
+                    FilterTagsPanel.Children.Add(checkbox);
+                }
             }
         }
 
@@ -147,6 +151,10 @@ namespace CalgaryPlanIt.Views
                 card.AttractionCardClicked += AttractionCard_Clicked;
                 card.AttractionCardAddToListClicked += AttractionCardAddToList_Clicked;
                 AttractionsList.Children.Add(card);
+            }
+            if (AttractionsList.Children.Count == 0)
+            {
+                AttractionsList.Children.Add(new TextBlock() { Text = "No attractions here :(", HorizontalAlignment = HorizontalAlignment.Center});
             }
         }
 
@@ -169,8 +177,6 @@ namespace CalgaryPlanIt.Views
         {
             Tag t = (Tag)((CheckBox)sender).Tag;
             SelectedTags |= t;
-
-            var temp = Attractions[1].Tags.HasFlag(SelectedTags);
         }
 
         public void RemoveFilterTag(object sender, RoutedEventArgs e)
@@ -185,10 +191,11 @@ namespace CalgaryPlanIt.Views
             Navigation.NavigateTo(new ThingsToDo());
         }
 
+
+        //Apply filters
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-
+            //sort
             if (Rbutton == "LTH")
             {
                 Attractions.Sort(delegate (Attraction x, Attraction y)
@@ -197,11 +204,11 @@ namespace CalgaryPlanIt.Views
                     return x.Price.CompareTo(y.Price);
                 });
 
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    AttractionsList.Children.Add(new AttractionCard(att));
-                }
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    AttractionsList.Children.Add(new AttractionCard(att));
+                //}
             }
             else if (Rbutton == "HTL")
             {
@@ -211,22 +218,22 @@ namespace CalgaryPlanIt.Views
                     return y.Price.CompareTo(x.Price);
                 });
 
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    AttractionsList.Children.Add(new AttractionCard(att));
-                }
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    AttractionsList.Children.Add(new AttractionCard(att));
+                //}
             }
             else if (Rbutton == "DT")
             {
                 Attractions = Attractions.OrderBy(x => x.StartDate).ToList();
                 //Attractions.Sort((x, y) => DateTime.Compare((DateTime)x.StartDate, (DateTime)y.StartDate));
 
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    AttractionsList.Children.Add(new AttractionCard(att));
-                }
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    AttractionsList.Children.Add(new AttractionCard(att));
+                //}
             }
             else if (Rbutton == "MP")
             {
@@ -236,83 +243,87 @@ namespace CalgaryPlanIt.Views
                     return y.Rating.CompareTo(x.Rating);
                 });
 
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    AttractionsList.Children.Add(new AttractionCard(att));
-                }
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    AttractionsList.Children.Add(new AttractionCard(att));
+                //}
             }
+
+            //filter rating
             if (Sbutton == "S5")
             {
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    if (att.Rating == 5)
-                    {
-                        AttractionsList.Children.Add(new AttractionCard(att));
-                    }
-                }
+                Attractions = Attractions.FindAll(a => a.Rating == 5);
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    if (att.Rating == 5)
+                //    {
+                //        AttractionsList.Children.Add(new AttractionCard(att));
+                //    }
+                //}
             }
             else if (Sbutton == "S4")
             {
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    if (att.Rating == 4)
-                    {
-                        AttractionsList.Children.Add(new AttractionCard(att));
-                    }
-                }
+                Attractions = Attractions.FindAll(a => a.Rating >= 4);
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    if (att.Rating == 4)
+                //    {
+                //        AttractionsList.Children.Add(new AttractionCard(att));
+                //    }
+                //}
             }
             else if (Sbutton == "S3")
             {
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    if (att.Rating == 3)
-                    {
-                        AttractionsList.Children.Add(new AttractionCard(att));
-                    }
-                }
+                Attractions = Attractions.FindAll(a => a.Rating >= 3);
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    if (att.Rating == 3)
+                //    {
+                //        AttractionsList.Children.Add(new AttractionCard(att));
+                //    }
+                //}
             }
             else if (Sbutton == "S2")
             {
-                AttractionsList.Children.Clear();
-                foreach (Attraction att in Attractions)
-                {
-                    if (att.Rating == 2)
-                    {
-                        AttractionsList.Children.Add(new AttractionCard(att));
-                    }
-                }
+                Attractions = Attractions.FindAll(a => a.Rating >= 2);
+                //AttractionsList.Children.Clear();
+                //foreach (Attraction att in Attractions)
+                //{
+                //    if (att.Rating == 2)
+                //    {
+                //        AttractionsList.Children.Add(new AttractionCard(att));
+                //    }
+                //}
             }
 
             List<Attraction> TagAttractions = new List<Attraction>();
             if (SelectedTags != CalgaryPlanIt.Tag.None) {
-                AttractionsList.Children.Clear();
                 foreach (Attraction att in Attractions)
                 {
                     Tag[] allTags = (Tag[])Enum.GetValues(typeof(Tag));
-
                     foreach (Tag tag in allTags)
                     {
-                        if (SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag) && !TagAttractions.Contains(att))
+                        if (tag!= CalgaryPlanIt.Tag.None && SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag))
                         {
                             TagAttractions.Add(att);
-
+                            break;
                         }
-
                     }
-
                 }
-                foreach (Attraction att in TagAttractions)
-                {
-                    AttractionsList.Children.Add(new AttractionCard(att));
-                }
+                //foreach (Attraction att in TagAttractions)
+                //{
+                //    AttractionsList.Children.Add(new AttractionCard(att));
+                //}
 
             }
-            
-             
+            Attractions = TagAttractions;
+            PopulateAttractionsList();
+
+
         }
 
         private void LTH_Checked(object sender, RoutedEventArgs e)
@@ -370,6 +381,7 @@ namespace CalgaryPlanIt.Views
             Sbutton = li.Name.ToString();
         }
 
+        //clear filters
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Attractions = TmpAttractions;
@@ -378,7 +390,9 @@ namespace CalgaryPlanIt.Views
             {
                 AttractionsList.Children.Add(new AttractionCard(attraction));
             }
-            
+
+        }
+
         private void SwitchViewButton_Click(object sender, RoutedEventArgs e)
         {
             
@@ -456,7 +470,28 @@ namespace CalgaryPlanIt.Views
         private void FilterByTrip(object sender, EventArgs e)
         {
             Trip trip = (Trip)sender;
-            //TODO set filters
+            if (trip != null)
+            {
+                if (trip.NumChildren > 0)
+                {
+                    CheckBox cb = (CheckBox)this.FindName(CalgaryPlanIt.Tag.KidFriendly.ToString());
+                    cb.IsChecked = true;
+                }
+                if (trip.NumTeens > 0)
+                {
+                    CheckBox cb = (CheckBox)this.FindName(CalgaryPlanIt.Tag.TeenFriendly.ToString());
+                    cb.IsChecked = true;
+                }
+                if (trip.NumChildren == 0 && trip.NumTeens == 0 && trip.NumAdults > 0)
+                {
+                    CheckBox cb = (CheckBox)this.FindName(CalgaryPlanIt.Tag.AdultOnly.ToString());
+                    cb.IsChecked = true;
+                }
+
+                //TODO date
+
+                Button_Click(sender, null);
+            }
         }
     }
 }

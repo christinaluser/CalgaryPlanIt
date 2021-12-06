@@ -48,6 +48,7 @@ namespace CalgaryPlanIt.Components
         private void TripClicked(object sender, EventArgs e) 
         {
             TripSelectedHandler.Invoke(sender, e);
+            CloseHandler.Invoke(this, EventArgs.Empty);
         }
 
         private void Trip_ArchiveButtonClicked(object sender, EventArgs e)
