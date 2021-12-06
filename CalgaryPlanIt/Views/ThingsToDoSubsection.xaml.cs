@@ -27,8 +27,6 @@ namespace CalgaryPlanIt.Views
         AttractionDetails? CurrentDetails;
         bool SwitchViewOnDetailsClose = false;
 
-        //Sort
-        string SortType = "";
 
         private Point origin;
         private Point start;
@@ -214,48 +212,7 @@ namespace CalgaryPlanIt.Views
             SearchHeader.Visibility = Visibility.Collapsed;
         }
 
-        private void Sort()
-        {
-            if (SortType == "A-Z")
-            {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.Name).ToList();
-            }
-            else if (SortType == "Z-A")
-            {
-                MainWindow.TripsList = MainWindow.TripsList.OrderByDescending(t => t.Name).ToList();
-            }
-            else if (SortType == "Upcoming Trips")
-            {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.StartDate).ToList();
-                var temp = MainWindow.TripsList.FindAll(t => t.StartDate >= DateTime.Now);
-                var temp2 = MainWindow.TripsList.FindAll(t => t.StartDate < DateTime.Now);
-                MainWindow.TripsList = temp;
-                foreach (Trip t in temp2)
-                {
-                    MainWindow.TripsList.Add(t);
-                }
-
-            }
-            else if (SortType == "Closest Date")
-            {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => Math.Abs(DateTime.Compare(t.StartDate, DateTime.Now))).ToList();
-            }
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var split = ((ComboBox)sender).SelectedItem.ToString().Split(" ");
-            SortType = split[1];
-            if (split.Length > 2)
-                SortType += " " + split[2];
-            Sort();
-            if (AttractionsList != null && AttractionsList.Children.Count > 0)
-            {
-                PopulateAttractionsList();
-                SetMapMarkers();
-            }
-
-        }
+        
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
