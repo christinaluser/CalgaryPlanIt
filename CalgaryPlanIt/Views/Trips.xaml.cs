@@ -39,9 +39,16 @@ namespace CalgaryPlanIt.Views
                 {
                     var card = new TripCard(trip);
                     card.ArchiveButtonClicked += Trip_ArchiveButtonClicked;
+                    card.TripClicked += HandleTripClicked;
                     TripsGrid.Children.Add(card);
                 }
             }
+        }
+
+        private void HandleTripClicked(object sender, EventArgs e)
+        {
+            Trip trip = (Trip)sender;
+            Navigation.NavigateTo(new ViewTrip(trip));
         }
 
         private void Trip_ArchiveButtonClicked(object sender, EventArgs e)

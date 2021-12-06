@@ -23,6 +23,8 @@ namespace CalgaryPlanIt.Components
     {
         public Trip Trip;
         public event EventHandler ArchiveButtonClicked;
+        public event EventHandler TripClicked;
+
         public TripCard()
         {
             InitializeComponent();
@@ -56,7 +58,8 @@ namespace CalgaryPlanIt.Components
 
         private void HandleViewTrip_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new ViewTrip(Trip));
+            //Navigation.NavigateTo(new ViewTrip(Trip));
+            TripClicked.Invoke(Trip, e);
         }
     }
 }

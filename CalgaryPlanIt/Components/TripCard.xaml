@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="250">
-    <Border Background="White" MaxWidth="250" Width="250" MaxHeight="250" Height="250" CornerRadius="15">
+    <Border Background="White" MaxWidth="250" Width="250" MaxHeight="250" Height="250" CornerRadius="15" Cursor="Hand" MouseDown="HandleViewTrip_Click">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>
@@ -19,13 +19,12 @@
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock x:Name="TripName" Grid.Row="0" Style="{StaticResource Heading 2}" TextWrapping="WrapWithOverflow" Margin="5"></TextBlock>
-            <Button Grid.Row="0" Grid.RowSpan="3" Background="Transparent" Click="HandleViewTrip_Click" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Top">
-                <Image Source="/Images/Right.png" Width="10" Margin="0,9"></Image>
-            </Button>
+            <Image Source="/Images/Right.png" Width="10" HorizontalAlignment="Right"></Image>
+            
             <Separator Grid.Row="0" Height=".5" Background="Black" VerticalAlignment="Bottom"/>
             <TextBlock x:Name="Date" Grid.Row="1" Style="{StaticResource Heading 3}" TextWrapping="WrapWithOverflow" Margin="5, 10"/>
             <TextBlock x:Name="NumTravellers" Grid.Row="2" Margin="5"></TextBlock>
-            <Grid Grid.Row="3" Margin="0, 15, 0, 0">
+            <Grid Grid.Row="3" Margin="0, 15, 0, 0" x:Name="ButtonContainer">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>

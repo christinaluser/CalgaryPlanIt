@@ -243,5 +243,20 @@ namespace CalgaryPlanIt.Views
                 SetMapMarkers();
             }
         }
+
+        private void AutoApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            var overlay = new TripPickerPopup() { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            overlay.TripSelectedHandler += FilterByTrip;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void FilterByTrip(object sender, EventArgs e)
+        {
+            Trip trip = (Trip)sender;
+            //TODO set filters
+        }
     }
 }

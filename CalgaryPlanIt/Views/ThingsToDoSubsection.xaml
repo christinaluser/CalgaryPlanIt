@@ -105,7 +105,7 @@
                             <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <Button Content="Auto Apply Filters For Trip"></Button>
+                    <Button Content="Auto Apply Filters For Trip" Click="AutoApplyButton_Click"></Button>
                     <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>
