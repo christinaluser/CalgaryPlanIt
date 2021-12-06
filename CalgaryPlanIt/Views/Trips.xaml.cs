@@ -107,5 +107,26 @@ namespace CalgaryPlanIt.Views
             SearchHeader.Visibility = Visibility.Collapsed;
             RefreshTripsGrid(MainWindow.TripsList);
         }
+
+        private void CreateTripButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            CreateNewTrip newTrip = new CreateNewTrip();
+            newTrip.HorizontalAlignment = HorizontalAlignment.Center;
+            newTrip.CloseButtonClicked += AddNewTrip_CloseButtonClicked;
+            newTrip.AddingNewTripClicked += AddNewTrip_AddTripButtonClicked;
+            TripOverlay.Children.Add(newTrip);
+            TripOverlay.Visibility = Visibility.Visible;
+        }
+        private void AddNewTrip_CloseButtonClicked(object sender, EventArgs e)
+        {
+            TripOverlay.Children.Clear();
+            TripOverlay.Visibility = Visibility.Collapsed;
+        }
+        private void AddNewTrip_AddTripButtonClicked(object sender, EventArgs e)
+        {
+            TripOverlay.Children.Clear();
+            TripOverlay.Visibility = Visibility.Collapsed;
+            Navigation.NavigateTo(new Trips());
+        }
     }
 }
