@@ -51,10 +51,10 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Grid.Row="0" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" Margin="10, 5">
+                <Button Grid.Row="0" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" Margin="10, 5" Click="AddToList">
                     <Image Source="/Images/Heart.png"/>
                 </Button>
-                <Button Grid.Row="1" Style="{StaticResource IconButtonSmallWithBackground}" Background="Beige" Margin="10, 5">
+                <Button Grid.Row="1" Style="{StaticResource IconButtonSmallWithBackground}" Background="Beige" Margin="10, 5" Click="AddToTrip">
                     <Image Source="/Images/AddToCalendar.png"></Image>
                 </Button>
 

@@ -33,10 +33,8 @@ namespace CalgaryPlanIt.Components
             InitializeComponent();
             this.lis = lis;
             ListName.Text = this.lis.Name;
-            if(lis.NumItems > 0)
-            {
-                NumItems.Text = (lis.Attractions != null ? lis.Attractions.Count.ToString() : 0) + " items";
-            }
+            NumItems.Text = (lis.Attractions != null ? lis.Attractions.Count.ToString() : 0) + " items";
+            
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

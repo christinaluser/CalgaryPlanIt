@@ -116,6 +116,7 @@ namespace CalgaryPlanIt.Views
         private void ClearSearchResults(object sender, EventArgs e)
         {
             SearchBox.Clear();
+            SearchResultsTitle.Text = "Search results for ";
             SearchHeader.Visibility = Visibility.Collapsed;
             RefreshAttractionsGrid(Lis.Attractions);
         }

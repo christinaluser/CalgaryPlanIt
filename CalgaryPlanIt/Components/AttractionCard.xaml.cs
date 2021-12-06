@@ -100,5 +100,15 @@ namespace CalgaryPlanIt.Components
         {
             CardBorder.BorderThickness = new Thickness(0);
         }
+
+        private void AddToList(object sender, RoutedEventArgs e)
+        { 
+
+        }
+            
+        private void AddToTrip(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

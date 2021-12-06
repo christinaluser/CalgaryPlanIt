@@ -82,5 +82,20 @@ namespace CalgaryPlanIt.Views
             SearchHeader.Visibility = Visibility.Collapsed;
             AddListCards(MainWindow.ListofLists);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var overlay = new CreateListPopup() { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+            overlay.CloseHandler += OverlayClosed;
+            Overlay.Children.Add(overlay);
+            Overlay.Visibility = Visibility.Visible;
+        }
+
+        private void OverlayClosed(object sender, EventArgs e)
+        {
+            Overlay.Children.Clear();
+            Overlay.Visibility = Visibility.Collapsed;
+            AddListCards(MainWindow.ListofLists);
+        }
     }
 }
