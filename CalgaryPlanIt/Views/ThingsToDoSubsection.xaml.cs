@@ -27,6 +27,7 @@ namespace CalgaryPlanIt.Views
         string Sbutton;
         Tag SelectedTags = CalgaryPlanIt.Tag.None;
         List<Attraction> Attractions = new List<Attraction>();
+        List<Attraction> TagAttractions = new List<Attraction>();
         List<Attraction> TmpAttractions = new List<Attraction>();
 
         public ThingsToDoSubsection(Category category)
@@ -87,11 +88,11 @@ namespace CalgaryPlanIt.Views
         {
             Navigation.NavigateTo(new ThingsToDo());
         }
-        
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            
+
             if (Rbutton == "LTH")
             {
                 Attractions.Sort(delegate (Attraction x, Attraction y)
@@ -99,7 +100,7 @@ namespace CalgaryPlanIt.Views
 
                     return x.Price.CompareTo(y.Price);
                 });
-          
+
                 AttractionsList.Children.Clear();
                 foreach (Attraction att in Attractions)
                 {
@@ -120,7 +121,18 @@ namespace CalgaryPlanIt.Views
                     AttractionsList.Children.Add(new AttractionCard(att));
                 }
             }
-            else if(Rbutton == "MP")
+            else if (Rbutton == "DT")
+            {
+                Attractions = Attractions.OrderBy(x => x.StartDate).ToList();
+                //Attractions.Sort((x, y) => DateTime.Compare((DateTime)x.StartDate, (DateTime)y.StartDate));
+
+                AttractionsList.Children.Clear();
+                foreach (Attraction att in Attractions)
+                {
+                    AttractionsList.Children.Add(new AttractionCard(att));
+                }
+            }
+            else if (Rbutton == "MP")
             {
                 Attractions.Sort(delegate (Attraction x, Attraction y)
                 {
@@ -178,10 +190,9 @@ namespace CalgaryPlanIt.Views
                     }
                 }
             }
-             
-            /*
-            if (SelectedTags != null)
-            {
+
+            List<Attraction> TagAttractions = new List<Attraction>();
+            if (SelectedTags != CalgaryPlanIt.Tag.None) {
                 AttractionsList.Children.Clear();
                 foreach (Attraction att in Attractions)
                 {
@@ -189,20 +200,22 @@ namespace CalgaryPlanIt.Views
 
                     foreach (Tag tag in allTags)
                     {
-                        if (!(SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag)))
+                        if (SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag) && !TagAttractions.Contains(att))
                         {
-                            Attractions.Remove(att);
+                            TagAttractions.Add(att);
 
                         }
-                        else
-                        {
-                            AttractionsList.Children.Add(new AttractionCard(att));
-                        }
+
                     }
 
                 }
+                foreach (Attraction att in TagAttractions)
+                {
+                    AttractionsList.Children.Add(new AttractionCard(att));
+                }
+
             }
-            */
+            
              
         }
 
