@@ -42,18 +42,9 @@
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>        
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" HorizontalAlignment="Left">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Button Grid.Row="0" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" Margin="10, 5">
-                <Image Source="/Images/Heart.png"/>
-            </Button>
-            <Button Grid.Row="1" Style="{StaticResource IconButtonSmallWithBackground}" Background="Beige" Margin="10, 5">
-                <Image Source="/Images/AddToCalendar.png"></Image>
-            </Button>
-        </Grid>
+        <Button Grid.Column="3" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" Margin="10, 5" HorizontalAlignment="Right">
+            <Image Source="/Images/Trash.png"></Image>
+        </Button>
         <Image Grid.Column="1" x:Name="AttractionImage" Width="100" Margin="10"></Image>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -85,7 +76,10 @@
                 <Button Grid.Column="4" x:Name="Star5" Style="{StaticResource NotARealButton}">
                     <DynamicResource ResourceKey="GreyStar5"/>
                 </Button>
+
             </Grid>
+
+            
             <StackPanel Grid.Row="2" x:Name="TagsContainer" Orientation="Horizontal"></StackPanel>
         </Grid>
     </Grid>
