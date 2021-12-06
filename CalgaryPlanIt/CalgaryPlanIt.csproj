@@ -36,6 +36,8 @@
     <None Remove="Images\Categories\Tours.jpg" />
     <None Remove="Images\GreyStar.png" />
     <None Remove="Images\Heart.png" />
+    <None Remove="Images\Left.png" />
+    <None Remove="Images\Map.png" />
     <None Remove="Images\RightArrow.png" />
     <None Remove="Images\MapMarker.png" />
     <None Remove="Images\MapPin.png" />
@@ -117,6 +119,12 @@
     </Resource>
     <Resource Include="Images\GreyStar.png" />
     <Resource Include="Images\Heart.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Map.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\RightArrow.png" />

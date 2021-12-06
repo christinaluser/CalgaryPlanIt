@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="800">
-    <Border x:Name="TimeBlockComponent" CornerRadius="20" MaxWidth="800" Background="Pink" Padding="10" Margin="5,0,5,5" BorderThickness="1" BorderBrush="Transparent" Height="100"
-            AllowDrop="True" Drop="PanelDrop" DragEnter="OnDragEnter" DragLeave="OnMouseLeave" MouseLeave="OnMouseLeave" MouseEnter="OnDragEnter">
+             d:DesignHeight="200" d:DesignWidth="900">
+    <Border x:Name="TimeBlockComponent" CornerRadius="20" Background="Pink" Padding="10" Margin="5,0,5,5" BorderThickness="1" BorderBrush="Transparent" Height="100"
+            AllowDrop="True" Drop="PanelDrop" DragEnter="OnDragEnter" DragLeave="OnMouseLeave" MouseLeave="OnMouseLeave" MouseEnter="OnDragEnter" Cursor="Hand">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -16,10 +16,20 @@
             </Grid.RowDefinitions>
             
             <TextBlock x:Name="AttractionName" Text="Name" Style="{StaticResource Heading 3}"></TextBlock>
-            <Button x:Name="RemoveButton" Grid.Row="0" Content="Remove" HorizontalAlignment="Right">
+            <Button x:Name="RemoveButton" Grid.Row="0"  HorizontalAlignment="Right" Click="RemoveButton_Click">
+                <TextBlock Text="Remove" TextDecorations="Underline" Style="{StaticResource Heading 5}"></TextBlock>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
+                        <Setter Property="Cursor" Value="Hand"></Setter>
+                        <Setter Property="Padding" Value="5"></Setter>
+                        <Setter Property="Background" Value="Transparent"></Setter>
+                        <Setter Property="BorderThickness" Value="0"></Setter>
                         <Setter Property="Visibility" Value="Hidden" />
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"></Setter>
+                            </Style>
+                        </Style.Resources>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsMouseOver, ElementName=TimeBlockComponent}" Value="True">
                                 <Setter Property="Visibility" Value="Visible" />
@@ -28,8 +38,8 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <TextBlock Grid.Row="1" x:Name="Address" Text="Address"></TextBlock>
-            <TextBlock Grid.Row="2" x:Name="Time" Text="Time" HorizontalAlignment="Right" VerticalAlignment="Bottom"></TextBlock>
+            <TextBlock Grid.Row="1" x:Name="Address" Text="Address" Style="{StaticResource Heading 4}"></TextBlock>
+            <TextBlock Grid.Row="2" x:Name="Time" Text="Time" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource Heading 5}"></TextBlock>
         </Grid>
     </Border>
 </UserControl>
