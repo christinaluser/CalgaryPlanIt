@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalgaryPlanIt.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,11 @@ namespace CalgaryPlanIt.Components
             {
                 NumItems.Text = (lis.Attractions != null ? lis.Attractions.Count.ToString() : 0) + " items";
             }
+        }
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Navigation.NavigateTo(new ViewList(lis));
         }
     }
 }

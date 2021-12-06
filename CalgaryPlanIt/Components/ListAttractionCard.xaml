@@ -36,14 +36,17 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border CornerRadius="15" Background="White">
-        <Grid x:Name="AttractionCardWrapper">
+    <Border CornerRadius="15" Background="White" Margin="20, 10">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid x:Name="AttractionCardWrapper" Margin="20,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" VerticalAlignment="Center">
+            <Button Grid.Column="3" Style="{StaticResource IconButtonSmallWithBackground}" Background="Pink" VerticalAlignment="Center" Click="Button_Click">
                 <Image Source="/Images/Trash.png"></Image>
             </Button>
             <Image Grid.Column="0" x:Name="AttractionImage" Width="100" Margin="10"></Image>

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="250">
-    <Border Background="White" MaxWidth="250" Width="250" MaxHeight="250" Height="150" CornerRadius="15" Cursor="Hand">
+    <Border Background="White" MaxWidth="250" Width="250" MaxHeight="250" Height="150" CornerRadius="15" Cursor="Hand" MouseDown="Border_MouseDown">
         <Border.Effect>
             <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>

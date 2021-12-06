@@ -21,6 +21,7 @@
             <ComboBox Grid.Column="2" HorizontalAlignment="Right" Width="120" Height="20" Style="{DynamicResource DefaultComboBox}" ItemContainerStyle="{DynamicResource DefaultComboBoxItem}" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem Content="A-Z" Selector.IsSelected="True"></ComboBoxItem>
                 <ComboBoxItem Content="Z-A"></ComboBoxItem>
+                <ComboBoxItem Content="# Items"></ComboBoxItem>
             </ComboBox>
             <Grid Grid.Column="3" HorizontalAlignment="Right">
                 <TextBox x:Name="SearchBox" Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" BorderBrush="SlateGray" KeyDown="OnKeyDown"></TextBox>

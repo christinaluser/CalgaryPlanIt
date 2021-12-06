@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalgaryPlanIt.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,58 +21,74 @@ namespace CalgaryPlanIt.Views
     /// </summary>
     public partial class ViewList : Page
     {
+        Lis Lis;
         string SortType = "A-Z";
         public ViewList()
         {
             InitializeComponent();
         }
-        public void RefreshTripsGrid(List<Trip> TripList)
+
+        public ViewList(Lis lis)
+        {
+            InitializeComponent();
+            Lis = lis;
+            Lis.Attractions = Lis.Attractions?.OrderBy(t => t.Name).ToList();
+            RefreshAttractionsGrid(Lis.Attractions);
+        }
+
+        public void RefreshAttractionsGrid(List<Attraction> attractions)
         {
             AttractionsList.Children.Clear();
-            foreach (Trip trip in TripList)
+            if (Lis.Attractions?.Count > 0)
             {
-                if (!trip.IsArchived)
+                foreach (Attraction attraction in attractions)
                 {
-                    //var card = new TODO(trip);
-                    //card.ArchiveButtonClicked += Trip_ArchiveButtonClicked;
-                    //AttractionsList.Children.Add(card);
+                    var card = new ListAttractionCard(attraction);
+                    card.ArchiveButtonClicked += Trip_ArchiveButtonClicked;
+                    AttractionsList.Children.Add(card);
                 }
+            } else
+            {
+                AttractionsList.Children.Add(new TextBlock() { Text = "No items in this list"});
             }
+            
         }
 
         private void Trip_ArchiveButtonClicked(object sender, EventArgs e)
         {
-            //var index = MainWindow.TripsList.FindIndex(trip => ((TODO)sender).Trip == trip);
-            //MainWindow.TripsList[index].IsArchived = true;
-            //RefreshTripsGrid(MainWindow.TripsList);
+            var index = MainWindow.ListofLists.FindIndex(list => Lis == list);
+            MainWindow.ListofLists[index].Attractions?.Remove(((Attraction)sender));
+            Lis.Attractions?.Remove(((Attraction)sender));
+            RefreshAttractionsGrid(Lis.Attractions);
         }
 
         private void Sort()
         {
+            if (Lis == null || Lis?.Attractions?.Count < 0) return;
+            List<Attraction> templist = new List<Attraction>();
             if (SortType == "A-Z")
             {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.Name).ToList();
+                templist = Lis.Attractions.OrderBy(t => t.Name).ToList();
             }
             else if (SortType == "Z-A")
             {
-                MainWindow.TripsList = MainWindow.TripsList.OrderByDescending(t => t.Name).ToList();
+                templist = Lis.Attractions.OrderByDescending(t => t.Name).ToList();
             }
-            else if (SortType == "Upcoming Trips")
+            else if (SortType == "Price: High")
             {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.StartDate).ToList();
-                var temp = MainWindow.TripsList.FindAll(t => t.StartDate >= DateTime.Now);
-                var temp2 = MainWindow.TripsList.FindAll(t => t.StartDate < DateTime.Now);
-                MainWindow.TripsList = temp;
-                foreach (Trip t in temp2)
-                {
-                    MainWindow.TripsList.Add(t);
-                }
+                templist = Lis.Attractions.OrderByDescending(t => t.Price).ToList();
+            }
+            else if (SortType == "Price: Low")
+            {
+                templist = Lis.Attractions.OrderBy(t => t.Price).ToList();
+            }
+            else if (SortType == "Date")
+            {
+                templist = Lis.Attractions.OrderBy(t => t.StartDate).ToList();
+            }
 
-            }
-            else if (SortType == "Closest Date")
-            {
-                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => Math.Abs(DateTime.Compare(t.StartDate, DateTime.Now))).ToList();
-            }
+            if (AttractionsList != null && AttractionsList.Children.Count > 0)
+            RefreshAttractionsGrid(templist);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,8 +98,7 @@ namespace CalgaryPlanIt.Views
             if (split.Length > 2)
                 SortType += " " + split[2];
             Sort();
-            if (AttractionsList != null && AttractionsList.Children.Count > 0)
-                RefreshTripsGrid(MainWindow.TripsList);
+            
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)
@@ -90,10 +106,10 @@ namespace CalgaryPlanIt.Views
             if (e.Key == Key.Enter || e.Key == Key.Return)
             {
                 var searchVal = SearchBox.Text;
-                List<Trip> searchResults = MainWindow.TripsList.FindAll(t => t.Name.Contains(searchVal));
+                List<Attraction> searchResults = Lis.Attractions.FindAll(t => t.Name.Contains(searchVal, StringComparison.OrdinalIgnoreCase));
                 SearchResultsTitle.Text += "\"" + searchVal + "\"    (" + searchResults.Count + " results)";
                 SearchHeader.Visibility = Visibility.Visible;
-                RefreshTripsGrid(searchResults);
+                RefreshAttractionsGrid(searchResults);
             }
         }
 
@@ -101,7 +117,7 @@ namespace CalgaryPlanIt.Views
         {
             SearchBox.Clear();
             SearchHeader.Visibility = Visibility.Collapsed;
-            RefreshTripsGrid(MainWindow.TripsList);
+            RefreshAttractionsGrid(Lis.Attractions);
         }
     }
 }
