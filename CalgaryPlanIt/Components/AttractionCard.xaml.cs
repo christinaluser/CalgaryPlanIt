@@ -69,13 +69,14 @@ namespace CalgaryPlanIt.Components
                     var tagBlock = new TextBlock()
                     {
                         Text = tag.ToFriendlyString(),
-                        Padding = new Thickness(15, 0, 15, 0),
+                        Padding = new Thickness(10, 5, 10, 5),
                         VerticalAlignment = VerticalAlignment.Center
                     };
                     var border = new Border()
                     {
                         Child = tagBlock,
                         CornerRadius = new CornerRadius(20),
+                        Height = 25,
                         Background = Brushes.AliceBlue,
                         BorderBrush = Brushes.AliceBlue,
                         Margin = new Thickness(5)
@@ -88,6 +89,16 @@ namespace CalgaryPlanIt.Components
         private void Grid_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             AttractionCardClicked.Invoke(this, e);
+        }
+
+        private void Border_MouseEnter(object sender, MouseEventArgs e)
+        {
+            CardBorder.BorderThickness = new Thickness(2);
+        }
+
+        private void Border_MouseLeave(object sender, MouseEventArgs e)
+        {
+            CardBorder.BorderThickness = new Thickness(0);
         }
     }
 }

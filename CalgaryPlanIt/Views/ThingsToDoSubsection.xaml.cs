@@ -27,6 +27,9 @@ namespace CalgaryPlanIt.Views
         AttractionDetails? CurrentDetails;
         bool SwitchViewOnDetailsClose = false;
 
+        //Sort
+        string SortType = "";
+
         private Point origin;
         private Point start;
 
@@ -63,17 +66,20 @@ namespace CalgaryPlanIt.Views
             MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
             MapCanvas.MouseMove += MapCanvas_MouseMove;
 
+            SetMapMarkers();
+        }
+
+        private void SetMapMarkers()
+        {
             var mapMarker = new MapMarker("You", null);
             Canvas.SetTop(mapMarker, 100);
             Canvas.SetLeft(mapMarker, 100);
             MapCanvas.Children.Add(mapMarker);
 
-            var mapMarker2 = new MapMarker(Attractions[0].Name, null, true);
-            Canvas.SetTop(mapMarker2, 200);
-            Canvas.SetLeft(mapMarker2, 200);
-            MapCanvas.Children.Add(mapMarker2);
-
-
+            //var mapMarker2 = new MapMarker(Attractions[0].Name, null, true);
+            //Canvas.SetTop(mapMarker2, 200);
+            //Canvas.SetLeft(mapMarker2, 200);
+            //MapCanvas.Children.Add(mapMarker2);
         }
 
         private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -197,6 +203,72 @@ namespace CalgaryPlanIt.Views
             CurrentDetails = null;
             SwitchViewOnDetailsClose = false;
             SwitchViewButton.Visibility=Visibility.Visible;
+        }
+
+        private void ClearSearchResults(object sender, EventArgs e)
+        {
+            SearchBar.Clear();
+            Attractions = MainWindow.AttractionsList.FindAll(a => a.Category == Category);
+            PopulateAttractionsList();
+            SetMapMarkers();
+            SearchHeader.Visibility = Visibility.Collapsed;
+        }
+
+        private void Sort()
+        {
+            if (SortType == "A-Z")
+            {
+                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.Name).ToList();
+            }
+            else if (SortType == "Z-A")
+            {
+                MainWindow.TripsList = MainWindow.TripsList.OrderByDescending(t => t.Name).ToList();
+            }
+            else if (SortType == "Upcoming Trips")
+            {
+                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => t.StartDate).ToList();
+                var temp = MainWindow.TripsList.FindAll(t => t.StartDate >= DateTime.Now);
+                var temp2 = MainWindow.TripsList.FindAll(t => t.StartDate < DateTime.Now);
+                MainWindow.TripsList = temp;
+                foreach (Trip t in temp2)
+                {
+                    MainWindow.TripsList.Add(t);
+                }
+
+            }
+            else if (SortType == "Closest Date")
+            {
+                MainWindow.TripsList = MainWindow.TripsList.OrderBy(t => Math.Abs(DateTime.Compare(t.StartDate, DateTime.Now))).ToList();
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var split = ((ComboBox)sender).SelectedItem.ToString().Split(" ");
+            SortType = split[1];
+            if (split.Length > 2)
+                SortType += " " + split[2];
+            Sort();
+            if (AttractionsList != null && AttractionsList.Children.Count > 0)
+            {
+                PopulateAttractionsList();
+                SetMapMarkers();
+            }
+
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Return)
+            {
+                var searchVal = SearchBar.Text;
+                List<Attraction> searchResults = Attractions.FindAll(a => a.Name.Contains(searchVal, StringComparison.OrdinalIgnoreCase));
+                Attractions = searchResults;
+                SearchResultsTitle.Text += "\"" + searchVal + "\"    (" + searchResults.Count + " results)";
+                SearchHeader.Visibility = Visibility.Visible;
+                PopulateAttractionsList();
+                SetMapMarkers();
+            }
         }
     }
 }
