@@ -23,10 +23,25 @@ namespace CalgaryPlanIt.Views
     {
         string SortType = "A-Z";
 
-
         public Lists()
         {
             InitializeComponent();
+            AddListCards(MainWindow.ListofLists);
+        }
+
+        //only put a bool if its mobile lol its dont actually check
+        public Lists(bool isMobile)
+        {
+            InitializeComponent();
+
+            Grid.SetRow(search, 1);
+            Grid.SetColumn(search, 1);
+
+            Grid.SetColumn(sort, 0);
+            Grid.SetRow(sort, 1);
+
+            Grid.SetRow(sep, 1);
+
             AddListCards(MainWindow.ListofLists);
         }
 

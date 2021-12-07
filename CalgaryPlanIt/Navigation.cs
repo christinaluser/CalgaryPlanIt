@@ -14,6 +14,7 @@ namespace CalgaryPlanIt
         public static void NavigateTo(Page newPage)
         {
             window.navbar.Visibility = System.Windows.Visibility.Visible;
+            window.Main.Margin = new System.Windows.Thickness(0);
             window.mobilenavbar.Visibility = System.Windows.Visibility.Collapsed;
             window.Width = 1500;
             window.SwitchPage(newPage);
@@ -28,6 +29,7 @@ namespace CalgaryPlanIt
         {
             window.navbar.Visibility = System.Windows.Visibility.Collapsed;
             window.mobilenavbar.Visibility = System.Windows.Visibility.Visible;
+            window.Main.Margin = new System.Windows.Thickness(0,65,0,0);
             window.Width = 450;
 
             window.SwitchPage(newPage);

@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <Components:NavBar Grid.Row="0" x:Name="navbar"/>
             <Components:MobileNavBar Grid.Row="1" Panel.ZIndex="1000" x:Name="mobilenavbar" Visibility="Collapsed"></Components:MobileNavBar>
-            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden"/>
+            <Frame Grid.Row="1" x:Name="Main" NavigationUIVisibility="Hidden" />
         </Grid>
     </ScrollViewer>
 </Window>

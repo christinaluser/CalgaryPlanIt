@@ -45,7 +45,7 @@ namespace CalgaryPlanIt.Components
 
         private void ListsButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateToMobile(new Lists());
+            Navigation.NavigateToMobile(new Lists(true));
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
         
