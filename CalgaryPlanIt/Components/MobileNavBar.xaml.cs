@@ -37,7 +37,7 @@ namespace CalgaryPlanIt.Components
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
-        private void NavigateToMobile(object sender, RoutedEventArgs e)
+        private void TripsButton_Click(object sender, RoutedEventArgs e)
         {
             Navigation.NavigateToMobile(new Trips());
             HighlightNavBarButton(((Button)sender).Content.ToString());
@@ -49,11 +49,6 @@ namespace CalgaryPlanIt.Components
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
         
-        private void TripsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Navigation.NavigateToMobile(new Lists());
-            HighlightNavBarButton(((Button)sender).Content.ToString());
-        }
 
         public void HighlightNavBarButton(string buttonName)
         {
