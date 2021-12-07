@@ -17,38 +17,38 @@ using System.Windows.Shapes;
 namespace CalgaryPlanIt.Components
 {
     /// <summary>
-    /// Interaction logic for NavBar.xaml
+    /// Interaction logic for MobileNavBar.xaml
     /// </summary>
-     public partial class NavBar : UserControl
+    public partial class MobileNavBar : UserControl
     {
-        public NavBar()
+        public MobileNavBar()
         {
             InitializeComponent();
-            HighlightNavBarButton("Home");
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new HomeCurrentTrip());
+            Navigation.NavigateToMobile(new Home());
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void ThingsToDoButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new ThingsToDo());
+            Navigation.NavigateToMobile(new ThingsToDo());
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void TripsButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new Trips());
+            Navigation.NavigateToMobile(new Trips());
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void ListsButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new Lists());
+            Navigation.NavigateToMobile(new Lists(true));
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
+        
 
         public void HighlightNavBarButton(string buttonName)
         {
@@ -66,12 +66,21 @@ namespace CalgaryPlanIt.Components
                     }
                 }
             }
-
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Navigation.NavigateToMobile(new Home());
+            Navigation.NavigateTo(new Home());
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            NavBarButtonGroup.Visibility = Visibility.Visible;
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            NavBarButtonGroup.Visibility = Visibility.Collapsed;
         }
     }
 }

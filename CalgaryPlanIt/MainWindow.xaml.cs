@@ -157,7 +157,22 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "10 hours",
                 Address = "Ramada Plaza by Wyndham Calgary Downtown, 708 8 Ave SW, Calgary, AB T2P 1H2, Canada",
-                Host = "Calgary Tours"
+                Host = "Calgary Tours",
+                Reviews = new List<Review>() {new Review()
+                    {
+                    Rating = 5,
+                    Description = "Great day trip with a small group of people. There was a hike to Johnston canyon, stopped at Banff town for lunch, hoodoos viewpoint, surprise corner viewpoint, as well as taken the beautiful gondola ride to Sulphur mountain. Our guide was knowledgeable about the tourist attractions and was very helpful."
+                    }, new Review()
+                    {
+                    Rating = 5,
+                    Description = "Our tour guide/driver picked us on time, talked about the places' info on the way. Good communication on when & where to pick up on the tourist spots where he dropped us off. Covered all the places we planned to go on our itinerary. a safe & efficient driver."
+                    },
+                    new Review()
+                    {
+                        Rating = 5,
+                        Description = "I had a great time on this tour. The gondola ride up Sulfur Mountain is a must. So worth it. Banff town was really nice. Lots to see there, but sadly not enough time."
+                    }
+                }
             });
             AttractionsList.Add(new Attraction()
             {

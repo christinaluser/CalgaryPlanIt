@@ -55,6 +55,14 @@ namespace CalgaryPlanIt.Components
             Price.Text += Attraction.Price;
             Description.Text = Attraction.Description;
 
+            if (Attraction.Reviews != null)
+            {
+                foreach (Review review in Attraction.Reviews)
+                {
+                    ReviewDescription.Text += review.Description + "\n\n";
+                }
+            }
+
             Rating.Text = Attraction.Rating.ToString();
             NumRatings.Text = Attraction.Reviews?.Count.ToString() + " Reviews";
 

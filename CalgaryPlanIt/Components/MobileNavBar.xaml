@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="CalgaryPlanIt.Components.NavBar"
+﻿<UserControl x:Class="CalgaryPlanIt.Components.MobileNavBar"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="900" d:DesignWidth="450">
     <UserControl.Resources>
         <Style x:Key="NavBarButton" TargetType="Button">
             <Setter Property="Margin" Value="10"></Setter>
@@ -23,15 +23,25 @@
             </Style.Resources>
         </Style>
     </UserControl.Resources>
-    <Grid Background="LightBlue" Height="65">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Image Grid.Column="0" Source="/Images/CalgaryPlanItNoTextLogo.png" Height="60" Width="50" HorizontalAlignment="Left" Margin="10,0" MouseDown="Image_MouseDown"/>
-        <TextBlock Grid.Column="2" Text="Calgary PlanIt" Style="{StaticResource Title}" VerticalAlignment="Center" Margin="10"></TextBlock>
-        <StackPanel Grid.Column="2" x:Name="NavBarButtonGroup" Height="60" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="LightBlue" Height="65">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Transparent" HorizontalAlignment="Left" Margin="10" Unchecked="ToggleButton_Unchecked" Checked="ToggleButton_Checked">
+                <Image Source="/Images/Bars.png"></Image>
+            </ToggleButton>
+            <Image Grid.Column="1" Source="/Images/CalgaryPlanItNoTextLogo.png" Height="60" Width="50" HorizontalAlignment="Left" MouseDown="Image_MouseDown"/>
+            <TextBlock Grid.Column="2" Text="Calgary PlanIt" Style="{StaticResource Title}" VerticalAlignment="Center" Margin="10"></TextBlock>
+            
+        </Grid>
+        <StackPanel Grid.Row="1" x:Name="NavBarButtonGroup" Height="835" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" Background="White" Visibility="Collapsed">
             <Button Name="HomeButton" Content="Home" Click="HomeButton_Click" Style="{StaticResource NavBarButton}"/>
             <Button Name="ThingsToDoButton" Content="Things To Do" Click="ThingsToDoButton_Click" Style="{StaticResource NavBarButton}"/>
             <Button Name="TripsButton" Content="Trips" Click="TripsButton_Click" Style="{StaticResource NavBarButton}"/>

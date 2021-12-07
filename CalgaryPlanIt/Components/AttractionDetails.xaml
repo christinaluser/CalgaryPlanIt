@@ -50,6 +50,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -64,15 +65,20 @@
             <Separator Grid.Row="0" VerticalAlignment="Bottom"/>
             <TextBlock Grid.Row="1" x:Name="Dates" Text="Dates" Style="{StaticResource Body}"></TextBlock>
             <TextBlock Grid.Row="2" x:Name="ExpectedDuration" Text="Expected Duration: " Style="{StaticResource Body}"></TextBlock>
+            <TextBlock Grid.Row="3" x:Name="Address" Text="Address" Style="{StaticResource Body}"></TextBlock>
             <TextBlock Grid.Row="3" x:Name="Price" Text="From: " Style="{StaticResource Body}"></TextBlock>
-            <TextBlock Grid.Row="4" x:Name="Address" Text="Address" Style="{StaticResource Body}"></TextBlock>
-            <TextBlock Grid.Row="5" x:Name="Description" Text="Description" FontSize="16" Style="{StaticResource Body}"></TextBlock>
-            <TextBlock Grid.Row="6" Text="Photos" Style="{StaticResource Heading 3}"></TextBlock>
+            <TextBlock Grid.Row="4" x:Name="Description" Text="Description" FontSize="16" Style="{StaticResource Body}"></TextBlock>
+            <TextBlock Grid.Row="5" Text="Photos" Style="{StaticResource Heading 3}"></TextBlock>
+            <UniformGrid Grid.Row="6" Height="100">
+                <Image Source="/Images/Banff1.jpg"></Image>
+                <Image Source="/Images/Banff2.jpg"></Image>
+            </UniformGrid>
             <Separator Grid.Row="6" VerticalAlignment="Bottom"/>
             <WrapPanel Grid.Row="7" x:Name="PhotosGrid"></WrapPanel>
             <TextBlock Grid.Row="8" x:Name="Reviews" Text="Reviews" Style="{StaticResource Heading 3}"></TextBlock>
-            <Separator Grid.Row="8" VerticalAlignment="Bottom"/>
-            <Grid Grid.Row="9" Margin="10, 0">
+            <Separator Grid.Row="9" VerticalAlignment="Bottom"/>
+            <TextBlock Grid.Row="10" x:Name="ReviewDescription" Text="" Style="{StaticResource Heading 3}"></TextBlock>
+            <Grid Grid.Row="11" Margin="10, 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
