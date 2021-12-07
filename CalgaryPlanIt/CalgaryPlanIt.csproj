@@ -18,6 +18,9 @@
     <None Remove="Fonts\Montserrat-Italic.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Righteous-Regular.ttf" />
+    <None Remove="Images\banff1.jpg" />
+    <None Remove="Images\banff2.jpg" />
+    <None Remove="Images\banff3.jpg" />
     <None Remove="Images\Bars.png" />
     <None Remove="Images\CalendarIcon.png" />
     <None Remove="Images\CalgaryPlanItNoTextLogo.png" />
@@ -70,6 +73,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\AddToCalendar.png" />
+    <Resource Include="Images\banff1.jpg" />
+    <Resource Include="Images\banff2.jpg" />
+    <Resource Include="Images\banff3.jpg" />
     <Resource Include="Images\Bars.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
