@@ -52,7 +52,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(10),
                 EndDate = DateTime.Now.AddDays(20),
-                Name = "bbbbb",
+                Name = "Agatha's Trip",
                 NumAdults = 0,
                 NumChildren = 0,
                 NumTeens = 6
@@ -61,7 +61,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(15),
                 EndDate = DateTime.Now.AddDays(25),
-                Name = "zzzzzz",
+                Name = "Betty's Trip",
                 NumAdults = 1,
                 NumChildren = 3,
                 NumTeens = 0
@@ -70,16 +70,16 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(5),
                 EndDate = DateTime.Now.AddDays(7),
-                Name = "aaaaaa",
+                Name = "Lou's trip",
                 NumAdults = 2,
                 NumChildren = 1,
                 NumTeens = 2
             });
             TripsList.Add(new Trip()
             {
-                StartDate = DateTime.Now.AddDays(50),
-                EndDate = DateTime.Now.AddDays(57),
-                Name = "ccccc",
+                StartDate = DateTime.Now.AddDays(-3),
+                EndDate = DateTime.Now.AddDays(5),
+                Name = "Sara's Trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2
@@ -104,7 +104,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(-3),
                 EndDate = DateTime.Now.AddDays(-1),
-                Name = "123213",
+                Name = "Nathan's Trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2,
@@ -120,7 +120,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(-10),
                 EndDate = DateTime.Now.AddDays(57),
-                Name = "ddddd",
+                Name = "Michelle's trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2,

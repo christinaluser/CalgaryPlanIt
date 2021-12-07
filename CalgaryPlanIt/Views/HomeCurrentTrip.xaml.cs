@@ -22,9 +22,22 @@ namespace CalgaryPlanIt.Views
     public partial class HomeCurrentTrip : Page
     {
         Trip Trip;
+        bool IsCurrent = false;
         public HomeCurrentTrip()
         {
             InitializeComponent();
+            var sorted = MainWindow.TripsList.OrderBy(t=>Trip.StartDate).Where(t=> t.EndDate > DateTime.Now && t.IsArchived == false).ToList();
+            Trip = sorted.FirstOrDefault();
+            if(Trip != null)
+            {
+                if(Navigation.window.Width > 450)
+                    Navigation.NavigateTo(new Home());
+                
+            }
+            if(Trip.StartDate < DateTime.Now)
+            {
+                IsCurrent = true;
+            }
         }
 
         private void SetContent()
