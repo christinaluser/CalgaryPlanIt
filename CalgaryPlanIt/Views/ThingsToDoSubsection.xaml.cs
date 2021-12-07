@@ -355,13 +355,20 @@ namespace CalgaryPlanIt.Views
                         }
                     }
                 }
-                //foreach (Attraction att in TagAttractions)
-                //{
-                //    AttractionsList.Children.Add(new AttractionCard(att));
-                //}
-
+                Attractions = TagAttractions;
             }
-            Attractions = TagAttractions;
+
+            List<Attraction> datefiltered = new List<Attraction>();
+            foreach (Attraction att in Attractions)
+            {
+                if (att.StartDate >= FilterStartDate.SelectedDate && att.StartDate <= FilterEndDate.SelectedDate)
+                {
+                    datefiltered.Add(att);
+                }
+            }
+
+            Attractions = datefiltered;
+
             PopulateAttractionsList();
 
 
@@ -431,7 +438,7 @@ namespace CalgaryPlanIt.Views
             {
                 AttractionsList.Children.Add(new AttractionCard(attraction));
             }
-
+            Button_Click_2(sender, e);
         }
 
         private void SwitchViewButton_Click(object sender, RoutedEventArgs e)
@@ -483,8 +490,6 @@ namespace CalgaryPlanIt.Views
             SearchHeader.Visibility = Visibility.Collapsed;
         }
 
-        
-
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Return)
@@ -531,10 +536,17 @@ namespace CalgaryPlanIt.Views
                     cb.IsChecked = true;
                 }
 
-                //TODO date
+                FilterStartDate.SelectedDate = trip.StartDate;
+                FilterEndDate.SelectedDate = trip.EndDate;
 
                 Button_Click(sender, null);
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            FilterStartDate.SelectedDate = null;
+            FilterEndDate.SelectedDate = null;
         }
     }
 }

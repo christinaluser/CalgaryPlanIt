@@ -11,6 +11,12 @@
         <Style TargetType="CheckBox">
             <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
         </Style>
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="BorderBrush" Value="SlateGray"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+        
     </Page.Resources>
     <Grid>
         <Grid x:Name="Overlay" Panel.ZIndex="1000" Visibility="Collapsed">
@@ -111,26 +117,28 @@
                             <Setter Property="HorizontalAlignment" Value="Left"></Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <Button Content="Auto Apply Filters For Trip" Click="AutoApplyButton_Click"></Button>
                     <UniformGrid Columns="2">
-                        <Button Content="Apply filters" Click="Button_Click"></Button>
-                        <Button Content="Clear filters" Click="Button_Click_1"></Button>
+                        <Button Content="Apply filters" Click="Button_Click" Padding="10" Background="#B2D3C2" Margin="5"></Button>
+                        <Button Content="Clear filters" Click="Button_Click_1" Padding="10" Background="Beige" Margin="5"></Button>
                     </UniformGrid>
+                    <Button Content="Auto Apply Filters For Trip" Click="AutoApplyButton_Click" Padding="10" Margin="5" Background="LightBlue"></Button>
+                    
                     <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--TODO-->
-                        <TextBlock Grid.Row="0" Text="from"></TextBlock>
-                        <TextBlock Grid.Row="1" Text="to"></TextBlock>
-                        <Button Grid.Row="0" Grid.Column="1" Content="Select Start Date"></Button>
-                        <Button Grid.Row="1" Grid.Column="1" Content="Select End Date"></Button>
+                        <TextBlock Grid.Column="0" Text="Start" Style="{StaticResource Body}" Margin="10, 0"></TextBlock>
+                        <DatePicker Grid.Column="1" x:Name="FilterStartDate" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="End" Style="{StaticResource Body}"  Margin="10, 0"></TextBlock>
+                        <DatePicker Grid.Row="1" Grid.Column="1" x:Name="FilterEndDate" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
+                        <Button Grid.Row="2" Content="Clear Dates" Background="Beige" Click="Button_Click_2"></Button>
                     </Grid>
                     <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
                     <RadioButton Name="MP" GroupName="Sort" Content="Most Popular" Checked="MP_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
