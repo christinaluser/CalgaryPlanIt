@@ -253,12 +253,14 @@ namespace CalgaryPlanIt.Views
             }
             else if (Rbutton == "HTL")
             {
+                Attractions = Attractions.OrderByDescending(x => x.Price).ToList();
+                /*
                 Attractions.Sort(delegate (Attraction x, Attraction y)
                 {
 
                     return y.Price.CompareTo(x.Price);
                 });
-
+                */
                 //AttractionsList.Children.Clear();
                 //foreach (Attraction att in Attractions)
                 //{
