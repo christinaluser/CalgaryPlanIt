@@ -52,7 +52,7 @@ namespace CalgaryPlanIt.Components
             else 
                 ExpectedDuration.Visibility = Visibility.Collapsed;
             Address.Text = Attraction.Address;
-
+            Price.Text += Attraction.Price;
             Description.Text = Attraction.Description;
 
             Rating.Text = Attraction.Rating.ToString();

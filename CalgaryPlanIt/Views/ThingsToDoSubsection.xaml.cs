@@ -358,16 +358,21 @@ namespace CalgaryPlanIt.Views
                 Attractions = TagAttractions;
             }
 
-            List<Attraction> datefiltered = new List<Attraction>();
-            foreach (Attraction att in Attractions)
+            if (FilterStartDate.SelectedDate != null && FilterEndDate.SelectedDate != null)
             {
-                if (att.StartDate >= FilterStartDate.SelectedDate && att.StartDate <= FilterEndDate.SelectedDate)
-                {
-                    datefiltered.Add(att);
-                }
-            }
+                List<Attraction> datefiltered = new List<Attraction>();
 
-            Attractions = datefiltered;
+                foreach (Attraction att in Attractions)
+                {
+                    if (att.StartDate >= FilterStartDate.SelectedDate && att.StartDate <= FilterEndDate.SelectedDate)
+                    {
+                        datefiltered.Add(att);
+                    }
+                }
+
+                Attractions = datefiltered;
+            }
+            
 
             PopulateAttractionsList();
 

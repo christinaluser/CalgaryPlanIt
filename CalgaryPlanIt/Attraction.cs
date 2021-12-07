@@ -28,11 +28,21 @@ namespace CalgaryPlanIt
         public int CompareTo(Attraction attr)
         {
             // A null value means that this object is greater.
-            if (attr == null)
+            if (attr == null || attr.Price == "")
+            {
                 return 1;
+            }
 
             else
-                return this.Price.CompareTo(attr.Price);
+            {
+                var tprice = this.Price.Split(" ")[0];
+                tprice.Remove(0, 1);
+
+                var aprice = attr.Price.Split(" ")[0];
+                aprice.Remove(0, 1);
+
+                return double.Parse(tprice).CompareTo(double.Parse(aprice));
+            }
         }
 
         //location?

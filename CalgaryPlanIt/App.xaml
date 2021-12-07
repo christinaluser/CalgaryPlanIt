@@ -315,6 +315,7 @@
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
                 <Setter.Value>
