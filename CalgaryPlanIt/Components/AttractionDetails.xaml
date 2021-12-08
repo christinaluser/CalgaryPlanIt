@@ -35,6 +35,11 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+        </Style>
     </UserControl.Resources>
     <ScrollViewer>
         <Border Background="White" CornerRadius="5">
@@ -56,12 +61,11 @@
                 <TextBlock Grid.Row="3" x:Name="Price" Text="Address" Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="4" x:Name="Description" Text="Description" FontSize="16" Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="5" Text="Photos" Style="{StaticResource Heading 3}"></TextBlock>
-                <UniformGrid x:Name="PhotoContainer" Grid.Row="6"/>
                 <Separator Grid.Row="6" VerticalAlignment="Bottom"/>
+                <UniformGrid x:Name="PhotoContainer" Grid.Row="6"/>
                 <WrapPanel Grid.Row="7" x:Name="PhotosGrid"></WrapPanel>
                 <TextBlock Grid.Row="8" x:Name="Reviews" Text="Reviews" Style="{StaticResource Heading 3}"></TextBlock>
                 <Separator Grid.Row="9" VerticalAlignment="Bottom"/>
-                <StackPanel Grid.Row="10" x:Name="ReviewContainer" ></StackPanel>
                 <Grid Grid.Row="11" Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -88,8 +92,10 @@
                     <Button Grid.Column="5" x:Name="Star5" Style="{StaticResource NotARealButton}">
                         <DynamicResource ResourceKey="GreyStar5"/>
                     </Button>
-                    <TextBlock Grid.Column="6" x:Name="NumRatings" Text="0 Reviews" VerticalAlignment="Bottom"></TextBlock>
+                    <TextBlock Grid.Column="6" x:Name="NumRatings" Text="0 Reviews" VerticalAlignment="Center" Margin="5,5,5,3"></TextBlock>
                 </Grid>
+
+                <StackPanel Grid.Row="10" x:Name="ReviewContainer" ></StackPanel>
             </StackPanel>
         </Border>
     </ScrollViewer>

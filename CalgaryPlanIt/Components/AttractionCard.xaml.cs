@@ -69,7 +69,22 @@ namespace CalgaryPlanIt.Components
                 Star5.Content = FindResource("YellowStar5");
             }
             //TODO change to actual attraction image
-            AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Heart.png"));
+            if (Attraction.ImageSourceName != null)
+            {
+                if (Attraction.ImageSourceName.Count > 0)
+                {
+                    if (Attraction.ImageSourceName.First() != null && Attraction.ImageSourceName.First() != "" && Attraction.ImageSourceName.First() != " ") 
+                        AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Attraction/" + Attraction.ImageSourceName.First()));
+                    else
+                    {
+                        AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Heart.png"));
+                    }
+                }
+                else
+                {
+                    AttractionImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Heart.png"));
+                }
+            }
 
 
             var tags = Enum.GetValues(typeof(Tag));

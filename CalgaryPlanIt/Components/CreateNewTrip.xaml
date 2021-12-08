@@ -6,15 +6,25 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type DatePickerTextBox}">
+            <Setter Property="BorderBrush" Value="SlateGray"></Setter>
+            <Setter Property="BorderThickness" Value="1"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+        </Style>
+    </UserControl.Resources>
     <Border Background="White" CornerRadius="15" Height="600" x:Name="border">
 
-        <StackPanel Margin="30" Background="White">
+        <StackPanel Margin="20" Background="White">
 
-            <Button Style="{StaticResource IconButtonLarge}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseWindow_Click" >
-                <Image Source="/Images/Close.png" Width="30" Height="30"></Image>
-            </Button> 
+            <Grid>
+                <Button Style="{StaticResource IconButtonLarge}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseWindow_Click" >
+                    <Image Source="/Images/Close.png" Width="30" Height="30"></Image>
+                </Button>
+                <TextBlock Text="Create a new trip" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource Heading 1}"></TextBlock>
+            </Grid>
+
             <TextBlock Text="WHEN IS YOUR TRIP?" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Style="{StaticResource Heading 2}"/>
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -22,13 +32,13 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DatePicker Grid.Column="0" x:Name="StartDate" MinWidth="200" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
-                <Image Grid.Column="1" Source="/Images/RightArrow.png" Height="50"/>
+                <Image Grid.Column="1" Source="/Images/RightArrow.png" Height="40"/>
                 <DatePicker Grid.Column="2" x:Name="EndDate" MinWidth="200" HorizontalAlignment="Center" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
             </Grid>
             <TextBlock x:Name="DatesWarning" Style="{StaticResource Body}" Visibility="Hidden" Padding="5" Background="LightCoral" HorizontalAlignment="Center" VerticalAlignment="Top" Text="End date needs to be after start date"></TextBlock>
 
 
-            <TextBlock Text="WHO WILL BE THERE?" Margin="15,40,15,30" HorizontalAlignment="Center"  Style="{StaticResource Heading 2}"/>
+            <TextBlock Text="WHO WILL BE THERE?" Margin="20" HorizontalAlignment="Center"  Style="{StaticResource Heading 2}"/>
 
 
             <UniformGrid Rows="1" Columns="3" Height="Auto" VerticalAlignment="Center" Width="Auto" x:Name="numTravellersSelection">
@@ -74,7 +84,7 @@
 
             <TextBlock x:Name="NumTravellersWarning" Margin="10" Visibility="Hidden" Text="You selected 0 travellers, click 'Start Planning' again if you want to continue anyways" Style="{StaticResource Body}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="5" Background="NavajoWhite"></TextBlock>
 
-            <TextBlock Text="NAME YOUR TRIP" Margin="15, 45 ,15, 15" HorizontalAlignment="Center"  Style="{StaticResource Heading 2}"/>
+            <TextBlock Text="NAME YOUR TRIP" Margin="20" HorizontalAlignment="Center"  Style="{StaticResource Heading 2}"/>
             <TextBox x:Name="TripNameTextBox" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
             <TextBlock x:Name="NameWorning" Margin="10" Visibility="Hidden" Text="Please enter a name" Style="{StaticResource Body}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="5" Background="LightCoral"></TextBlock>
 

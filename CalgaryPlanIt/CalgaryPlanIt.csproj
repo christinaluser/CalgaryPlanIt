@@ -18,6 +18,24 @@
     <None Remove="Fonts\Montserrat-Italic.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Fonts\Righteous-Regular.ttf" />
+    <None Remove="Images\Attraction\bell.png" />
+    <None Remove="Images\Attraction\calgarysightseeing.jpg" />
+    <None Remove="Images\Attraction\calgarytower.png" />
+    <None Remove="Images\Attraction\chinese.png" />
+    <None Remove="Images\Attraction\chinese2.png" />
+    <None Remove="Images\Attraction\culture.jpg" />
+    <None Remove="Images\Attraction\ghost.jpg" />
+    <None Remove="Images\Attraction\horseshoe.jpg" />
+    <None Remove="Images\Attraction\lib.png" />
+    <None Remove="Images\Attraction\minas.png" />
+    <None Remove="Images\Attraction\princes.png" />
+    <None Remove="Images\Attraction\river.png" />
+    <None Remove="Images\Attraction\roundup.jpg" />
+    <None Remove="Images\Attraction\smartphone1.jpg" />
+    <None Remove="Images\Attraction\smartphone2.jpg" />
+    <None Remove="Images\Attraction\smartphone3.jpg" />
+    <None Remove="Images\Attraction\smoke.png" />
+    <None Remove="Images\Attraction\walking.jpg" />
     <None Remove="Images\banff1.jpg" />
     <None Remove="Images\banff2.jpg" />
     <None Remove="Images\banff3.jpg" />
@@ -88,6 +106,60 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\AddToCalendar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\bell.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\calgarysightseeing.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\calgarytower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\chinese.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\chinese2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\culture.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\ghost.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\horseshoe.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\lib.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\minas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\princes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\river.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\roundup.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\smartphone1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\smartphone2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\smartphone3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\smoke.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\walking.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Bars.png">

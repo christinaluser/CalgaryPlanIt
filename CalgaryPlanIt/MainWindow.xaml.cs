@@ -190,7 +190,8 @@ namespace CalgaryPlanIt
                 Rating = 0,
                 Duration = "2-4 hours",
                 Address = "City Hall, Calgary, AB T2G 0J2, Canada",
-                Host = "GPS-Guided Audio Walking, Driving & Biking Tours"
+                Host = "GPS-Guided Audio Walking, Driving & Biking Tours",
+                ImageSourceName = new List<string>() { "smartphone1.jpg", "smartphone2.jpg", "smartphone3.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -212,7 +213,8 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "2 hours",
                 Address = "228 8 Ave SE, Calgary, AB T2P 2M5, Canada",
-                Host = "Let's Roam Calgary"
+                Host = "Let's Roam Calgary",
+                ImageSourceName = new List<string>() { "culture.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -227,7 +229,8 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "60-70 minutes",
                 Address = "Traveller pickup is offered.",
-                Host = "Rocky Mountain Sidecar Adventures"
+                Host = "Rocky Mountain Sidecar Adventures",
+                ImageSourceName= new List<string>() { "calgarysightseeing.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -242,7 +245,8 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "3 hours",
                 Address = "Calgary Tower, 101 9 Ave SW, Calgary, AB T2P 1J9, Canada",
-                Host = "Rocky Mountain Sidecar Adventures"
+                Host = "Rocky Mountain Sidecar Adventures",
+                ImageSourceName = new List<string>() { "ghost.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -257,7 +261,8 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "10 hours",
                 Address = "Ramada Plaza by Wyndham Calgary Downtown",
-                Host = "Calgary Tours"
+                Host = "Calgary Tours",
+                ImageSourceName = new List<string>() { "horseshoe.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -272,7 +277,8 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "1 hours 30 minutes",
                 Address = "304 8 Ave SW, Calgary, AB T2P 1C1, Canada",
-                Host = "Mystery Towns"
+                Host = "Mystery Towns",
+                ImageSourceName = new List<string>() { "roundup.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -287,7 +293,8 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "2 hours",
                 Address = "1900 Heritage Dr, Calgary, AB T2V 2X3, Canada, By the entrance of Heritage Park Historical Village",
-                Host = "Fun Top Fun Canada"
+                Host = "Fun Top Fun Canada",
+                ImageSourceName = new List<string>() { "walking.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -512,7 +519,10 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hour",
                 Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1525,
+                CanvasTopValue = 1110,
+                ImageSourceName = new List<string> { "calgarytower.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -527,7 +537,10 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hour",
                 Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1525,
+                CanvasTopValue = 1110,
+                ImageSourceName = new List<string> { "calgarytower.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -544,7 +557,8 @@ namespace CalgaryPlanIt
                 Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
                 Host = "",
                 CanvasLeftValue = 1525,
-                CanvasTopValue = 1110
+                CanvasTopValue = 1110,
+                ImageSourceName = new List<string> { "calgarytower.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -560,8 +574,9 @@ namespace CalgaryPlanIt
                 Duration = "1-2 Hours",
                 Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
                 Host = "",
-                CanvasLeftValue = 1079,
-                CanvasTopValue = 960
+                CanvasLeftValue = 1597,
+                CanvasTopValue = 1086,
+                ImageSourceName = new List<string> { "bell.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -578,7 +593,8 @@ namespace CalgaryPlanIt
                 Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
                 Host = "",
                 CanvasLeftValue = 1597,
-                CanvasTopValue = 1086
+                CanvasTopValue = 1086,
+                ImageSourceName = new List<string> { "bell.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -595,7 +611,8 @@ namespace CalgaryPlanIt
                 Address = "800 3 St SE In the East Village, Calgary, Alberta T2G 2E7 Canada",
                 Host = "",
                 CanvasLeftValue = 1562,
-                CanvasTopValue = 1100
+                CanvasTopValue = 1100,
+                ImageSourceName = new List<string> { "lib.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -612,7 +629,8 @@ namespace CalgaryPlanIt
                 Address = "200 Barclay Parade SW, Calgary, Alberta T2P 4R5 Canada",
                 Host = "",
                 CanvasLeftValue = 1525,
-                CanvasTopValue = 1030
+                CanvasTopValue = 1030,
+                ImageSourceName = new List<string> { "princes.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -629,7 +647,8 @@ namespace CalgaryPlanIt
                 Address = "25 Prince's Island Pk SW, Calgary, Alberta T2P 0R1 Canada",
                 Host = "",
                 CanvasLeftValue = 1500,
-                CanvasTopValue = 1040
+                CanvasTopValue = 1040,
+                ImageSourceName = new List<string> { "river.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -647,7 +666,8 @@ namespace CalgaryPlanIt
                 Address = "Calgary Chinese Cultural Cntre 197 1 St SW, Calgary, Alberta T2P 4M4 Canada",
                 Host = "",
                 CanvasLeftValue = 1579,
-                CanvasTopValue = 1070
+                CanvasTopValue = 1070,
+                ImageSourceName = new List<string> { "chinese.png", "chinese2.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -664,7 +684,8 @@ namespace CalgaryPlanIt
                 Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
                 Host = "",
                 CanvasLeftValue = 1530,
-                CanvasTopValue = 1060
+                CanvasTopValue = 1060,
+                ImageSourceName = new List<string> { "minas.png" }
             });
             AttractionsList.Add(new Attraction()
             {
@@ -681,7 +702,9 @@ namespace CalgaryPlanIt
                 Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
                 Host = "",
                 CanvasLeftValue = 1490,
-                CanvasTopValue = 1060
+                CanvasTopValue = 1060,
+                ImageSourceName = new List<string> { "smoke.png" }
+
             });
             AttractionsList.Add(new Attraction()
             {
