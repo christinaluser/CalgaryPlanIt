@@ -29,8 +29,8 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Archive" HorizontalAlignment="Center" Click="HandleArchive_Click"/>
-                <Button Grid.Column="1" Content="Plan" HorizontalAlignment="Center" Click="HandlePlan_Click"/>
+                <Button Grid.Column="0" Content="Archive" Background="LightGray" Padding="10" HorizontalAlignment="Center" Click="HandleArchive_Click"/>
+                <Button Grid.Column="1" Content="Plan" HorizontalAlignment="Center" Padding="10" Click="HandlePlan_Click"/>
             </Grid>
         </Grid>
     </Border>

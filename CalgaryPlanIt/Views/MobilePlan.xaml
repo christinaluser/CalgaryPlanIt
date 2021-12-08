@@ -1,0 +1,264 @@
+﻿<Page x:Class="CalgaryPlanIt.Views.MobilePlan"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CalgaryPlanIt.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="450"
+      Title="MobilePlan">
+    <Page.Resources>
+        <Style TargetType="ToggleButton">
+            <Setter Property="Background" Value="#87BBA2"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Padding" Value="10"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="ListButton" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Background" Value="Beige"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Padding" Value="15"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="6"></Setter>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Grid x:Name="Overlay" Panel.ZIndex="1000" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".5"/>
+            </Grid.Background>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="TripName" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Text="TripName" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Heading 1}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ToggleButton Content="TripDetails" x:Name="TripDetailsToggle" HorizontalAlignment="Left" VerticalAlignment="Center" Click="TripDetailsToggle_Click"></ToggleButton>
+
+                <ToggleButton Grid.Row="0" Grid.Column="1" x:Name="SwitchViewButton" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Click="SwitchViewButton_Click">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Background" Value="#87BBA2"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Padding" Value="10"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"></Setter>
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Content" Value="Exit Map" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Content" Value="View Map" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+            </Grid>
+            
+            <!-- ACTUAL PLANNER THING -->
+            <Grid Grid.Row="2">
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource IconButtonSmall}" Click="PrevDayButton_Click">
+                            <Image Source="/Images/Left.png" ></Image>
+                        </Button>
+                        <TextBlock Grid.Column="1" x:Name="PlannerDate" Text="Planner Date" Style="{StaticResource Heading 2}" HorizontalAlignment="Center"></TextBlock>
+                        <Button Grid.Column="2" Style="{StaticResource IconButtonSmall}" Click="NextDayButton_Click">
+                            <Image Source="/Images/Right.png"></Image>
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <ScrollViewer  Height="570" Margin="10,0">
+                            <Grid x:Name="ItineraryContainer" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <!--<Components:ItineraryDayScheduler Margin="10,0"></Components:ItineraryDayScheduler>-->
+                            </Grid>
+
+                        </ScrollViewer>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <Border Grid.Row="2" Height="725" Width="600"  Name="border" ClipToBounds="True" Visibility="Collapsed" Margin="5,0">
+                <Canvas x:Name="MapCanvas">
+                    <Image Source="/Images/MapScreenshot.png"></Image>
+                </Canvas>
+            </Border>
+            <Border x:Name="MapControls" CornerRadius="15" Grid.Row="2" Background="White" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <ToggleButton Padding="5,5,10,5" Margin="8" BorderThickness="0" Background="Pink" Checked="YourLocationToggleButton_Checked">
+                        <ToggleButton.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </ToggleButton.Resources>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Images/MapPin2.png" Width="10" VerticalAlignment="Center" Margin="10, 0"></Image>
+                            <TextBlock Grid.Column="1" Text="Show Your Location" Style="{StaticResource Heading 5}" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </ToggleButton>
+                    <UniformGrid Grid.Row="1" Rows="1" Columns="4">
+                        <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="ClearDirections" Checked="MapControlToggleButton_Checked" IsChecked="True">
+                            <Image Source="/Images/SquareMinus.png"></Image>
+                        </ToggleButton>
+                        <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Walk" Checked="MapControlToggleButton_Checked">
+                            <Image Source="/Images/Walking.png"></Image>
+                        </ToggleButton>
+                        <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Bus" Checked="MapControlToggleButton_Checked">
+                            <Image Source="/Images/Bus.png"></Image>
+                        </ToggleButton>
+                        <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Drive" Checked="MapControlToggleButton_Checked">
+                            <Image Source="/Images/Car.png"></Image>
+                        </ToggleButton>
+                    </UniformGrid>
+                </Grid>
+            </Border>
+
+
+            <Button Content="LISTS" Grid.Row="3" Background="White" BorderBrush="LightGray" BorderThickness="1" Padding="10" HorizontalContentAlignment="Left" FontFamily="{StaticResource MontserratRegular}" FontSize="25" Click="ListsButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15,15,0,0"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <!-- LISTS PANEL -->
+            <Border CornerRadius="15,15,0,0" MaxHeight="400" Height="400" Background="White" Grid.Row="2" VerticalAlignment="Bottom" Grid.RowSpan="2" Visibility="Collapsed" HorizontalAlignment="Stretch" x:Name="listpanel">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="LightGray" ShadowDepth="0"/>
+                </Border.Effect>
+                <ScrollViewer HorizontalAlignment="Stretch" x:Name="ListScollViewer" Grid.Row="1" Grid.Column="2" VerticalScrollBarVisibility="Auto" Padding="10,0">
+                    <StackPanel Margin="10">
+                        <Button x:Name="ListBackButton" Visibility="Collapsed" Click="ListBackButton_Click" Style="{StaticResource ListButton}" Padding="5" Background="AliceBlue" HorizontalAlignment="Left">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="/Images/Left.png" Width="10" Grid.Column="0" HorizontalAlignment="Left"></Image>
+                                <TextBlock Text="Back to lists" Margin="5" Style="{StaticResource Heading 5}" Grid.Column="1" HorizontalAlignment="Right"></TextBlock>
+                            </Grid>
+                        </Button>
+                        <TextBlock x:Name="ListName" Text="Lists" Style="{StaticResource Heading 3}" PreviewMouseLeftButtonUp="ListName_PreviewMouseLeftButtonUp"></TextBlock>
+                        <StackPanel x:Name="ListsStackPanel" HorizontalAlignment="Stretch"></StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
+            
+            <!-- TRIP DETAILS PANEL TRIGGERED BY TOGGLE BUTTON -->
+            <StackPanel Grid.Row="2" Grid.Column="0"  Visibility="Collapsed" x:Name="tripdets" Background="White">
+                <!--TODO: SelectionMode="SingleRange" requires click and drag which isn't ideal-->
+                <Viewbox HorizontalAlignment="Stretch">
+                    <Calendar x:Name="TripSummaryCalendar" HorizontalAlignment="Center" VerticalAlignment="Top" SelectionMode="SingleRange">
+                        <Calendar.CalendarDayButtonStyle>
+                            <Style TargetType="CalendarDayButton">
+                                <Setter Property="IsHitTestVisible" Value="false"></Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=EditDatesButton, Path=IsChecked}" Value="true">
+                                        <Setter Property="IsHitTestVisible" Value="true"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Calendar.CalendarDayButtonStyle>
+                    </Calendar>
+                </Viewbox>
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" x:Name="NumTravellers" Style="{StaticResource Heading 4}"></TextBlock>
+                    <ToggleButton x:Name="EditDatesButton" Grid.Column="1" Background="Beige" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right">
+                        <ToggleButton.Style>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Setter Property="Padding" Value="10, 0"></Setter>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                                <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="6"></Setter>
+                                    </Style>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter Property="Content" Value="Save Dates" />
+                                    </Trigger>
+                                    <Trigger Property="IsChecked" Value="False">
+                                        <Setter Property="Content" Value="Edit Dates" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                </Grid>
+                <Separator Height="10"/>
+                <TextBlock Text="Notes" Style="{StaticResource Heading 3}"></TextBlock>
+                <!--TODO-->
+                <Separator Height="10"/>
+                <TextBlock Text="Share" Style="{StaticResource Heading 3}"></TextBlock>
+                <!--TODO-->
+            </StackPanel>
+
+
+        </Grid>
+    </Grid>
+</Page>

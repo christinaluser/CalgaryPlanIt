@@ -1,0 +1,239 @@
+﻿<Page x:Class="CalgaryPlanIt.Views.MobileThingsToDoSubsection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CalgaryPlanIt.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="450"
+      Title="MobileThingsToDoSubsection">
+
+    <Grid Background="White">
+        <Grid x:Name="Overlay" Panel.ZIndex="1000" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Color="Black" Opacity=".5"/>
+            </Grid.Background>
+        </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="CategoryName" Text="Name" Style="{StaticResource Heading 1}"></TextBlock>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ToggleButton Content="Filter Options" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Grid.Column="1" x:Name="FilterToggle" Click="FilterToggle_Click">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Background" Value="#87BBA2"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Padding" Value="5"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"></Setter>
+                                </Style>
+                            </Style.Resources>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+                <ToggleButton Grid.Column="2" x:Name="MapButton" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10" Click="MapButton_Click">
+                    <ToggleButton.Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Background" Value="#87BBA2"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Padding" Value="5"></Setter>
+                            <Setter Property="Cursor" Value="Hand"></Setter>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="6"></Setter>
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Content" Value="List View" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Content" Value="Map View" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToggleButton.Style>
+                </ToggleButton>
+                <Grid Grid.Column="0" HorizontalAlignment="Right">
+                    <TextBox Width="230"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5" BorderBrush="#333" KeyDown="OnKeyDown"></TextBox>
+                    <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="SlateGray" Background="Transparent">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=SearchBar}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SearchHeader" Visibility="Collapsed" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="SearchResultsTitle" Text="Search Results for " Style="{StaticResource Heading 4}"></TextBlock>
+                <Button Grid.Column="1" Content="Clear Search" Click="ClearSearchResults" Padding="5" Background="Transparent" VerticalAlignment="Bottom" Margin="5"></Button>
+            </Grid>
+
+
+            <Grid Grid.Row="4" x:Name="PageMainContent" Height="Auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Height="660" x:Name="mainsv">
+                    <StackPanel Grid.Column="0" x:Name="AttractionsList"></StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <Border Grid.Row="3" Name="border" Height="460" ClipToBounds="True" Visibility="Collapsed">
+                <Canvas x:Name="MapCanvas">
+                    <Image Source="/Images/MapScreenshot.png"></Image>
+                </Canvas>
+            </Border>
+
+            <Grid Grid.Row="3" x:Name="ForDetails" Height="660" Visibility="Collapsed"></Grid>
+
+            <ScrollViewer x:Name="filtersv" Grid.Row="3" Grid.RowSpan="2" Background="White" Visibility="Collapsed">
+                <StackPanel x:Name="FilterColumn" Margin="10">
+                    <StackPanel.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Height" Value="15"></Setter>
+                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <UniformGrid Columns="2">
+                        <Button Content="Apply filters" Click="Button_Click" Padding="10" Background="#B2D3C2" Margin="5"></Button>
+                        <Button Content="Clear filters" Click="Button_Click_1" Padding="10" Background="Beige" Margin="5"></Button>
+                    </UniformGrid>
+                    <Button Content="Auto Apply Filters For Trip" Click="AutoApplyButton_Click" Padding="10" Margin="5" Background="LightBlue"></Button>
+
+                    <TextBlock Text="Date Range" Style="{StaticResource Heading 3}"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Column="0" Text="Start" Style="{StaticResource Body}" Margin="10, 0"></TextBlock>
+                        <DatePicker Grid.Column="1" x:Name="FilterStartDate" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
+                        <TextBlock Grid.Column="0" Grid.Row="1" Text="End" Style="{StaticResource Body}"  Margin="10, 0"></TextBlock>
+                        <DatePicker Grid.Row="1" Grid.Column="1" x:Name="FilterEndDate" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedDateFormat="Long" BorderThickness="0"></DatePicker>
+                        <Button Grid.Row="2" Content="Clear Dates" Background="Beige" Click="Button_Click_2"></Button>
+                    </Grid>
+                    <TextBlock Text="Sort" Style="{StaticResource Heading 3}"></TextBlock>
+                    <RadioButton Name="MP" GroupName="Sort" Content="Most Popular" Checked="MP_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="LTH" GroupName="Sort" Content="Price: Low to High"  Checked="LTH_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="HTL" GroupName="Sort" Content="Price: High to Low" Checked="HTL_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="NY" GroupName="Sort" Content="Near You" Checked="NY_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <RadioButton Name="DT" GroupName="Sort" Content="Date" Checked="DT_Checked" FontFamily="{StaticResource MontserratRegular}"></RadioButton>
+                    <TextBlock Text="Tags" Style="{StaticResource Heading 3}"></TextBlock>
+                    <StackPanel x:Name="FilterTagsPanel"></StackPanel>
+                    <TextBlock Text="Rating" Style="{StaticResource Heading 3}"></TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" x:Name="S5" VerticalAlignment="Bottom" Checked="S5_Checked"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png"></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/YellowStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(5 Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left"  Style="{StaticResource Body}"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" x:Name="S4" VerticalAlignment="Bottom" Checked="S4_Checked"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(4+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" x:Name="S3" VerticalAlignment="Bottom" Checked="S3_Checked"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(3+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton GroupName="Rating" x:Name="S2" VerticalAlignment="Bottom" Checked="S2_Checked"></RadioButton>
+                        <Image Grid.Column="1" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="2" Source="/Images/YellowStar.png" ></Image>
+                        <Image Grid.Column="3" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="4" Source="/Images/GreyStar.png" ></Image>
+                        <Image Grid.Column="5" Source="/Images/GreyStar.png" ></Image>
+                        <TextBlock Grid.Column="6" Text="(2+ Stars)" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Style="{StaticResource Body}"></TextBlock>
+                    </Grid>
+                </StackPanel>
+            </ScrollViewer>
+
+        </Grid>
+    </Grid>
+</Page>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="160" d:DesignWidth="600">
+             d:DesignHeight="300" d:DesignWidth="600">
     <UserControl.Resources>
         <Image x:Key="GreyStar1" Source="/Images/GreyStar.png" Height="20" Width="20"/>
         <Image x:Key="YellowStar1" Source="/Images/YellowStar.png" Height="20" Width="20"/>
@@ -36,16 +36,22 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="130" Margin="5" BorderBrush="LightBlue" Cursor="Hand"  MouseLeftButtonUp="Grid_MouseLeftButtonUp" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+    <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="Auto" MaxHeight="200" Margin="5" BorderBrush="LightBlue" Cursor="Hand"  MouseLeftButtonUp="Grid_MouseLeftButtonUp" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
         <Border.Effect>
             <DropShadowEffect x:Name="blur" BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>
         <Grid x:Name="AttractionCardWrapper" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="120"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
             <Grid Grid.Column="0" HorizontalAlignment="Left" x:Name="ButtonContainer">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -59,14 +65,15 @@
                 </Button>
 
             </Grid>
-            <Image Grid.Column="1" x:Name="AttractionImage" Width="100" Margin="10"></Image>
-            <Grid Grid.Column="2">
+            <Image Grid.Column="1" x:Name="AttractionImage" Width="100" Margin="10" HorizontalAlignment="Left"></Image>
+            
+            <Grid Grid.Column="2" x:Name="attinfo">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" x:Name="AttractionName" Text="Attraction Name" Style="{StaticResource Heading 3}" Padding="10, 10, 10, 5"></TextBlock>
+                <TextBlock Grid.Row="0" x:Name="AttractionName" TextWrapping="WrapWithOverflow" Text="Attraction Name" Style="{StaticResource Heading 3}" Padding="10, 10, 10, 5"></TextBlock>
                 <Grid Grid.Row="1" Margin="10, 0" Height="25">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>

@@ -29,6 +29,16 @@ namespace CalgaryPlanIt.Views
             InitializeComponent();
             RefreshTripsGrid(MainWindow.TripsList);
         }
+        public Trips(bool ismobile)
+        {
+            InitializeComponent();
+            RefreshTripsGrid(MainWindow.TripsList);
+            Grid.SetRow(sb, 1);
+            Grid.SetRow(sep, 1);
+            Grid.SetRow(cb, 1);
+            Grid.SetColumn(cb, 0);
+            Grid.SetColumn(sb, 1);
+        }
 
         public void RefreshTripsGrid(List<Trip> TripList)
         {
@@ -48,7 +58,10 @@ namespace CalgaryPlanIt.Views
         private void HandleTripClicked(object sender, EventArgs e)
         {
             Trip trip = (Trip)sender;
-            Navigation.NavigateTo(new ViewTrip(trip));
+            if (Navigation.window.Width > 450)
+                Navigation.NavigateTo(new ViewTrip(trip));
+            else
+                Navigation.NavigateToMobile(new ViewTrip(trip));
         }
 
         private void Trip_ArchiveButtonClicked(object sender, EventArgs e)

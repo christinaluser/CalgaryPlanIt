@@ -36,6 +36,11 @@ namespace CalgaryPlanIt.Components
             SetContent();
             if (ItineraryItem?.Name != null && ItineraryItem?.Name != "")
                 addbutton.Content = "Save Changes";
+
+            if (Navigation.window.Width <= 450)
+            {
+                border.Width = 400;
+            }
         }
 
         public void SetContent()

@@ -1,7 +1,6 @@
 ﻿using CalgaryPlanIt.Components;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,29 +16,39 @@ using System.Windows.Shapes;
 
 namespace CalgaryPlanIt.Views
 {
+
     /// <summary>
-    /// Interaction logic for Plan.xaml
+    /// Interaction logic for MobilePlan.xaml
     /// </summary>
-    public partial class Plan : Page
+    public partial class MobilePlan : Page
     {
         Trip Trip;
         DateTime CurrentPlannerDate;
 
         Cursor OpenHand = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream);
         Cursor Drag = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/Drag.cur")).Stream);
-        public Plan()
+        public MobilePlan()
         {
             InitializeComponent();
-            Trip = new Trip();
         }
-
-        public Plan(Trip trip)
+        
+        public MobilePlan(Trip trip)
         {
             InitializeComponent();
             Trip = trip;
             CurrentPlannerDate = trip.StartDate;
             SetPageContent();
             SetMap();
+        }
+
+        private void ListsButton_Click(object sender, RoutedEventArgs e)
+        {
+            listpanel.Visibility = Visibility.Visible;
+        }
+
+        private void ListName_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            listpanel.Visibility = Visibility.Collapsed;
         }
 
         private void SetPageContent()
@@ -67,67 +76,16 @@ namespace CalgaryPlanIt.Views
             ItineraryContainer.Children.Add(day);
         }
 
-        private void RefreshWeek()
-        {
-            // get previous sunday
-            if (CurrentPlannerDate.DayOfWeek != DayOfWeek.Sunday)
-            {
-                int diff = (7 + (CurrentPlannerDate.DayOfWeek - DayOfWeek.Sunday)) % 7;
-                CurrentPlannerDate = CurrentPlannerDate.AddDays(-1 * diff).Date;
-            }
-            DateTime endofweek = CurrentPlannerDate.AddDays(7);
-            
-            string weekstring = CurrentPlannerDate.ToString("MMMM d") + " ";
-            if (endofweek.Year != CurrentPlannerDate.Year)
-            {
-                weekstring += CurrentPlannerDate.Year.ToString() + " ";
-            }
-            weekstring += "- ";
-            if (endofweek.Month != CurrentPlannerDate.Month)
-            {
-                weekstring += endofweek.ToString("MMMM") + " ";
-            }
-            weekstring += endofweek.Day.ToString() + ", " + endofweek.Year.ToString();
-
-            PlannerDate.Text = weekstring;
-
-            ItineraryContainer.Children.Clear();
-            ItineraryContainer.ColumnDefinitions.Clear();
-            DateTime temp = CurrentPlannerDate;
-            for (int i = 0; i < 7; i++)
-            {
-                ColumnDefinition c1 = new ColumnDefinition()
-                {
-                    Width = new GridLength(1, GridUnitType.Star)
-                };
-                if (i == 0)
-                {
-                    c1.Width = new GridLength(1.35, GridUnitType.Star);
-                }
-                ItineraryContainer.ColumnDefinitions.Add(c1);
-                var DayItineraryItems = Trip.ItineraryItems?.FindAll(i => temp.Date.Equals(i.PlannedStartDate.Date));
-                var day = new ItineraryDayScheduler(DayItineraryItems, temp, i == 0, true);
-                day.ItineraryItemAdded += AddItem;
-                day.ItineraryItemRemoved += RemoveItem;
-                day.BlockClick += HandleBlockClick;
-                Grid.SetColumn(day, i);
-                ItineraryContainer.Children.Add(day);
-                temp = temp.AddDays(1);
-            }
-
-            
-        }
-
         private void HandleBlockClick(object sender, EventArgs e)
         {
             ItineraryItem item = (ItineraryItem)sender;
-            
+
             var atp = new AddToPlanPopup(item);
             atp.CloseClicked += HandleClose;
-            atp.AddToPlanClicked += HandleAddToPlan ;
+            atp.AddToPlanClicked += HandleAddToPlan;
             Overlay.Children.Add(atp);
             Overlay.Visibility = Visibility.Visible;
-            
+
         }
 
         private void HandleClose(object sender, EventArgs e)
@@ -144,13 +102,7 @@ namespace CalgaryPlanIt.Views
                 var index = MainWindow.TripsList.FindIndex(t => t.Name == Trip.Name);
                 MainWindow.TripsList[index].ItineraryItems.Add(i);
                 Trip.ItineraryItems.Add(i);
-                if (WeekButton.IsChecked == true)
-                {
-                    RefreshWeek();
-                } else
-                {
-                    RefreshDay();
-                }
+                RefreshDay();
             }
         }
 
@@ -177,7 +129,7 @@ namespace CalgaryPlanIt.Views
             ListName.Text = "Lists";
             ListsStackPanel.Children.Clear();
             PopulateListPanel();
-            ListBackButton.Visibility= Visibility.Collapsed;
+            ListBackButton.Visibility = Visibility.Collapsed;
         }
 
         private void PopulateListPanel()
@@ -197,7 +149,7 @@ namespace CalgaryPlanIt.Views
             }
         }
 
-        private void ListButtonClick (object sender, EventArgs e)
+        private void ListButtonClick(object sender, EventArgs e)
         {
             Lis lis = (Lis)((Button)sender).Tag;
             ListName.Text = lis.Name;
@@ -208,7 +160,7 @@ namespace CalgaryPlanIt.Views
         private void PopulateListAttractions(Lis list)
         {
             ListsStackPanel.Children.Clear();
-            ListsStackPanel.Children.Add(new TextBlock() { Text= "Drag items onto your calendar!"});
+            ListsStackPanel.Children.Add(new TextBlock() { Text = "Drag items onto your calendar!" });
             if (list.Attractions != null && list.Attractions.Count > 0)
             {
                 foreach (Attraction attraction in list.Attractions)
@@ -222,7 +174,7 @@ namespace CalgaryPlanIt.Views
                         Style = Resources["ListButton"] as Style,
                         Tag = attraction,
                         Cursor = new Cursor(Application.GetResourceStream(new Uri("pack://application:,,,/OpenHand.cur")).Stream)
-                };
+                    };
                     listButton.PreviewMouseLeftButtonDown += AttractionButtonClick;
                     listButton.PreviewMouseLeftButtonUp += AttractionButtonMouseUp;
                     listButton.GiveFeedback += Button_GiveFeedback;
@@ -236,16 +188,16 @@ namespace CalgaryPlanIt.Views
             Button button = (Button)sender;
             button.Cursor = Drag;
             button.Background = Brushes.AliceBlue;
-            DragDrop.DoDragDrop(button,new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
-            
+            DragDrop.DoDragDrop(button, new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
+
         }
-        
+
         private void AttractionButtonMouseUp(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             var index = ListsStackPanel.Children.IndexOf(button);
             ((Button)ListsStackPanel.Children[index]).Cursor = OpenHand;
-            
+
         }
 
         private void PanelDrop(object sender, DragEventArgs e)
@@ -293,22 +245,16 @@ namespace CalgaryPlanIt.Views
             RefreshDay();
         }
 
-        private void DayRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void SwitchViewButton_Click(object sender, RoutedEventArgs e)
         {
-            if(MapButton != null) {
-                MapButton.Visibility = Visibility.Visible;
-                RefreshDay();
-            }
-                
+            border.Visibility = SwitchViewButton.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        private void WeekRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void TripDetailsToggle_Click(object sender, RoutedEventArgs e)
         {
-            MapButton.Visibility= Visibility.Hidden;
-            RefreshWeek();
+            tripdets.Visibility = TripDetailsToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        /********** MAP *********/
         private Point origin;
         private Point start;
         private void SetMap()
@@ -370,41 +316,6 @@ namespace CalgaryPlanIt.Views
             transform.ScaleX += zoom;
             transform.ScaleY += zoom;
 
-        }
-
-        private void MapButton_Click(object sender, RoutedEventArgs e)
-        {
-            ListScollViewer.Visibility = Visibility.Collapsed;
-            border.Visibility = Visibility.Visible;
-            border.Cursor = OpenHand;
-            HideMapButton.Visibility = Visibility.Visible;
-            MapButton.Visibility = Visibility.Collapsed;
-            ToggleList.Visibility = Visibility.Visible;
-            MapControls.Visibility = Visibility.Visible;
-        }
-
-        private void CloseMapButton_Click(object sender, RoutedEventArgs e)
-        {
-            ListScollViewer.Visibility = Visibility.Visible;
-            border.Visibility = Visibility.Collapsed;
-            HideMapButton.Visibility = Visibility.Collapsed;
-            MapButton.Visibility = Visibility.Visible;
-            ToggleList.Visibility = Visibility.Collapsed;
-            MapControls.Visibility = Visibility.Collapsed;
-        }
-
-        private void ToggleList_Click(object sender, RoutedEventArgs e)
-        {
-            if (ToggleList.Content.Equals("Show Lists"))
-            {
-                ToggleList.Content = "Hide Lists";
-                ListScollViewer.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                ToggleList.Content = "Show Lists";
-                ListScollViewer.Visibility = Visibility.Collapsed;
-            }
         }
 
         private void MapControlToggleButton_Checked(object sender, RoutedEventArgs e)

@@ -27,19 +27,19 @@ namespace CalgaryPlanIt.Components
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateToMobile(new Home());
+            Navigation.NavigateToMobile(new HomeCurrentTrip());
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void ThingsToDoButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateToMobile(new ThingsToDo());
+            Navigation.NavigateToMobile(new ThingsToDo(true));
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 
         private void TripsButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateToMobile(new Trips());
+            Navigation.NavigateToMobile(new Trips(true));
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 

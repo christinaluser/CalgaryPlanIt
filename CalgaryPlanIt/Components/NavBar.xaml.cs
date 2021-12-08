@@ -28,7 +28,7 @@ namespace CalgaryPlanIt.Components
         }
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new Home());
+            Navigation.NavigateTo(new HomeCurrentTrip());
             HighlightNavBarButton(((Button)sender).Content.ToString());
         }
 

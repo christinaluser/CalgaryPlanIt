@@ -27,6 +27,11 @@ namespace CalgaryPlanIt.Components
         {
             InitializeComponent();
             RefreshTripsGrid(MainWindow.TripsList);
+            if (Navigation.window.Width <= 450)
+            {
+                border.MinWidth = 400;
+                border.Width = 400;
+            }
         }
 
         public void RefreshTripsGrid(List<Trip> TripList)

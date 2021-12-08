@@ -37,6 +37,31 @@ namespace CalgaryPlanIt.Views
             AddCategoryCards();
 
         }
+        public ThingsToDo(bool isMobile)
+        {
+            InitializeComponent();
+
+            Grid.SetColumnSpan(tb, 2);
+            Grid.SetRow(sb, 1);
+            Grid.SetColumn(sb, 1);
+            sb.HorizontalAlignment = HorizontalAlignment.Left;
+
+            Grid.SetColumn(cb, 0);
+            Grid.SetRow(cb, 1);
+            cb.HorizontalAlignment = HorizontalAlignment.Left;
+
+            Grid.SetRow(sep, 1);
+
+            var allCategoriesArr = (Category[])Enum.GetValues(typeof(Category));
+            foreach (var cat in allCategoriesArr)
+            {
+                KeyValuePair<string, Category> keyValuePair = new KeyValuePair<string, Category>(cat.ToString(), cat);
+                allCategories.Add(keyValuePair);
+                allCategoriesCopy.Add(keyValuePair);
+            }
+            AddCategoryCards();
+
+        }
 
         private void AddCategoryCards()
         {

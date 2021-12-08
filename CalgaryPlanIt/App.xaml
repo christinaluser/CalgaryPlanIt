@@ -229,6 +229,7 @@
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
             <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
             <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Setter Property="MinWidth" Value="150"/>
             <Setter Property="MinHeight" Value="20"/>
             <Setter Property="Template">
@@ -315,6 +316,7 @@
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
             <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
             <Setter Property="OverridesDefaultStyle" Value="true"/>
             <Setter Property="Template">
                 <Setter.Value>

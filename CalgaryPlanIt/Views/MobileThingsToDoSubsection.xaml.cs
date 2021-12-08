@@ -1,5 +1,4 @@
 ﻿using CalgaryPlanIt.Components;
-using CalgaryPlanIt.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +17,9 @@ using System.Windows.Shapes;
 namespace CalgaryPlanIt.Views
 {
     /// <summary>
-    /// Interaction logic for ThingsToDoSubsection.xaml
+    /// Interaction logic for MobileThingsToDoSubsection.xaml
     /// </summary>
-    public partial class ThingsToDoSubsection : Page
+    public partial class MobileThingsToDoSubsection : Page
     {
         Category Category;
         string Rbutton;
@@ -35,8 +34,11 @@ namespace CalgaryPlanIt.Views
 
         private Point origin;
         private Point start;
-
-        public ThingsToDoSubsection(Category category)
+        public MobileThingsToDoSubsection()
+        {
+            InitializeComponent();
+        }
+        public MobileThingsToDoSubsection(Category category)
         {
             InitializeComponent();
             Category = category;
@@ -44,7 +46,6 @@ namespace CalgaryPlanIt.Views
             TmpAttractions = MainWindow.AttractionsList.FindAll(a => a.Category == Category);
             SetContent();
         }
-
         public void SetContent()
         {
             CategoryName.Text = Category.ToFriendlyString();
@@ -53,7 +54,7 @@ namespace CalgaryPlanIt.Views
             SetMap();
         }
 
-        private void SetMap() 
+        private void SetMap()
         {
             TransformGroup group = new TransformGroup();
 
@@ -119,7 +120,7 @@ namespace CalgaryPlanIt.Views
                 return;
             transform.ScaleX += zoom;
             transform.ScaleY += zoom;
-            
+
         }
 
         private void PopulateFilterTags()
@@ -130,7 +131,8 @@ namespace CalgaryPlanIt.Views
             {
                 if (tag != CalgaryPlanIt.Tag.None)
                 {
-                    CheckBox checkbox = new CheckBox() { 
+                    CheckBox checkbox = new CheckBox()
+                    {
                         Content = tag.ToFriendlyString(),
                         Tag = tag
                     };
@@ -155,7 +157,7 @@ namespace CalgaryPlanIt.Views
             }
             if (AttractionsList.Children.Count == 0)
             {
-                AttractionsList.Children.Add(new TextBlock() { Text = "No attractions here :(", HorizontalAlignment = HorizontalAlignment.Center});
+                AttractionsList.Children.Add(new TextBlock() { Text = "No attractions here :(", HorizontalAlignment = HorizontalAlignment.Center });
             }
         }
 
@@ -186,8 +188,8 @@ namespace CalgaryPlanIt.Views
             Overlay.Children.Clear();
             t = (Trip)sender;
             ItineraryItem item = new ItineraryItem(att);
-            item.PlannedStartDate=new DateTime(t.StartDate.Year,t.StartDate.Month,t.StartDate.Day,t.StartDate.Hour,0,0);
-            item.PlannedEndDate=new DateTime(t.StartDate.Year,t.StartDate.Month,t.StartDate.Day,t.StartDate.Hour +1,0,0);
+            item.PlannedStartDate = new DateTime(t.StartDate.Year, t.StartDate.Month, t.StartDate.Day, t.StartDate.Hour, 0, 0);
+            item.PlannedEndDate = new DateTime(t.StartDate.Year, t.StartDate.Month, t.StartDate.Day, t.StartDate.Hour + 1, 0, 0);
             var overlay = new AddToPlanPopup(item) { HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
             overlay.CloseClicked += OverlayClosed;
             overlay.AddToPlanClicked += AttractionCardAddToTripFinal_Clicked;
@@ -203,7 +205,7 @@ namespace CalgaryPlanIt.Views
                 var index = MainWindow.TripsList.FindIndex(trip => trip == t || trip.Name == t.Name);
                 if (MainWindow.TripsList[index].ItineraryItems == null)
                     MainWindow.TripsList[index].ItineraryItems = new List<ItineraryItem> { i };
-                else 
+                else
                     MainWindow.TripsList[index].ItineraryItems.Add(i);
             }
         }
@@ -344,13 +346,14 @@ namespace CalgaryPlanIt.Views
             }
 
             List<Attraction> TagAttractions = new List<Attraction>();
-            if (SelectedTags != CalgaryPlanIt.Tag.None) {
+            if (SelectedTags != CalgaryPlanIt.Tag.None)
+            {
                 foreach (Attraction att in Attractions)
                 {
                     Tag[] allTags = (Tag[])Enum.GetValues(typeof(Tag));
                     foreach (Tag tag in allTags)
                     {
-                        if (tag!= CalgaryPlanIt.Tag.None && SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag))
+                        if (tag != CalgaryPlanIt.Tag.None && SelectedTags.HasFlag(tag) && att.Tags.HasFlag(tag))
                         {
                             TagAttractions.Add(att);
                             break;
@@ -374,19 +377,20 @@ namespace CalgaryPlanIt.Views
 
                 Attractions = datefiltered;
             }
-            
+
 
             PopulateAttractionsList();
-
+            filtersv.Visibility = Visibility.Collapsed;
 
         }
 
         private void LTH_Checked(object sender, RoutedEventArgs e)
-        {   RadioButton li = sender as RadioButton;
+        {
+            RadioButton li = sender as RadioButton;
             Rbutton = li.Name.ToString();
-           
+
         }
-        
+
         private void HTL_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton li = sender as RadioButton;
@@ -450,42 +454,26 @@ namespace CalgaryPlanIt.Views
 
         private void SwitchViewButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void AttractionCard_Clicked(object sender, EventArgs e)
         {
-            //map is not visible
-            if (SwitchViewButton.IsChecked == false)
-            {
-                SwitchViewOnDetailsClose = true;
-                SwitchViewButton.IsChecked = true;
-            }
-            
-            if (CurrentDetails != null)
-            {
-                PageMainContent.Children.Remove(CurrentDetails);
-            }
             var attraction = ((AttractionCard)sender).Attraction;
             var attractionDetails = new AttractionDetails(attraction);
 
-            Grid.SetColumn(attractionDetails, 1);
             attractionDetails.AttractionDetailsCloseClicked += AttractionDetails_CloseClicked;
             CurrentDetails = attractionDetails;
-            PageMainContent.Children.Add(attractionDetails);
-            SwitchViewButton.Visibility = Visibility.Collapsed;
+            ForDetails.Children.Add(attractionDetails);
+            ForDetails.Visibility = Visibility.Visible;
         }
 
         private void AttractionDetails_CloseClicked(object sender, EventArgs e)
         {
-            if (SwitchViewOnDetailsClose)
-            {
-                SwitchViewButton.IsChecked = !SwitchViewButton.IsChecked;
-            }
-            PageMainContent.Children.Remove((AttractionDetails)sender);
+
+            ForDetails.Children.Remove((AttractionDetails)sender);
+            ForDetails.Visibility = Visibility.Collapsed;
             CurrentDetails = null;
-            SwitchViewOnDetailsClose = false;
-            SwitchViewButton.Visibility=Visibility.Visible;
         }
 
         private void ClearSearchResults(object sender, EventArgs e)
@@ -523,7 +511,7 @@ namespace CalgaryPlanIt.Views
         private void FilterByTrip(object sender, EventArgs e)
         {
             Overlay.Children.Clear();
-            Overlay.Visibility=Visibility.Collapsed;
+            Overlay.Visibility = Visibility.Collapsed;
             Trip trip = (Trip)sender;
             if (trip != null)
             {
@@ -555,5 +543,38 @@ namespace CalgaryPlanIt.Views
             FilterStartDate.SelectedDate = null;
             FilterEndDate.SelectedDate = null;
         }
+
+        private void FilterToggle_Click(object sender, RoutedEventArgs e)
+        {
+            if (FilterToggle.IsChecked == true)
+            {
+                filtersv.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                filtersv.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MapButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MapButton.IsChecked == true)
+            {
+                border.Visibility = Visibility.Visible;
+                AttractionsList.Orientation = Orientation.Horizontal;
+                mainsv.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
+                mainsv.Height = 225;
+                mainsv.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+            }
+            else
+            {
+                border.Visibility = Visibility.Collapsed;
+                AttractionsList.Orientation = Orientation.Vertical;
+                mainsv.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+                mainsv.Height = 660;
+                mainsv.HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
+            }
+        }
     }
 }
+

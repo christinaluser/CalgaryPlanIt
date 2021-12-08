@@ -31,8 +31,9 @@ namespace CalgaryPlanIt
             InitializeComponent();
             Navigation.window = this;
             Navigation.NavigateTo(new Home());
-            CreateTrips();
+            
             CreateAttractions();
+            CreateTrips();
             CreateList();
         }
 
@@ -51,7 +52,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(10),
                 EndDate = DateTime.Now.AddDays(20),
-                Name = "bbbbb",
+                Name = "Agatha's Trip",
                 NumAdults = 0,
                 NumChildren = 0,
                 NumTeens = 6
@@ -60,7 +61,7 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(15),
                 EndDate = DateTime.Now.AddDays(25),
-                Name = "zzzzzz",
+                Name = "Betty's Trip",
                 NumAdults = 1,
                 NumChildren = 3,
                 NumTeens = 0
@@ -69,16 +70,16 @@ namespace CalgaryPlanIt
             {
                 StartDate = DateTime.Now.AddDays(5),
                 EndDate = DateTime.Now.AddDays(7),
-                Name = "aaaaaa",
+                Name = "Lou's trip",
                 NumAdults = 2,
                 NumChildren = 1,
                 NumTeens = 2
             });
             TripsList.Add(new Trip()
             {
-                StartDate = DateTime.Now.AddDays(50),
-                EndDate = DateTime.Now.AddDays(57),
-                Name = "ccccc",
+                StartDate = DateTime.Now.AddDays(-3),
+                EndDate = DateTime.Now.AddDays(5),
+                Name = "Sara's Trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2
@@ -92,18 +93,18 @@ namespace CalgaryPlanIt
                 NumChildren = 1,
                 NumTeens = 2,
                 ItineraryItems = new List<ItineraryItem>() {
-                    new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = new DateTime(2022, 1, 9, 13, 0, 0)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = new DateTime(2022, 1, 9, 17, 0, 0)},
-                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = new DateTime(2022, 1, 9, 18, 0, 0)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = new DateTime(2022, 1, 10, 12, 0, 0)},
-                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = new DateTime(2022, 1, 11, 13, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Calgary Tower")) { PlannedStartDate = new DateTime(2022, 1, 9, 13, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Downtown Calgary Smartphone Audio Walking Tour")) { PlannedStartDate = new DateTime(2022, 1, 9, 17, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Modern Steak")) { PlannedStartDate = new DateTime(2022, 1, 9, 18, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "SS106 Aperitivo Bar")) { PlannedStartDate = new DateTime(2022, 1, 10, 12, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Heritage Park Historical Village")) { PlannedStartDate = new DateTime(2022, 1, 11, 13, 0, 0)},
                 }
             });
             TripsList.Add(new Trip()
             {
                 StartDate = DateTime.Now.AddDays(-3),
                 EndDate = DateTime.Now.AddDays(-1),
-                Name = "123213",
+                Name = "Nathan's Trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2,
@@ -118,17 +119,14 @@ namespace CalgaryPlanIt
             TripsList.Add(new Trip()
             {
                 StartDate = DateTime.Now.AddDays(-10),
-                EndDate = DateTime.Now.AddDays(57),
-                Name = "ddddd",
+                EndDate = DateTime.Now.AddDays(-3),
+                Name = "Michelle's trip",
                 NumAdults = 3,
                 NumChildren = 1,
                 NumTeens = 2,
                 ItineraryItems = new List<ItineraryItem>() {
                     new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = DateTime.Now.AddDays(36)},
                     new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = DateTime.Now.AddDays(36)},
-                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = DateTime.Now.AddDays(36)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = DateTime.Now.AddDays(37)},
-                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = DateTime.Now.AddDays(38)},
                 }
             });
         }
@@ -144,7 +142,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Banff 1-Day Tour from Calgary",
                 Category = Category.Tours,
-                Price = "from $146.74 CAD",
+                Price = "$146.74 CAD",
                 Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.Outdoor,
                 Description = "From the quaint mountainside town of Banff, to the snow-dusted peaks, misty falls, and dramatic canyons around Banff " +
                               "as you explore this rugged slice of Alberta with an experienced guide. \n Starting your day with rolling by the steep " +
@@ -178,7 +176,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Downtown Calgary Smartphone Audio Walking Tour",
                 Category = Category.Tours,
-                Price = "from $13.00 CAD",
+                Price = "$13.00 CAD",
                 Tags = CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.Tours | CalgaryPlanIt.Tag.TeenFriendly,
                 Description = "Listen to a tour guide through your smartphone as you explore 3 exciting audio walking tours in Calgary! \n Over 75 total " +
                               "points of interest split up into three unique tours! Downtown Calgary Sightseeing Tour, Beltline District Tour, Bow River " +
@@ -220,7 +218,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary City Sightseeing Tour",
                 Category = Category.Tours,
-                Price = "from $214.36 CAD",
+                Price = "$214.36 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -235,7 +233,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Creepy Calgary Ghost Tour",
                 Category = Category.Tours,
-                Price = "from $382.83 CAD",
+                Price = "$382.83 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -250,7 +248,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Drumheller (Dinosaur Valley) & Horseshoe Canyon 1-Day Tour",
                 Category = Category.Tours,
-                Price = "from $146.74 CAD",
+                Price = "$146.74 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -265,7 +263,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Calgary Clue Solving Adventure - Riotous Roundup",
                 Category = Category.Tours,
-                Price = "from $61.95 CAD",
+                Price = "$61.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -280,7 +278,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Best of Calgary Walking Tour",
                 Category = Category.Tours,
-                Price = "from $606.06 CAD",
+                Price = "$606.06 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -295,7 +293,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Popular,
-                Price = "from $9.95 CAD",
+                Price = "$9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -310,7 +308,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Parks,
-                Price = "from $9.95 CAD",
+                Price = "$9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -325,7 +323,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Heritage Park Historical Village",
                 Category = Category.Promotions,
-                Price = "from $9.95 CAD",
+                Price = "$9.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -340,7 +338,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.Parks,
-                Price = "from $19.95 CAD",
+                Price = "$19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -355,7 +353,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.Parks,
-                Price = "from $19.95 CAD",
+                Price = "$19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -370,7 +368,7 @@ namespace CalgaryPlanIt
             {
                 Name = "The Calgary Zoo",
                 Category = Category.NatureAndWildlife,
-                Price = "from $19.95 CAD",
+                Price = "$19.95 CAD",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now,
                 ExternalLink = "",
@@ -671,7 +669,7 @@ namespace CalgaryPlanIt
             {
                 Name = "Glenbow Museum",
                 Category = Category.MuseumsAndGalleries,
-                Price = "from $10.00 CAD",
+                Price = "$10.00 CAD",
                 ExternalLink = "https://www.glenbow.org/",
                 Tags = CalgaryPlanIt.Tag.KidFriendly | CalgaryPlanIt.Tag.Outdoor | CalgaryPlanIt.Tag.WheelchairAccessible,
                 Description = "Glenbow is a place of confluence. A meeting point for people and communities to join a flow of ideas, knowledge, opinions and " +

@@ -33,6 +33,15 @@ namespace CalgaryPlanIt.Components
             InitializeComponent();
             Attraction = attraction;
             SetContent();
+
+            if(Navigation.window.Width <= 450)
+            {
+                Grid.SetRow(attinfo, 1);
+                Grid.SetColumn(attinfo, 0);
+                Grid.SetColumnSpan(attinfo, 2);
+                attinfo.MaxWidth = 400; 
+            }
+
         }
 
         private void SetContent()

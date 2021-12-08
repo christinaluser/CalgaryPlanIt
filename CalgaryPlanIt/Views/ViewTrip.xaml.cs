@@ -24,6 +24,10 @@ namespace CalgaryPlanIt.Views
             Trip = trip;
             SetContent();
             SubscribeToAllReviewButtonEvent();
+            if (Navigation.window.Width <= 450)
+            {
+                sv.Height = 560;
+            }
         }
 
 
@@ -46,7 +50,7 @@ namespace CalgaryPlanIt.Views
             }
             else
             {
-                Itinerary.Children.Add(new TextBlock { Text = "nothing on your itinerary yet" });
+                NoPlan.Visibility = Visibility.Visible;
             }
         }
 
@@ -72,6 +76,10 @@ namespace CalgaryPlanIt.Views
             ReviewModal modal = new ReviewModal((Attraction)((Button)sender).Tag);
             modal.CloseButtonClicked += ViewTrip_CloseReviewButtonClicked;
             modal.HorizontalAlignment = HorizontalAlignment.Center;
+            if (Navigation.window.Width <= 450)
+            {
+                modal.border.Width = Navigation.window.Width - 100;
+            }
             Overlay.Children.Add(modal);
             Overlay.Visibility = Visibility.Visible;
         }
@@ -80,6 +88,15 @@ namespace CalgaryPlanIt.Views
         {
             Overlay.Children.Clear();
             Overlay.Visibility = Visibility.Collapsed;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(this, "My First Print Job");
+            }
         }
     }
 }
