@@ -18,7 +18,7 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1" Margin="300,10,300,10">
+            <Grid Grid.Row="1" VerticalAlignment="Center" Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
@@ -30,27 +30,29 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading 1}" Text="Trip Name"></TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="Dates" Margin="20, 0" Style="{StaticResource Heading 3}" Text="Trip Dates"></TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TripName" Style="{StaticResource Heading 1}" Text="Trip Name"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="TripDates" Margin="20, 0" Style="{StaticResource Heading 3}" Text="Trip Dates"></TextBlock>
                     </Grid>
                 </Border>
                 <Border CornerRadius="0, 10, 10, 0" Background="Beige" Grid.Column="1">
-                    <TextBlock x:Name="NumTravellers" Padding="10, 5" Text="num travellers" Style="{StaticResource Body}"></TextBlock>
+                    <TextBlock x:Name="NumTravellers" Padding="10, 5" Text="num travellers" VerticalAlignment="Center" Style="{StaticResource Body}"></TextBlock>
                 </Border>
             </Grid>
-            <Border Grid.Row="2" Margin="300,10,300,10" CornerRadius="10" Background="Pink">
+            <Border Grid.Row="2" x:Name="UpcomingThing" CornerRadius="10" Background="Pink" Margin="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="TripName"  Style="{StaticResource Heading 1}" FontSize="25" Text="Up Next"></TextBlock>
-                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="Upcoming" Margin="20, 0" Style="{StaticResource Heading 3}" Text="Trip Dates"></TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Heading 1}" FontSize="25" Text="Up Next"></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="Upcoming" Margin="20, 0" Style="{StaticResource Heading 2}" Text="Thing"></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" x:Name="UpcomingTime" Margin="20, 0" Style="{StaticResource Heading 3}" Text="Time"></TextBlock>
                     </Grid>
                     <Separator HorizontalAlignment="Right">
                         <Separator.LayoutTransform>
@@ -59,30 +61,30 @@
                     </Separator>
                     <Grid Grid.Column="1" Margin="10, 5">
                         <StackPanel>
-                            <TextBlock x:Name="TravelTimes" Text="11 km from your location" Style="{StaticResource Body}"></TextBlock>
+                            <TextBlock x:Name="TravelTimes" Text="11 km from your location" Style="{StaticResource Heading 4}"></TextBlock>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="/Images/Car.png" Width="10" Height="10"></Image>
-                                <TextBlock Grid.Column="1"></TextBlock>
+                                <Image Source="/Images/Car.png" Width="20" Height="20"></Image>
+                                <TextBlock Grid.Column="1" Text="10 min" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Style="{StaticResource Body}"></TextBlock>
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="/Images/Bus.png" Width="10" Height="10"></Image>
-                                <TextBlock Grid.Column="1"></TextBlock>
+                                <Image Source="/Images/Bus.png" Width="20" Height="20"></Image>
+                                <TextBlock Grid.Column="1" Text="1 hr" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Style="{StaticResource Body}"></TextBlock>
                             </Grid>
                             <Grid Margin="0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="/Images/Walking.png" Width="10" Height="10"></Image>
-                                <TextBlock Grid.Column="1"></TextBlock>
+                                <Image Source="/Images/Walking.png" Width="20" Height="20"></Image>
+                                <TextBlock Grid.Column="1" Text="2 hr 40 min" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Style="{StaticResource Body}"></TextBlock>
                             </Grid>
                         </StackPanel>
                         
@@ -91,10 +93,24 @@
                     
                 </Grid>
             </Border>
-            <Button Grid.Row="3" HorizontalAlignment="Left" Margin="100, 0" Content="Print Itinerary"></Button>
+            <Grid Grid.Row="3" HorizontalAlignment="Left">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Left" Content="Print Itinerary" Padding="10" Margin="10" Background="#B2D3C2" Click="Button_Click"></Button>
+                <Button Grid.Column="1" HorizontalAlignment="Left" Content="Edit this trip" Padding="10" Margin="10" Background="#B2D3C2" Click="Button_Click_1"></Button>
+                
+            </Grid>
+            
 
-            <ScrollViewer Height="630" Grid.Row="4" >
-                <StackPanel x:Name="Itinerary" Margin="100,0"></StackPanel>
+            <ScrollViewer Height="630" Grid.Row="4">
+                <StackPanel x:Name="Itinerary">
+                    <UniformGrid Rows="2" x:Name="NoPlan" HorizontalAlignment="Left" Visibility="Collapsed">
+                        <TextBlock Text="Nothing here yet!" Style="{StaticResource Heading 3}"></TextBlock>
+                        <TextBlock Text="Click 'Things To Do' to start browsing" Style="{StaticResource Body}"></TextBlock>
+                    </UniformGrid>
+                </StackPanel>
             </ScrollViewer>
         </Grid>
     </Grid>

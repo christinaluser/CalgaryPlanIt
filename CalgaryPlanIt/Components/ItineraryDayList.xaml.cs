@@ -44,48 +44,130 @@ namespace CalgaryPlanIt.Components
         {
             int row = 0;
             Date.Text = Day.ToString("dddd MMMM dd");
-            foreach(ItineraryItem itineraryItem in ItineraryItems)
+            if (ItineraryItems.Count == 0)
             {
                 ItineraryItemsGrid.RowDefinitions.Add(new RowDefinition());
                 TextBlock timetextBlock = new()
                 {
-                    Text = itineraryItem.PlannedStartDate.ToString("h tt") + " - " + itineraryItem.PlannedEndDate.ToString("h tt"),
+                    Text = "Nothing planned yet",
                     HorizontalAlignment = HorizontalAlignment.Left,
                     Margin = new Thickness(0, 10, 0, 0),
                 };
                 Grid.SetRow(timetextBlock, row);
                 ItineraryItemsGrid.Children.Add(timetextBlock);
-
-                TextBlock textBlock = new()
-                {
-                    Text = itineraryItem.Name,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                };
-                Grid.SetRow(textBlock, row);
-                ItineraryItemsGrid.Children.Add(textBlock);
-
-                Separator sep = new Separator() { VerticalAlignment = VerticalAlignment.Bottom };
-                Grid.SetRow(sep, row);
-                ItineraryItemsGrid.Children.Add(sep);
-
-                if (ShowReviewButtons)
-                {
-                    Button reviewButton = new Button()
-                    {
-                        Content = "Review",
-                        Tag = itineraryItem,
-                        HorizontalAlignment = HorizontalAlignment.Right,
-                        Padding = new Thickness(10),
-                        Margin=new Thickness(0,0,0,10)
-                    };
-                    reviewButton.Click += new RoutedEventHandler(HandleReviewButton_Click);
-                    Grid.SetRow(reviewButton, row);
-                    ItineraryItemsGrid.Children.Add(reviewButton);
-                }
-                
-                row++;
             }
+            else
+            {
+                if (Navigation.window.Width > 450)
+                {
+
+                    foreach (ItineraryItem itineraryItem in ItineraryItems)
+                    {
+                        ItineraryItemsGrid.RowDefinitions.Add(new RowDefinition());
+                        TextBlock timetextBlock = new()
+                        {
+                            Text = itineraryItem.PlannedStartDate.ToString("h tt") + " - " + itineraryItem.PlannedEndDate.ToString("h tt"),
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Thickness(0, 10, 0, 0),
+                        };
+                        Grid.SetRow(timetextBlock, row);
+                        ItineraryItemsGrid.Children.Add(timetextBlock);
+
+                        TextBlock textBlock = new()
+                        {
+                            Text = itineraryItem.Name + "\n" + itineraryItem.Address,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            TextAlignment = TextAlignment.Center,
+                            Padding = new Thickness(10)
+                        };
+                        Grid.SetRow(textBlock, row);
+                        ItineraryItemsGrid.Children.Add(textBlock);
+
+                        Separator sep = new Separator() { VerticalAlignment = VerticalAlignment.Bottom };
+                        Grid.SetRow(sep, row);
+                        ItineraryItemsGrid.Children.Add(sep);
+
+                        if (ShowReviewButtons)
+                        {
+                            Button reviewButton = new Button()
+                            {
+                                Content = "Review",
+                                Tag = itineraryItem,
+                                HorizontalAlignment = HorizontalAlignment.Right,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                Background = Brushes.LightBlue,
+                                Padding = new Thickness(10),
+                                Margin = new Thickness(0, 0, 0, 10)
+                            };
+                            reviewButton.Click += new RoutedEventHandler(HandleReviewButton_Click);
+                            Grid.SetRow(reviewButton, row);
+                            ItineraryItemsGrid.Children.Add(reviewButton);
+                        }
+
+                        row++;
+                    }
+                }
+                else
+                {
+                    foreach (ItineraryItem itineraryItem in ItineraryItems)
+                    {
+                        ItineraryItemsGrid.RowDefinitions.Add(new RowDefinition());
+                        TextBlock timetextBlock = new()
+                        {
+                            Text = itineraryItem.PlannedStartDate.ToString("h tt") + " - " + itineraryItem.PlannedEndDate.ToString("h tt"),
+                            HorizontalAlignment = HorizontalAlignment.Left,
+                            Margin = new Thickness(0, 10, 0, 0),
+                        };
+                        //Grid.SetRow(timetextBlock, row);
+                        //ItineraryItemsGrid.Children.Add(timetextBlock);
+
+                        TextBlock textBlock = new()
+                        {
+                            Text = itineraryItem.Name + "\n" + itineraryItem.Address,
+                            TextWrapping = TextWrapping.Wrap,
+                            HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center,
+                            TextAlignment = TextAlignment.Center,
+                            Padding = new Thickness(10)
+                        };
+                        //Grid.SetRow(textBlock, row);
+                        //ItineraryItemsGrid.Children.Add(textBlock);
+
+                        Separator sep = new Separator() { VerticalAlignment = VerticalAlignment.Bottom };
+                        Grid.SetRow(sep, row);
+                        ItineraryItemsGrid.Children.Add(sep);
+
+                        StackPanel sp = new StackPanel();
+                        sp.Children.Add(timetextBlock);
+                        sp.Children.Add(textBlock);
+                        
+
+                        if (ShowReviewButtons)
+                        {
+                            Button reviewButton = new Button()
+                            {
+                                Content = "Review",
+                                Tag = itineraryItem,
+                                HorizontalAlignment = HorizontalAlignment.Right,
+                                VerticalAlignment = VerticalAlignment.Center,
+                                Background = Brushes.LightBlue,
+                                Padding = new Thickness(10),
+                                Margin = new Thickness(0, 0, 0, 10)
+                            };
+                            reviewButton.Click += new RoutedEventHandler(HandleReviewButton_Click);
+                            //Grid.SetRow(reviewButton, row);
+                            //ItineraryItemsGrid.Children.Add(reviewButton);
+                            sp.Children.Add(reviewButton);
+                        }
+                        Grid.SetRow(sp, row);
+                        ItineraryItemsGrid.Children.Add(sp);
+                        row++;
+                    }
+                }
+            }
+            
+            
         }
 
         private void HandleReviewButton_Click(object sender, RoutedEventArgs e)

@@ -25,8 +25,8 @@
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                     <ColumnDefinition Width="1*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Delete" HorizontalAlignment="Center"/>
-                <Button Grid.Column="1" Content="Edit" HorizontalAlignment="Center" />
+                <Button Grid.Column="0" Content="Delete" Padding="10" Background="LightGray" HorizontalAlignment="Center"/>
+                <Button Grid.Column="1" Content="Edit" Padding="10" HorizontalAlignment="Center" />
             </Grid>
         </Grid>
     </Border>

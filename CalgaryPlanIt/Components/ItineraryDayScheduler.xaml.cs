@@ -145,6 +145,10 @@ namespace CalgaryPlanIt.Components
 
         private void AddItem(object sender, EventArgs e)
         {
+            if (ItineraryItems == null)
+            {
+                ItineraryItems = new List<ItineraryItem>(); 
+            }
             ItineraryItems.Add((ItineraryItem)sender);
             ItineraryItemAdded.Invoke(sender, e);
         }

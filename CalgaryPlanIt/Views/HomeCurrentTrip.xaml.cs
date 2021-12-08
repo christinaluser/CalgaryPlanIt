@@ -26,24 +26,45 @@ namespace CalgaryPlanIt.Views
         public HomeCurrentTrip()
         {
             InitializeComponent();
-            var sorted = MainWindow.TripsList.OrderBy(t=>Trip.StartDate).Where(t=> t.EndDate > DateTime.Now && t.IsArchived == false).ToList();
+            var sorted = MainWindow.TripsList.OrderBy(t=>t.StartDate).Where(t=> t.EndDate > DateTime.Now && t.IsArchived == false).ToList();
             Trip = sorted.FirstOrDefault();
-            if(Trip != null)
+            if(Trip == null)
             {
-                if(Navigation.window.Width > 450)
+                if (Navigation.window.Width > 450)
                     Navigation.NavigateTo(new Home());
-                
+                else 
+                    Navigation.NavigateToMobile(new Home());
             }
             if(Trip.StartDate < DateTime.Now)
             {
                 IsCurrent = true;
             }
+
+            SetContent();
+        }
+        public HomeCurrentTrip(bool isMobile)
+        {
+            InitializeComponent();
+            var sorted = MainWindow.TripsList.OrderBy(t=>t.StartDate).Where(t=> t.EndDate > DateTime.Now && t.IsArchived == false).ToList();
+            Trip = sorted.FirstOrDefault();
+            if(Trip == null)
+            {
+                if (Navigation.window.Width > 450)
+                    Navigation.NavigateTo(new Home());
+                else 
+                    Navigation.NavigateToMobile(new Home());
+            }
+            if(Trip.StartDate < DateTime.Now)
+            {
+                IsCurrent = true;
+            }
+            SetContent();
         }
 
         private void SetContent()
         {
             TripName.Text = Trip.Name;
-            Dates.Text = Trip.TripDatesToString();
+            TripDates.Text = Trip.TripDatesToString();
             NumTravellers.Text = Trip.GetNumTravellersString();
 
             if (Trip.ItineraryItems != null && Trip.ItineraryItems.Count > 0)
@@ -59,7 +80,7 @@ namespace CalgaryPlanIt.Views
             }
             else
             {
-                Itinerary.Children.Add(new TextBlock { Text = "nothing on your itinerary yet" });
+                NoPlan.Visibility = Visibility.Visible;
             }
         }
 
@@ -77,6 +98,21 @@ namespace CalgaryPlanIt.Views
 
         }
 
-        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(new ViewTrip(Trip), "My First Print Job");
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Navigation.window.Width > 450)
+                Navigation.NavigateTo(new Plan(Trip));
+            else
+                Navigation.NavigateToMobile(new MobilePlan(Trip));
+        }
     }
 }

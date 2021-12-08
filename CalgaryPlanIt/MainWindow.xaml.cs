@@ -93,11 +93,11 @@ namespace CalgaryPlanIt
                 NumChildren = 1,
                 NumTeens = 2,
                 ItineraryItems = new List<ItineraryItem>() {
-                    new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = new DateTime(2022, 1, 9, 13, 0, 0)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = new DateTime(2022, 1, 9, 17, 0, 0)},
-                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = new DateTime(2022, 1, 9, 18, 0, 0)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = new DateTime(2022, 1, 10, 12, 0, 0)},
-                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = new DateTime(2022, 1, 11, 13, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Calgary Tower")) { PlannedStartDate = new DateTime(2022, 1, 9, 13, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Downtown Calgary Smartphone Audio Walking Tour")) { PlannedStartDate = new DateTime(2022, 1, 9, 17, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Modern Steak")) { PlannedStartDate = new DateTime(2022, 1, 9, 18, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "SS106 Aperitivo Bar")) { PlannedStartDate = new DateTime(2022, 1, 10, 12, 0, 0)},
+                    new ItineraryItem(AttractionsList.Find(a => a.Name == "Heritage Park Historical Village")) { PlannedStartDate = new DateTime(2022, 1, 11, 13, 0, 0)},
                 }
             });
             TripsList.Add(new Trip()
@@ -119,7 +119,7 @@ namespace CalgaryPlanIt
             TripsList.Add(new Trip()
             {
                 StartDate = DateTime.Now.AddDays(-10),
-                EndDate = DateTime.Now.AddDays(57),
+                EndDate = DateTime.Now.AddDays(-3),
                 Name = "Michelle's trip",
                 NumAdults = 3,
                 NumChildren = 1,
@@ -127,9 +127,6 @@ namespace CalgaryPlanIt
                 ItineraryItems = new List<ItineraryItem>() {
                     new ItineraryItem() { Name = "Calgary tower", PlannedStartDate = DateTime.Now.AddDays(36)},
                     new ItineraryItem() { Name = "Cactus Club Cafe", PlannedStartDate = DateTime.Now.AddDays(36)},
-                    new ItineraryItem() { Name = "Cibo", PlannedStartDate = DateTime.Now.AddDays(36)},
-                    new ItineraryItem() { Name = "Cactus Club Cafe pt 2", PlannedStartDate = DateTime.Now.AddDays(37)},
-                    new ItineraryItem() { Name = "Cibo pt 2", PlannedStartDate = DateTime.Now.AddDays(38)},
                 }
             });
         }
