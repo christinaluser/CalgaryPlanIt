@@ -38,6 +38,10 @@ namespace CalgaryPlanIt.Views
             InitializeComponent();
             Trip = trip;
             CurrentPlannerDate = trip.StartDate;
+            if (CurrentPlannerDate == DateTime.MinValue)
+            {
+                CurrentPlannerDate = DateTime.Now;
+            }
             SetPageContent();
             SetMap();
         }

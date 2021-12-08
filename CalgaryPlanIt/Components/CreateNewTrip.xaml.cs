@@ -22,6 +22,7 @@ namespace CalgaryPlanIt.Components
     {
         public event EventHandler CloseButtonClicked;
         public event EventHandler AddingNewTripClicked;
+        bool AlreadyValidated = false;
         public CreateNewTrip()
         {
             InitializeComponent();
@@ -85,24 +86,49 @@ namespace CalgaryPlanIt.Components
 
         public void AddNewTrip_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(startDateTextBox.Text) | String.IsNullOrWhiteSpace(endDateTextBox.Text) | String.IsNullOrWhiteSpace(TripNameTextBox.Text))
+            if (!AlreadyValidated)
             {
-
+                if (Convert.ToInt32(AdultCounter.Content) == 0 && Convert.ToInt32(ChildrenCounter.Content) == 0 && Convert.ToInt32(TeenCounter.Content) == 0)
+                {
+                    NumTravellersWarning.Visibility = Visibility.Visible;
+                }
+                if (StartDate.SelectedDate == null || EndDate.SelectedDate == null)
+                {
+                    DatesWarning.Text = "No trip dates selected, click 'Start Planning' if you want to continue anyways";
+                    DatesWarning.Background = Brushes.NavajoWhite;
+                    DatesWarning.Visibility = Visibility.Visible;
+                }
+                AlreadyValidated = true;
             }
             else
             {
-                MainWindow.TripsList.Insert(0, (new Trip()
+                if (StartDate.SelectedDate > EndDate.SelectedDate)
                 {
-                    StartDate = DateTime.Parse(startDateTextBox.Text),
-                    EndDate = Convert.ToDateTime(endDateTextBox.Text),
-                    Name = TripNameTextBox.Text,
-                    NumAdults = Convert.ToInt32(AdultCounter.Content),
-                    NumChildren = Convert.ToInt32(ChildrenCounter.Content),
-                    NumTeens = Convert.ToInt32(TeenCounter.Content),
+                    DatesWarning.Text = "End date needs to be after start date";
+                    DatesWarning.Background = Brushes.LightCoral;
+                    DatesWarning.Visibility = Visibility.Visible;
                 }
-                ));
-                Navigation.HightLightFromStartPlanning();
-                AddingNewTripClicked.Invoke(this, e);
+                else
+                {
+                    if (String.IsNullOrWhiteSpace(TripNameTextBox.Text))
+                    {
+                        NameWorning.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        MainWindow.TripsList.Insert(0, (new Trip()
+                        {
+                            StartDate = StartDate.SelectedDate ?? new DateTime(),
+                            EndDate = EndDate.SelectedDate ?? new DateTime(),
+                            Name = TripNameTextBox.Text,
+                            NumAdults = Convert.ToInt32(AdultCounter.Content),
+                            NumChildren = Convert.ToInt32(ChildrenCounter.Content),
+                            NumTeens = Convert.ToInt32(TeenCounter.Content),
+                        }
+                        ));
+                        AddingNewTripClicked.Invoke(this, e);
+                    }
+                }
             }
         }
 
