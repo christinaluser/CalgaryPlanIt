@@ -24,11 +24,17 @@ namespace CalgaryPlanIt.Views
         public Home()
         {
             InitializeComponent();
-            if (Navigation.window.Width <= 450)
-            {
-                numTravellersSelection.Rows = 3;
-                numTravellersSelection.Columns = 1;
-            }
+            
+        }
+        public Home(bool isMobile)
+        {
+            InitializeComponent();
+
+            numTravellersSelection.Rows = 3;
+            numTravellersSelection.Columns = 1;
+            StartDate.MinWidth = 0;
+            EndDate.MinWidth = 0;   
+
         }
 
         private void AdultIncrease_Click(object sender, RoutedEventArgs e)

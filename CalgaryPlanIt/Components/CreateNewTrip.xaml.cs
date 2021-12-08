@@ -26,6 +26,14 @@ namespace CalgaryPlanIt.Components
         public CreateNewTrip()
         {
             InitializeComponent();
+            if(Navigation.window.Width <= 450)
+            {
+                numTravellersSelection.Rows = 3;
+                numTravellersSelection.Columns = 1;
+                StartDate.MinWidth = 0;
+                EndDate.MinWidth = 0;
+                border.Height += 150;
+            }
         }
         private void AdultIncrease_Click(object sender, RoutedEventArgs e)
         {

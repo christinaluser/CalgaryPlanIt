@@ -65,6 +65,10 @@ namespace CalgaryPlanIt.Views
             ItineraryContainer.Children.Clear();
             ItineraryContainer.ColumnDefinitions.Clear();
             var day = new ItineraryDayScheduler(DayItineraryItems, CurrentPlannerDate, true, false);
+            if (CurrentPlannerDate < Trip.StartDate || CurrentPlannerDate > Trip.EndDate)
+            {
+                day.Background = Brushes.WhiteSmoke;
+            }
             day.ItineraryItemAdded += AddItem;
             day.ItineraryItemRemoved += RemoveItem;
             day.BlockClick += HandleBlockClick;
@@ -111,6 +115,10 @@ namespace CalgaryPlanIt.Views
                 ItineraryContainer.ColumnDefinitions.Add(c1);
                 var DayItineraryItems = Trip.ItineraryItems?.FindAll(i => temp.Date.Equals(i.PlannedStartDate.Date));
                 var day = new ItineraryDayScheduler(DayItineraryItems, temp, i == 0, true);
+                if (temp < Trip.StartDate || temp > Trip.EndDate)
+                {
+                    day.Background = Brushes.WhiteSmoke;
+                }
                 day.ItineraryItemAdded += AddItem;
                 day.ItineraryItemRemoved += RemoveItem;
                 day.BlockClick += HandleBlockClick;

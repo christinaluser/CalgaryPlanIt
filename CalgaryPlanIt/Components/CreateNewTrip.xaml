@@ -6,10 +6,13 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Background="White" CornerRadius="15" Height="600">
+    <Border Background="White" CornerRadius="15" Height="600" x:Name="border">
 
         <StackPanel Margin="30" Background="White">
 
+            <Button Style="{StaticResource IconButtonLarge}" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseWindow_Click" >
+                <Image Source="/Images/Close.png" Width="30" Height="30"></Image>
+            </Button> 
             <TextBlock Text="WHEN IS YOUR TRIP?" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Style="{StaticResource Heading 2}"/>
 
             <Grid>
@@ -75,7 +78,7 @@
             <TextBox x:Name="TripNameTextBox" BorderBrush="Black" BorderThickness="0,0,0,1" Background="Transparent" Height="21" Width="252" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center"/>
             <TextBlock x:Name="NameWorning" Margin="10" Visibility="Hidden" Text="Please enter a name" Style="{StaticResource Body}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="5" Background="LightCoral"></TextBlock>
 
-            <Button x:Name="StartPlanningButton" Content="ADD TRIP" Height="23" Width="135" RenderTransformOrigin="0.487,3.554" Margin="332,20,332,11" Click="AddNewTrip_Click"/>
+            <Button x:Name="StartPlanningButton" Content="ADD TRIP" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddNewTrip_Click" FontSize="20" Padding="10"/>
 
 
         </StackPanel>
