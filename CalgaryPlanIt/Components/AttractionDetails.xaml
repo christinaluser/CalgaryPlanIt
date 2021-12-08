@@ -38,21 +38,7 @@
     </UserControl.Resources>
     <ScrollViewer>
         <Border Background="White" CornerRadius="5">
-            <Grid Background="White" Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
+            <StackPanel Background="White" Margin="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -67,6 +53,7 @@
                 <TextBlock Grid.Row="1" x:Name="Dates" Text="Dates" Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="2" x:Name="ExpectedDuration" Text="Expected Duration: " Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="3" x:Name="Address" Text="Address" Style="{StaticResource Body}"></TextBlock>
+                <TextBlock Grid.Row="3" x:Name="Price" Text="Address" Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="4" x:Name="Description" Text="Description" FontSize="16" Style="{StaticResource Body}"></TextBlock>
                 <TextBlock Grid.Row="5" Text="Photos" Style="{StaticResource Heading 3}"></TextBlock>
                 <UniformGrid x:Name="PhotoContainer" Grid.Row="6"/>
@@ -103,7 +90,7 @@
                     </Button>
                     <TextBlock Grid.Column="6" x:Name="NumRatings" Text="0 Reviews" VerticalAlignment="Bottom"></TextBlock>
                 </Grid>
-            </Grid>
+            </StackPanel>
         </Border>
     </ScrollViewer>
 </UserControl>
