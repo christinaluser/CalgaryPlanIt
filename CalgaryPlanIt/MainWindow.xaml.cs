@@ -171,7 +171,8 @@ namespace CalgaryPlanIt
                         Rating = 5,
                         Description = "I had a great time on this tour. The gondola ride up Sulfur Mountain is a must. So worth it. Banff town was really nice. Lots to see there, but sadly not enough time."
                     }
-                }
+                },
+                ImageSourceName = new List<string> () {"banff1.jpg", "banff2.jpg", "banff3.jpg"}
             });
             AttractionsList.Add(new Attraction()
             {

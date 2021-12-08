@@ -24,6 +24,7 @@ namespace CalgaryPlanIt
         //for map:
         public double CanvasTopValue { get; set; } = 0;
         public double CanvasLeftValue { get; set; } = 0;
+        public List<String>? ImageSourceName { get; set; }
 
         public int CompareTo(Attraction attr)
         {

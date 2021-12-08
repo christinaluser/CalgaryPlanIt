@@ -55,11 +55,20 @@ namespace CalgaryPlanIt.Components
 
             Description.Text = Attraction.Description;
 
+            if (Attraction.ImageSourceName != null)
+            {
+                foreach (String image in Attraction.ImageSourceName) {
+                    AttractionPicture attPic = new AttractionPicture(image);
+                    PhotoContainer.Children.Add(attPic);
+                }
+            }
+
             if (Attraction.Reviews != null)
             {
                 foreach (Review review in Attraction.Reviews)
                 {
-                    ReviewDescription.Text += review.Description + "\n\n";
+                    CommentCard commentCard = new CommentCard(review);
+                    ReviewContainer.Children.Add(commentCard);
                 }
             }
 
