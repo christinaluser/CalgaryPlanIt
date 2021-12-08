@@ -313,6 +313,7 @@ namespace CalgaryPlanIt.Views
         private Point start;
         private void SetMap()
         {
+            border.Cursor = OpenHand;
             TransformGroup group = new TransformGroup();
 
             ScaleTransform xform = new ScaleTransform();

@@ -33,6 +33,11 @@ namespace CalgaryPlanIt.Components
             InitializeComponent();
             Attraction= attraction;
             SetContent();
+
+            if (Navigation.window.Width <= 450)
+            {
+                border.Width = 400;
+            }
         }
 
         private void SetContent()
@@ -96,6 +101,10 @@ namespace CalgaryPlanIt.Components
         {
             Lis list = ((Button)sender).Tag as Lis;
             var index = MainWindow.ListofLists.FindIndex(l=>l.Name == list.Name);
+            if (MainWindow.ListofLists[index].Attractions!= null)
+            {
+                MainWindow.ListofLists[index].Attractions = new List<Attraction> ();
+            }
             MainWindow.ListofLists[index].Attractions.Add(Attraction);
             CloseHandler.Invoke(this, EventArgs.Empty);
         }

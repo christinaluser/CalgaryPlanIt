@@ -32,7 +32,10 @@ namespace CalgaryPlanIt.Components
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.NavigateTo(new ThingsToDoSubsection(Category));
+            if (Navigation.window.Width > 450)
+                Navigation.NavigateTo(new ThingsToDoSubsection(Category));
+            else
+                Navigation.NavigateToMobile(new MobileThingsToDoSubsection(Category));
         }
     }
 }

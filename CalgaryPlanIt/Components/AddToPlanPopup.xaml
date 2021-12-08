@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CalgaryPlanIt.Components"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
-    <Border CornerRadius="15" Background="White" Width="600" Height="450">
+    <Border CornerRadius="15" Background="White" Width="600" Height="450" x:Name="border">
         <Grid Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
