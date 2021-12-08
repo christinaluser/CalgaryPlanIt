@@ -101,7 +101,7 @@ namespace CalgaryPlanIt.Components
         {
             Lis list = ((Button)sender).Tag as Lis;
             var index = MainWindow.ListofLists.FindIndex(l=>l.Name == list.Name);
-            if (MainWindow.ListofLists[index].Attractions!= null)
+            if (MainWindow.ListofLists[index].Attractions == null)
             {
                 MainWindow.ListofLists[index].Attractions = new List<Attraction> ();
             }

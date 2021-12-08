@@ -168,6 +168,14 @@ namespace CalgaryPlanIt.Views
                 {
                     RefreshDay();
                 }
+                if (i.CanvasLeftValue > 0 && i.CanvasTopValue > 0)
+                {
+                    var mapMarker2 = new MapMarker(i.Name, null, true);
+                    Canvas.SetTop(mapMarker2, i.CanvasTopValue);
+                    Canvas.SetLeft(mapMarker2, i.CanvasLeftValue);
+                    mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                    MapCanvas.Children.Add(mapMarker2);
+                }
             }
         }
 
@@ -180,6 +188,15 @@ namespace CalgaryPlanIt.Views
                 MainWindow.TripsList[index].ItineraryItems = new List<ItineraryItem>();
             }
             MainWindow.TripsList[index].ItineraryItems.Add((ItineraryItem)sender);
+            var i = (ItineraryItem)sender;
+            if (i.CanvasLeftValue > 0 && i.CanvasTopValue > 0)
+            {
+                var mapMarker2 = new MapMarker(i.Name, null, true);
+                Canvas.SetTop(mapMarker2, i.CanvasTopValue);
+                Canvas.SetLeft(mapMarker2, i.CanvasLeftValue);
+                mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                MapCanvas.Children.Add(mapMarker2);
+            }
         }
 
         private void RemoveItem(object sender, EventArgs e)
@@ -350,13 +367,45 @@ namespace CalgaryPlanIt.Views
             MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
             MapCanvas.MouseMove += MapCanvas_MouseMove;
 
-            var mapMarker = new MapMarker("You", null);
-            Canvas.SetTop(mapMarker, 100);
-            Canvas.SetLeft(mapMarker, 100);
-            MapCanvas.Children.Add(mapMarker);
+            MoveMapToCenter();
 
+            SetMapMarkers();
 
         }
+
+        private void SetMapMarkers()
+        {
+            
+
+            if (Trip.ItineraryItems == null || Trip.ItineraryItems.Count == 0)
+                return;
+
+            var temp = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(DateTime.Now)).OrderBy(a => a.CanvasTopValue).ToList();
+            foreach (Attraction a in temp)
+            {
+                if (a.CanvasLeftValue > 0 && a.CanvasTopValue > 0)
+                {
+                    var mapMarker2 = new MapMarker(a.Name, null, true);
+                    Canvas.SetTop(mapMarker2, a.CanvasTopValue);
+                    Canvas.SetLeft(mapMarker2, a.CanvasLeftValue);
+                    mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                    MapCanvas.Children.Add(mapMarker2);
+                }
+            }
+        }
+
+        private void HandleMapMarkerClicked(object sender, EventArgs e)
+        {
+
+        }
+
+        void MoveMapToCenter()
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            tt.X = origin.X - 1300;
+            tt.Y = origin.Y - 900;
+        }
+
         private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             MapCanvas.ReleaseMouseCapture();
@@ -430,12 +479,24 @@ namespace CalgaryPlanIt.Views
 
         private void MapControlToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (Walk.IsChecked == true || Bus.IsChecked == true || Drive.IsChecked == true)
+            {
+                directionsnote.Visibility = Visibility.Visible;
+            } else
+            {
+                directionsnote.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void YourLocationToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (YourLocationToggle.IsChecked == true)
+            {
+                YourLocation.Visibility = Visibility.Visible;
+            } else
+            {
+                YourLocation.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void ReviewTextBox_LostFocus(object sender, RoutedEventArgs e)

@@ -207,6 +207,7 @@
         <Border Grid.Row="1" Grid.Column="2" Height="725" Width="600"  Name="border" ClipToBounds="True" Visibility="Collapsed" Margin="5,0">
             <Canvas x:Name="MapCanvas">
                 <Image Source="/Images/MapScreenshot.png"></Image>
+                <Components:MapMarker Canvas.Left="1592" Canvas.Top="1040" x:Name="YourLocation"></Components:MapMarker>
             </Canvas>
         </Border>
         <Border x:Name="MapControls" CornerRadius="15" Grid.Row="1" Grid.Column="2" Background="White" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20">
@@ -214,8 +215,9 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ToggleButton Padding="5,5,10,5" Margin="8" BorderThickness="0" Background="Pink" Checked="YourLocationToggleButton_Checked">
+                <ToggleButton Padding="5,5,10,5" Margin="8" BorderThickness="0" Background="Pink" Click="YourLocationToggleButton_Checked" x:Name="YourLocationToggle" IsChecked="True">
                     <ToggleButton.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -231,19 +233,21 @@
                     </Grid>
                 </ToggleButton>
                 <UniformGrid Grid.Row="1" Rows="1" Columns="4">
-                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="ClearDirections" Checked="MapControlToggleButton_Checked" IsChecked="True">
+                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" x:Name="ClearDirections" Click="MapControlToggleButton_Checked" IsChecked="True">
                         <Image Source="/Images/SquareMinus.png"></Image>
                     </ToggleButton>
-                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Walk" Checked="MapControlToggleButton_Checked">
+                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" x:Name="Walk" Click="MapControlToggleButton_Checked">
                         <Image Source="/Images/Walking.png"></Image>
                     </ToggleButton>
-                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Bus" Checked="MapControlToggleButton_Checked">
+                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" x:Name="Bus" Click="MapControlToggleButton_Checked">
                         <Image Source="/Images/Bus.png"></Image>
                     </ToggleButton>
-                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" Tag="Drive" Checked="MapControlToggleButton_Checked">
+                    <ToggleButton Style="{StaticResource ToggleIconButtonSmallWithBackground}" Background="Pink" x:Name="Drive" Click="MapControlToggleButton_Checked">
                         <Image Source="/Images/Car.png"></Image>
                     </ToggleButton>
                 </UniformGrid>
+                <TextBlock Grid.Row="2" Text="We are working on bringing map directions to you. Stay tuned for updates!" Width="190" Margin="10" TextWrapping="WrapWithOverflow"
+                           Style="{StaticResource Body}" Visibility="Collapsed" Background="NavajoWhite" Padding="5" x:Name="directionsnote"></TextBlock>
             </Grid>
         </Border>
         <ScrollViewer x:Name="ListScollViewer" Grid.Row="1" Grid.Column="2" Height="710" VerticalScrollBarVisibility="Auto" Padding="10,0" Background="White" HorizontalAlignment="Right">

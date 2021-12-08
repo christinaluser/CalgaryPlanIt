@@ -21,11 +21,18 @@ namespace CalgaryPlanIt.Components
     public partial class MapMarker : UserControl
     {
         public event EventHandler MapMarkerClicked; 
-        bool HoverForLabel;
+        public bool HoverForLabel;
         
         public MapMarker()
         {
             InitializeComponent();
+
+            HoverForLabel = false;
+            MarkerLabel.Background = Brushes.AliceBlue;
+            MarkerLabel.Visibility = Visibility.Visible;
+
+            MarkerLabelText.Text = "You";
+            MarkerIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/MapPin.png"));
         }
 
         public MapMarker(string label, Brush? color, bool hoverForLabel = false)
@@ -41,6 +48,7 @@ namespace CalgaryPlanIt.Components
             }
             
         }
+
         int z;
         private void MarkerIcon_MouseEnter(object sender, MouseEventArgs e)
         {
