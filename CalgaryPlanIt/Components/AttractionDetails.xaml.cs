@@ -52,7 +52,13 @@ namespace CalgaryPlanIt.Components
             else 
                 ExpectedDuration.Visibility = Visibility.Collapsed;
             Address.Text = Attraction.Address;
-            Price.Text += Attraction.Price;
+            if (Attraction.Price != null && Attraction.Price != " " && Attraction.Price != "")
+                if (Attraction.Price.Contains("-"))
+                    Price.Text = Attraction.Price;
+                else
+                    Price.Text = "From " + Attraction.Price;
+            else
+                Price.Text = "";
             Description.Text = Attraction.Description;
 
             if (Attraction.ImageSourceName != null)
