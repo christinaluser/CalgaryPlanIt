@@ -441,10 +441,7 @@ namespace CalgaryPlanIt.Views
         {
             Attractions = TmpAttractions;
             AttractionsList.Children.Clear();
-            foreach (Attraction attraction in Attractions)
-            {
-                AttractionsList.Children.Add(new AttractionCard(attraction));
-            }
+            PopulateAttractionsList();
             Button_Click_2(sender, e);
         }
 
