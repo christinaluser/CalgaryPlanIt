@@ -33,7 +33,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Heading 1}" Text="Lists" HorizontalAlignment="Left"></TextBlock>
-                <Button Grid.Column="1"  Grid.Row="0" Content="Create" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="10" FontSize="18" FontWeight="Medium" Click="Button_Click"></Button>
+                <Button Grid.Column="1"  Grid.Row="0" Content="Create" HorizontalAlignment="Left" VerticalAlignment="Center" Background="AliceBlue" Padding="10" BorderBrush="SlateGray" BorderThickness="1" Typography.Capitals="AllSmallCaps" Click="Button_Click"></Button>
                 <ComboBox x:Name="sort" Grid.Column="2" HorizontalAlignment="Right" Width="120" Height="20" Style="{DynamicResource DefaultComboBox}" ItemContainerStyle="{DynamicResource DefaultComboBoxItem}" SelectionChanged="ComboBox_SelectionChanged">
                     <ComboBoxItem Content="A-Z" Selector.IsSelected="True"></ComboBoxItem>
                     <ComboBoxItem Content="Z-A"></ComboBoxItem>
