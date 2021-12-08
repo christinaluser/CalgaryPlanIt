@@ -111,7 +111,7 @@ namespace CalgaryPlanIt.Views
                 AlreadyValidated = true;
             }
             else { 
-            if (StartDate.SelectedDate > EndDate.SelectedDate)
+            if (StartDate.SelectedDate > EndDate.SelectedDate && EndDate.SelectedDate != DateTime.MinValue)
             {
                 DatesWarning.Text = "End date needs to be after start date";
                 DatesWarning.Background = Brushes.LightCoral;
@@ -125,7 +125,10 @@ namespace CalgaryPlanIt.Views
                 }
                 else
                 {
-                    Navigation.NavigateTo(new ThingsToDo());
+                    if (Navigation.window.Width > 450)
+                        Navigation.NavigateTo(new ThingsToDo());
+                    else
+                        Navigation.NavigateToMobile(new ThingsToDo(true));
                     MainWindow.TripsList.Insert(0, (new Trip()
                     {
                         StartDate = StartDate.SelectedDate ?? new DateTime(),
