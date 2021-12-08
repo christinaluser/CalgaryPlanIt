@@ -107,10 +107,25 @@
             </Grid>
             <Separator Height="10"/>
             <TextBlock Text="Notes" Style="{StaticResource Heading 3}"></TextBlock>
-            <!--TODO-->
+            <Grid HorizontalAlignment="Stretch">
+                <TextBox Height="100" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Stretch" x:Name="NotesTextBox" Margin="5" AcceptsReturn="true" LostFocus="ReviewTextBox_LostFocus"/>
+                <TextBlock IsHitTestVisible="False" Text="Type notes here" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Foreground="DarkGray" >
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=ReviewTextBox}" Value="">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
             <Separator Height="10"/>
             <TextBlock Text="Share" Style="{StaticResource Heading 3}"></TextBlock>
-            <!--TODO-->
+            <TextBlock Text="this feature is a work in progress stay tuned for updates!" Style="{StaticResource Body}"></TextBlock>
         </StackPanel>
 
         <Grid Grid.Row="1" Grid.Column="1">

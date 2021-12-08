@@ -38,6 +38,10 @@ namespace CalgaryPlanIt.Views
             InitializeComponent();
             Trip = trip;
             CurrentPlannerDate = trip.StartDate;
+            if (CurrentPlannerDate == DateTime.MinValue)
+            {
+                CurrentPlannerDate = DateTime.Now;
+            }
             SetPageContent();
             SetMap();
         }
@@ -47,6 +51,7 @@ namespace CalgaryPlanIt.Views
             TripName.Text = Trip.Name;
             TripSummaryCalendar.SelectedDates.AddRange(Trip.StartDate, Trip.EndDate);
             NumTravellers.Text = Trip.GetNumTravellersString();
+            NotesTextBox.Text = Trip.Notes;
 
             PopulateListPanel();
             RefreshDay();
@@ -61,6 +66,11 @@ namespace CalgaryPlanIt.Views
             ItineraryContainer.Children.Clear();
             ItineraryContainer.ColumnDefinitions.Clear();
             var day = new ItineraryDayScheduler(DayItineraryItems, CurrentPlannerDate, true, false);
+            if (CurrentPlannerDate < Trip.StartDate || (Trip.EndDate != DateTime.MinValue && CurrentPlannerDate > Trip.EndDate))
+            {
+                day.Background = Brushes.WhiteSmoke;
+                day.IsHitTestVisible = false;
+            }
             day.ItineraryItemAdded += AddItem;
             day.ItineraryItemRemoved += RemoveItem;
             day.BlockClick += HandleBlockClick;
@@ -107,6 +117,11 @@ namespace CalgaryPlanIt.Views
                 ItineraryContainer.ColumnDefinitions.Add(c1);
                 var DayItineraryItems = Trip.ItineraryItems?.FindAll(i => temp.Date.Equals(i.PlannedStartDate.Date));
                 var day = new ItineraryDayScheduler(DayItineraryItems, temp, i == 0, true);
+                if (temp < Trip.StartDate || (Trip.EndDate != DateTime. MinValue && temp > Trip.EndDate))
+                {
+                    day.Background = Brushes.WhiteSmoke;
+                    day.IsHitTestVisible = false;
+                }
                 day.ItineraryItemAdded += AddItem;
                 day.ItineraryItemRemoved += RemoveItem;
                 day.BlockClick += HandleBlockClick;
@@ -236,8 +251,12 @@ namespace CalgaryPlanIt.Views
             Button button = (Button)sender;
             button.Cursor = Drag;
             button.Background = Brushes.AliceBlue;
-            DragDrop.DoDragDrop(button,new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
-            
+            var ret = DragDrop.DoDragDrop(button,new DataObject(DataFormats.Serializable, button), DragDropEffects.Copy);
+            if (ret == DragDropEffects.None)
+            {
+                button.Cursor = OpenHand;
+                button.Background = Brushes.MintCream;
+            }
         }
         
         private void AttractionButtonMouseUp(object sender, EventArgs e)
@@ -415,6 +434,13 @@ namespace CalgaryPlanIt.Views
         private void YourLocationToggleButton_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ReviewTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Trip.Notes = NotesTextBox.Text;
+            var index = MainWindow.TripsList.FindIndex(t => t.Name == Trip.Name);
+            MainWindow.TripsList[index].Notes = NotesTextBox.Text;
         }
     }
 }

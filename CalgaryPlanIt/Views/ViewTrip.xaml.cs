@@ -41,12 +41,44 @@ namespace CalgaryPlanIt.Views
             {
                 Itinerary.Children.Clear();
                 DateTime d = new DateTime(Trip.StartDate.Year, Trip.StartDate.Month, Trip.StartDate.Day);
-                while (DateTime.Compare(d.Date, Trip.EndDate.Date) <= 0)
+                if (Trip.StartDate == DateTime.MinValue && Trip.ItineraryItems != null)
                 {
-                    List<ItineraryItem> itineraryList = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(d.Date));
-                    Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, true));
-                    d = d.AddDays(1);
+                    d = Trip.ItineraryItems[0].PlannedStartDate;
+                    Trip.ItineraryItems.ForEach(i =>
+                    {
+                        if (i.PlannedStartDate < d)
+                        {
+                            d = i.PlannedStartDate;
+                        }
+                    });
                 }
+
+                if (Trip.EndDate != DateTime.MinValue)
+                {
+                    while (DateTime.Compare(d.Date, Trip.EndDate.Date) <= 0)
+                    {
+                        List<ItineraryItem> itineraryList = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(d.Date));
+                        Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, true));
+                        d = d.AddDays(1);
+                    }
+                } else
+                {
+                    DateTime e = Trip.ItineraryItems[0].PlannedStartDate;
+                    Trip.ItineraryItems.ForEach(i =>
+                    {
+                        if (i.PlannedStartDate > e)
+                        {
+                            e = i.PlannedStartDate;
+                        }
+                    });
+                    while (DateTime.Compare(d.Date, e) <= 0)
+                    {
+                        List<ItineraryItem> itineraryList = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(d.Date));
+                        Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, true));
+                        d = d.AddDays(1);
+                    }
+                }
+                
             }
             else
             {

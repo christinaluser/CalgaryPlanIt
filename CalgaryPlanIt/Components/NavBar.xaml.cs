@@ -71,7 +71,7 @@ namespace CalgaryPlanIt.Components
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Navigation.NavigateToMobile(new Home());
+            Navigation.NavigateToMobile(new Home(true));
         }
     }
 }
