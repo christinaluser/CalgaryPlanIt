@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,20 @@ namespace CalgaryPlanIt.Views
             SetContent();
         }
 
+        public ThingsToDoSubsection(List<Attraction> attractions, string searchterm)
+        {
+            InitializeComponent();
+            CategoryName.Text = "Things to do";
+            Attractions = attractions;
+            TmpAttractions = attractions;
+            SearchHeader.Visibility = Visibility.Visible;
+            SearchResultsTitle.Text += searchterm;
+            sb.Visibility = Visibility.Collapsed;
+            PopulateFilterTags();
+            PopulateAttractionsList();
+            SetMap();
+        }
+
         public void SetContent()
         {
             CategoryName.Text = Category.ToFriendlyString();
@@ -65,6 +80,8 @@ namespace CalgaryPlanIt.Views
 
             MapCanvas.RenderTransform = group;
 
+            MoveMapToCenter();
+
             MapCanvas.MouseWheel += MapCanvas_MouseWheel;
             MapCanvas.MouseLeftButtonDown += MapCanvas_MouseLeftButtonDown;
             MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
@@ -73,17 +90,43 @@ namespace CalgaryPlanIt.Views
             SetMapMarkers();
         }
 
+        void MoveMapToCenter()
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            tt.X = origin.X - 1300;
+            tt.Y = origin.Y - 900;
+        }
+
         private void SetMapMarkers()
         {
             var mapMarker = new MapMarker("You", null);
-            Canvas.SetTop(mapMarker, 100);
-            Canvas.SetLeft(mapMarker, 100);
+            Canvas.SetTop(mapMarker, 1040);
+            Canvas.SetLeft(mapMarker, 1592);
             MapCanvas.Children.Add(mapMarker);
 
-            //var mapMarker2 = new MapMarker(Attractions[0].Name, null, true);
-            //Canvas.SetTop(mapMarker2, 200);
-            //Canvas.SetLeft(mapMarker2, 200);
-            //MapCanvas.Children.Add(mapMarker2);
+            var temp = Attractions.OrderBy(a => a.CanvasTopValue).ToList();
+            foreach(Attraction a in temp)
+            {
+                if (a.CanvasLeftValue > 0 && a.CanvasTopValue > 0)
+                {
+                    var mapMarker2 = new MapMarker(a.Name, null, true);
+                    Canvas.SetTop(mapMarker2, a.CanvasTopValue);
+                    Canvas.SetLeft(mapMarker2, a.CanvasLeftValue);
+                    mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                    MapCanvas.Children.Add(mapMarker2);
+                    
+                    
+                }
+            }
+        }
+        
+        private void HandleMapMarkerClicked(object sender, EventArgs e)
+        {
+            string attName = (string)sender;
+            attName = Regex.Replace(attName, @"[\s+,']", "");
+            AttractionCard cb = (AttractionCard)this.FindName(attName);
+            cb.BringIntoView();
+            cb.blur.Color = Color.FromArgb(0xff, 0xf5, 0xd5, 0xe5);
         }
 
         private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -151,6 +194,7 @@ namespace CalgaryPlanIt.Views
                 card.AttractionCardClicked += AttractionCard_Clicked;
                 card.AttractionCardAddToListClicked += AttractionCardAddToList_Clicked;
                 card.AttractionCardAddToTripClicked += AttractionCardAddToTrip_Clicked;
+                
                 AttractionsList.Children.Add(card);
             }
             if (AttractionsList.Children.Count == 0)
@@ -487,6 +531,14 @@ namespace CalgaryPlanIt.Views
 
         private void ClearSearchResults(object sender, EventArgs e)
         {
+            if (CategoryName.Text == "Things to do")
+            {
+                if (Navigation.window.Width > 450)
+                    Navigation.NavigateTo(new ThingsToDo());
+                else
+                    Navigation.NavigateToMobile(new ThingsToDo(true));
+            }
+                
             SearchBar.Clear();
             Attractions = MainWindow.AttractionsList.FindAll(a => a.Category == Category);
             PopulateAttractionsList();

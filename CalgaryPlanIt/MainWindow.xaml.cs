@@ -542,7 +542,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hour",
                 Address = "101 9 Ave SW, Calgary, Alberta T2P 1J9 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1525,
+                CanvasTopValue = 1110
             });
             AttractionsList.Add(new Attraction()
             {
@@ -557,7 +559,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1-2 Hours",
                 Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1079,
+                CanvasTopValue = 960
             });
             AttractionsList.Add(new Attraction()
             {
@@ -572,7 +576,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1-2 Hours",
                 Address = "850 4 Street SE East Village, Calgary, Alberta T2G 1R1 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1597,
+                CanvasTopValue = 1086
             });
             AttractionsList.Add(new Attraction()
             {
@@ -587,7 +593,9 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "1 < Hours",
                 Address = "800 3 St SE In the East Village, Calgary, Alberta T2G 2E7 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1562,
+                CanvasTopValue = 1100
             });
             AttractionsList.Add(new Attraction()
             {
@@ -602,7 +610,9 @@ namespace CalgaryPlanIt
                 Rating = 5,
                 Duration = "1 < Hours",
                 Address = "200 Barclay Parade SW, Calgary, Alberta T2P 4R5 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1525,
+                CanvasTopValue = 1030
             });
             AttractionsList.Add(new Attraction()
             {
@@ -617,7 +627,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hours",
                 Address = "25 Prince's Island Pk SW, Calgary, Alberta T2P 0R1 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1500,
+                CanvasTopValue = 1040
             });
             AttractionsList.Add(new Attraction()
             {
@@ -633,7 +645,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "1 < Hours",
                 Address = "Calgary Chinese Cultural Cntre 197 1 St SW, Calgary, Alberta T2P 4M4 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1579,
+                CanvasTopValue = 1070
             });
             AttractionsList.Add(new Attraction()
             {
@@ -648,7 +662,9 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "2 < Hours",
                 Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1530,
+                CanvasTopValue = 1060
             });
             AttractionsList.Add(new Attraction()
             {
@@ -663,7 +679,9 @@ namespace CalgaryPlanIt
                 Rating = 3,
                 Duration = "",
                 Address = "136 2 St SW, Calgary, Alberta T2P 0S7 Canada",
-                Host = ""
+                Host = "",
+                CanvasLeftValue = 1490,
+                CanvasTopValue = 1060
             });
             AttractionsList.Add(new Attraction()
             {

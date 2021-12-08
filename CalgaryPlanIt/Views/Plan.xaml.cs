@@ -157,8 +157,10 @@ namespace CalgaryPlanIt.Views
             if (i?.Name != null && i?.Name != "")
             {
                 var index = MainWindow.TripsList.FindIndex(t => t.Name == Trip.Name);
+                if (MainWindow.TripsList[index].ItineraryItems == null)
+                    MainWindow.TripsList[index].ItineraryItems = new List<ItineraryItem>();
                 MainWindow.TripsList[index].ItineraryItems.Add(i);
-                Trip.ItineraryItems.Add(i);
+                //Trip.ItineraryItems.Add(i);
                 if (WeekButton.IsChecked == true)
                 {
                     RefreshWeek();
@@ -172,7 +174,7 @@ namespace CalgaryPlanIt.Views
         private void AddItem(object sender, EventArgs e)
         {
             var index = MainWindow.TripsList.FindIndex(t => t == Trip || t.Name == Trip.Name);
-            Trip.ItineraryItems?.Add((ItineraryItem)sender);
+            //Trip.ItineraryItems?.Add((ItineraryItem)sender);
             if (MainWindow.TripsList[index].ItineraryItems == null)
             {
                 MainWindow.TripsList[index].ItineraryItems = new List<ItineraryItem>();

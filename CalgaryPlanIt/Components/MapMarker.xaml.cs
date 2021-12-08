@@ -20,7 +20,7 @@ namespace CalgaryPlanIt.Components
     /// </summary>
     public partial class MapMarker : UserControl
     {
-
+        public event EventHandler MapMarkerClicked; 
         bool HoverForLabel;
         
         public MapMarker()
@@ -41,11 +41,12 @@ namespace CalgaryPlanIt.Components
             }
             
         }
-
+        int z;
         private void MarkerIcon_MouseEnter(object sender, MouseEventArgs e)
         {
             if (HoverForLabel)
             {
+                
                 MarkerLabel.Visibility = Visibility.Visible;
             }
         }
@@ -54,8 +55,14 @@ namespace CalgaryPlanIt.Components
         {
             if (HoverForLabel)
             {
+
                 MarkerLabel.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void MarkerIcon_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MapMarkerClicked.Invoke(MarkerLabelText.Text, e);
         }
     }
 }

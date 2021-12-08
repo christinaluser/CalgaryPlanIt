@@ -46,8 +46,6 @@ namespace CalgaryPlanIt
             }
         }
 
-        //location?
-        //photos?
 
     }
 }

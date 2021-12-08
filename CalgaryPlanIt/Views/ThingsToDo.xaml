@@ -27,7 +27,7 @@
                 <ComboBoxItem Content="Z-A"></ComboBoxItem>
             </ComboBox>
             <Grid Grid.Column="2" HorizontalAlignment="Right" x:Name="sb">
-                <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5"/>
+                <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5" KeyDown="OnKeyDown"/>
                 <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">

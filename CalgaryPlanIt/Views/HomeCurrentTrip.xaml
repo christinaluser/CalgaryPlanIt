@@ -104,14 +104,14 @@
             </Grid>
             
 
-            <ScrollViewer Height="630" Grid.Row="4">
-                <StackPanel x:Name="Itinerary">
+            
+                <StackPanel x:Name="Itinerary" Grid.Row="4">
                     <UniformGrid Rows="2" x:Name="NoPlan" HorizontalAlignment="Left" Visibility="Collapsed">
                         <TextBlock Text="Nothing here yet!" Style="{StaticResource Heading 3}"></TextBlock>
                         <TextBlock Text="Click 'Things To Do' to start browsing" Style="{StaticResource Body}"></TextBlock>
                     </UniformGrid>
                 </StackPanel>
-            </ScrollViewer>
+            
         </Grid>
     </Grid>
 </Page>

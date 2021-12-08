@@ -30,6 +30,13 @@ namespace CalgaryPlanIt.Views
             }
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (Navigation.window.Width > 450)
+                Navigation.NavigateTo(new Plan(Trip));
+            else
+                Navigation.NavigateToMobile(new MobilePlan(Trip));
+        }
 
         private void SetContent()
         {

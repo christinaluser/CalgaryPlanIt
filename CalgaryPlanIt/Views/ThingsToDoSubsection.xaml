@@ -40,7 +40,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock x:Name="CategoryName" Style="{StaticResource Heading 1}"></TextBlock>
 
-                <Grid Grid.Column="2" HorizontalAlignment="Right">
+                <Grid Grid.Column="2" HorizontalAlignment="Right" x:Name="sb">
                     <TextBox Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchBar" Margin="5" BorderBrush="#333" KeyDown="OnKeyDown"></TextBox>
                     <TextBlock IsHitTestVisible="False" Text="Search" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="SlateGray" Background="Transparent">
                         <TextBlock.Style>
@@ -240,7 +240,7 @@
                             </ColumnDefinition.Style>
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <ScrollViewer Height="660">
+                    <ScrollViewer Height="660" x:Name="scroller">
                         <StackPanel Grid.Column="0" x:Name="AttractionsList"></StackPanel>
                     </ScrollViewer>
 

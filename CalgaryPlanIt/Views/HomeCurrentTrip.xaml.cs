@@ -23,6 +23,7 @@ namespace CalgaryPlanIt.Views
     {
         Trip Trip;
         bool IsCurrent = false;
+        ItineraryItem Next;
         public HomeCurrentTrip()
         {
             InitializeComponent();
@@ -39,8 +40,9 @@ namespace CalgaryPlanIt.Views
             {
                 IsCurrent = true;
             }
-
+            Next = FindUpcoming();
             SetContent();
+            
         }
         public HomeCurrentTrip(bool isMobile)
         {
@@ -58,7 +60,27 @@ namespace CalgaryPlanIt.Views
             {
                 IsCurrent = true;
             }
+            Next = FindUpcoming();
             SetContent();
+            
+        }
+
+        private ItineraryItem FindUpcoming()
+        {
+            if (Trip.ItineraryItems == null || Trip.ItineraryItems?.Count == 0)
+                return null;
+
+            var n = Trip.ItineraryItems.FirstOrDefault();
+            foreach(ItineraryItem item in Trip.ItineraryItems)
+            {
+                if (n.PlannedStartDate < item.PlannedStartDate && n.PlannedStartDate < DateTime.Now)
+                {
+                    n = item;
+                }
+            }
+            if (n.PlannedStartDate < DateTime.Now)
+                return null;
+            return n;
         }
 
         private void SetContent()
@@ -71,16 +93,27 @@ namespace CalgaryPlanIt.Views
             {
                 Itinerary.Children.Clear();
                 DateTime d = new DateTime(Trip.StartDate.Year, Trip.StartDate.Month, Trip.StartDate.Day);
+                if (d < DateTime.Now) d = DateTime.Now;
                 while (DateTime.Compare(d.Date, Trip.EndDate.Date) <= 0)
                 {
                     List<ItineraryItem> itineraryList = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(d.Date));
-                    Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, true));
+                    
+                    Itinerary.Children.Add(new ItineraryDayList(d, itineraryList, false));
                     d = d.AddDays(1);
                 }
             }
             else
             {
                 NoPlan.Visibility = Visibility.Visible;
+            }
+
+            if (Next != null)
+            {
+                Upcoming.Text = Next.Name;
+                UpcomingTime.Text = Next.PlannedStartDate.ToString("t") + " - " + Next.PlannedEndDate.ToString("t");
+            } else
+            {
+                UpcomingThing.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -89,14 +122,6 @@ namespace CalgaryPlanIt.Views
             Navigation.NavigateTo(new Trips());
         }
 
-        private void SubscribeToAllReviewButtonEvent()
-        {
-            if (Trip.ItineraryItems != null && Trip.ItineraryItems.Count > 0)
-            {
-                
-            }
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

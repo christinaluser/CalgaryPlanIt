@@ -103,5 +103,20 @@ namespace CalgaryPlanIt.Views
             }
 
         }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Return)
+            {
+                var searchVal = SearchBar.Text;
+                List<Attraction> searchResults = MainWindow.AttractionsList.FindAll(a => a.Name.Contains(searchVal, StringComparison.OrdinalIgnoreCase));
+                if (Navigation.window.Width > 450)
+                    Navigation.NavigateTo(new ThingsToDoSubsection(searchResults, searchVal));
+                else
+                    Navigation.NavigateToMobile(new ThingsToDoSubsection(searchResults, searchVal));
+
+            }
+        }
+
     }
 }
