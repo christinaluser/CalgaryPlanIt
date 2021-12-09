@@ -66,6 +66,8 @@ namespace CalgaryPlanIt.Views
 
             MapCanvas.RenderTransform = group;
 
+            MoveMapToCenter();
+
             MapCanvas.MouseWheel += MapCanvas_MouseWheel;
             MapCanvas.MouseLeftButtonDown += MapCanvas_MouseLeftButtonDown;
             MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
@@ -74,17 +76,40 @@ namespace CalgaryPlanIt.Views
             SetMapMarkers();
         }
 
+        void MoveMapToCenter()
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            tt.X = origin.X - 1300;
+            tt.Y = origin.Y - 900;
+        }
+
         private void SetMapMarkers()
         {
+
             var mapMarker = new MapMarker("You", null);
-            Canvas.SetTop(mapMarker, 100);
-            Canvas.SetLeft(mapMarker, 100);
+            Canvas.SetTop(mapMarker, 1040);
+            Canvas.SetLeft(mapMarker, 1592);
             MapCanvas.Children.Add(mapMarker);
 
-            //var mapMarker2 = new MapMarker(Attractions[0].Name, null, true);
-            //Canvas.SetTop(mapMarker2, 200);
-            //Canvas.SetLeft(mapMarker2, 200);
-            //MapCanvas.Children.Add(mapMarker2);
+            var temp = Attractions.OrderBy(a => a.CanvasTopValue).ToList();
+            foreach (Attraction a in temp)
+            {
+                if (a.CanvasLeftValue > 0 && a.CanvasTopValue > 0)
+                {
+                    var mapMarker2 = new MapMarker(a.Name, null, true);
+                    Canvas.SetTop(mapMarker2, a.CanvasTopValue);
+                    Canvas.SetLeft(mapMarker2, a.CanvasLeftValue);
+                    mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                    MapCanvas.Children.Add(mapMarker2);
+
+
+                }
+            }
+        }
+
+        private void HandleMapMarkerClicked(object sender, EventArgs e)
+        {
+            
         }
 
         private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
