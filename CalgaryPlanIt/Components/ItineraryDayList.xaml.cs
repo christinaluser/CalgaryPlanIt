@@ -34,7 +34,7 @@ namespace CalgaryPlanIt.Components
         {
             InitializeComponent();
             Day = day;
-            ItineraryItems = itineraryItems;
+            ItineraryItems = itineraryItems.OrderBy(i=>i.PlannedStartDate).ToList();
             ShowReviewButtons = showReviewButtons;
 
             SetContent();
