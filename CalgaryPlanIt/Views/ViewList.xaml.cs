@@ -34,6 +34,7 @@ namespace CalgaryPlanIt.Views
             Lis = lis;
             Lis.Attractions = Lis.Attractions?.OrderBy(t => t.Name).ToList();
             RefreshAttractionsGrid(Lis.Attractions);
+            Name.Text = Lis.Name;
         }
 
         public void RefreshAttractionsGrid(List<Attraction> attractions)

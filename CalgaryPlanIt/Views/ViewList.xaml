@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{StaticResource Heading 1}" Text="List Name" HorizontalAlignment="Left"></TextBlock>
+            <TextBlock Grid.Column="0" Style="{StaticResource Heading 1}" Text="List Name" x:Name="Name" HorizontalAlignment="Left"></TextBlock>
             <ComboBox Grid.Column="2" HorizontalAlignment="Right" Width="120" Height="20" Style="{DynamicResource DefaultComboBox}" ItemContainerStyle="{DynamicResource DefaultComboBoxItem}" SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem Content="A-Z" Selector.IsSelected="True"></ComboBoxItem>
                 <ComboBoxItem Content="Z-A"></ComboBoxItem>
