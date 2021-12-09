@@ -40,6 +40,7 @@ namespace CalgaryPlanIt.Components
             if (Navigation.window.Width <= 450)
             {
                 border.Width = 400;
+                border.Height += 100;
             }
         }
 
