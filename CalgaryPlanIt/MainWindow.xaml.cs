@@ -354,7 +354,8 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "More than 3 hours",
                 Address = "1300 Zoo Rd NE, Calgary, Alberta T2E 7V6 Canada",
-                Host = ""
+                Host = "",
+                ImageSourceName = new List<String>() {"monkey.jpg", "panda.jpg"}
             });
             AttractionsList.Add(new Attraction()
             {
