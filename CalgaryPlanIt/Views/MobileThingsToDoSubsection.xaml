@@ -116,7 +116,7 @@
                 </Canvas>
             </Border>
 
-            <Grid Grid.Row="3" x:Name="ForDetails" Height="660" Visibility="Collapsed"></Grid>
+            <Grid Grid.Row="3" x:Name="ForDetails" Height="460" Visibility="Collapsed"></Grid>
 
             <ScrollViewer x:Name="filtersv" Grid.Row="3" Grid.RowSpan="2" Background="White" Visibility="Collapsed">
                 <StackPanel x:Name="FilterColumn" Margin="10">

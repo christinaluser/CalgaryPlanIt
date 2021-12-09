@@ -74,6 +74,8 @@ namespace CalgaryPlanIt.Views
             day.ItineraryItemRemoved += RemoveItem;
             day.BlockClick += HandleBlockClick;
             ItineraryContainer.Children.Add(day);
+
+
         }
 
         private void HandleBlockClick(object sender, EventArgs e)
@@ -103,6 +105,13 @@ namespace CalgaryPlanIt.Views
                 MainWindow.TripsList[index].ItineraryItems.Add(i);
                 Trip.ItineraryItems.Add(i);
                 RefreshDay();
+            }
+            if (i.CanvasLeftValue > 0 && i.CanvasTopValue > 0)
+            {
+                var mapMarker2 = new MapMarker(i.Name, null, true);
+                Canvas.SetTop(mapMarker2, i.CanvasTopValue);
+                Canvas.SetLeft(mapMarker2, i.CanvasLeftValue);
+                MapCanvas.Children.Add(mapMarker2);
             }
         }
 
@@ -275,12 +284,9 @@ namespace CalgaryPlanIt.Views
             MapCanvas.MouseLeftButtonUp += MapCanvas_MouseLeftButtonUp;
             MapCanvas.MouseMove += MapCanvas_MouseMove;
 
-            var mapMarker = new MapMarker("You", null);
-            Canvas.SetTop(mapMarker, 100);
-            Canvas.SetLeft(mapMarker, 100);
-            MapCanvas.Children.Add(mapMarker);
+            MoveMapToCenter();
 
-
+            SetMapMarkers();
         }
         private void MapCanvas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -315,6 +321,37 @@ namespace CalgaryPlanIt.Views
                 return;
             transform.ScaleX += zoom;
             transform.ScaleY += zoom;
+
+        }
+
+        private void SetMapMarkers()
+        {
+
+
+            if (Trip.ItineraryItems == null || Trip.ItineraryItems.Count == 0)
+                return;
+
+            var temp = Trip.ItineraryItems.FindAll(i => i.PlannedStartDate.Date.Equals(DateTime.Now)).OrderBy(a => a.CanvasTopValue).ToList();
+            foreach (Attraction a in temp)
+            {
+                if (a.CanvasLeftValue > 0 && a.CanvasTopValue > 0)
+                {
+                    var mapMarker2 = new MapMarker(a.Name, null, true);
+                    Canvas.SetTop(mapMarker2, a.CanvasTopValue);
+                    Canvas.SetLeft(mapMarker2, a.CanvasLeftValue);
+                    mapMarker2.MapMarkerClicked += HandleMapMarkerClicked;
+                    MapCanvas.Children.Add(mapMarker2);
+                }
+            }
+        }
+        void MoveMapToCenter()
+        {
+            var tt = (TranslateTransform)((TransformGroup)MapCanvas.RenderTransform).Children.First(tr => tr is TranslateTransform);
+            tt.X = origin.X - 1300;
+            tt.Y = origin.Y - 900;
+        }
+        private void HandleMapMarkerClicked(object sender, EventArgs e)
+        {
 
         }
 

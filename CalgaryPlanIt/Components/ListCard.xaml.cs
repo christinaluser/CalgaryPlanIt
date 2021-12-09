@@ -39,7 +39,10 @@ namespace CalgaryPlanIt.Components
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Navigation.NavigateTo(new ViewList(lis));
+            if (Navigation.window.Width > 450)
+                Navigation.NavigateTo(new ViewList(lis));
+            else
+                Navigation.NavigateToMobile(new ViewList(lis));
         }
     }
 }
