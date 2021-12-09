@@ -36,7 +36,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="Auto" MaxHeight="200" Margin="5" BorderBrush="LightBlue" Cursor="Hand"  MouseLeftButtonUp="Grid_MouseLeftButtonUp" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
+    <Border x:Name="CardBorder" CornerRadius="15" Background="White" Height="Auto" MaxHeight="220" Margin="5" BorderBrush="LightBlue" Cursor="Hand"  MouseLeftButtonUp="Grid_MouseLeftButtonUp" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave">
         <Border.Effect>
             <DropShadowEffect x:Name="blur" BlurRadius="5" Color="LightGray" ShadowDepth="0"/>
         </Border.Effect>
