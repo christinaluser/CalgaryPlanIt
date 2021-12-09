@@ -4,6 +4,13 @@ README
 CPSC 481 - GROUP 9 - CalgaryPlanIt
 Final Project - README
 
+Christina Lu
+Muhammad Janjua
+Raymond Vong
+Ahmed Farazi
+Mohamed Mohamed
+
+
 //About the application// 
 
 The purpose of this project was to create an intuitive application (mostly interface) to help travel agencies
