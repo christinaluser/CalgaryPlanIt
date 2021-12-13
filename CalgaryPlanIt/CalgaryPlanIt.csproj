@@ -21,6 +21,7 @@
     <None Remove="Images\Attraction\bell.png" />
     <None Remove="Images\Attraction\calgarysightseeing.jpg" />
     <None Remove="Images\Attraction\calgarytower.png" />
+    <None Remove="Images\Attraction\calgaryzoologo.jpg" />
     <None Remove="Images\Attraction\chinese.png" />
     <None Remove="Images\Attraction\chinese2.png" />
     <None Remove="Images\Attraction\culture.jpg" />
@@ -117,6 +118,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Attraction\calgarytower.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Attraction\calgaryzoologo.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Attraction\chinese.png">

@@ -39,7 +39,7 @@ namespace CalgaryPlanIt
 
         public void SwitchPage(Page newPage)
         {
-            Main.Content = newPage;
+            Main.Content = newPage; 
         }
 
         /// <summary>
@@ -354,8 +354,7 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "More than 3 hours",
                 Address = "1300 Zoo Rd NE, Calgary, Alberta T2E 7V6 Canada",
-                Host = "",
-                ImageSourceName = new List<String>() {"monkey.jpg", "panda.jpg"}
+                Host = ""
             });
             AttractionsList.Add(new Attraction()
             {
@@ -385,7 +384,8 @@ namespace CalgaryPlanIt
                 Rating = 4,
                 Duration = "More than 3 hours",
                 Address = "1300 Zoo Rd NE, Calgary, Alberta T2E 7V6 Canada",
-                Host = ""
+                Host = "",
+                ImageSourceName = new List<String>() {"calgaryzoologo.jpg" ,"monkey.jpg", "panda.jpg" }
             });
             AttractionsList.Add(new Attraction()
             {
